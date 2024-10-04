@@ -12,4 +12,7 @@
   --foreground: #171717;
 }
 
+*{
+  transition-duration: 150ms;
+}
 

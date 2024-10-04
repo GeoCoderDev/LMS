@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import AccesibilityBackground from "@/components/AccecibilityBackground";
+import Accesibility from "@/components/icons/Accesibility";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +33,19 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {children}
+
+          <div className=" fixed top-0 right-0 h-[100dvh] flex flex-col items-center justify-center translate-x-[90%] hover:translate-x-[-90%] bg-black w-[30vw] min-w-[20rem]">
+            <Accesibility
+              className="transition-all hover:rotate-[-360deg] hover:scale-[1.25] w-[1rem] aspect-auto border-blue-500 z-[5] cursor-pointer "
+              color="#fff"
+              title="Accesibilidad"
+            />
+            <AccesibilityBackground
+              className="w-[3vw] h-full absolute top-0 left-0"
+              color="black"
+              title="Accesibilidad"
+            />
+          </div>
         </body>
       </html>
     </ViewTransitions>

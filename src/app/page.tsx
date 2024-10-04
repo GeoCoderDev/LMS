@@ -3,11 +3,10 @@ import Mando from "@/components/icons/Mando";
 import { Link } from "next-view-transitions";
 
 export default function Home() {
-  const abrirMenuPrincipal = () => {};
 
   return (
     <>
-      <header className="sticky h-[10dvh] max-h-[100px] border-b-[1px] border-black w-screen z-[4] flex justify-center gap-10 items-center ">
+      <header className="sticky h-[10dvh] max-h-[100px] -border-b-[1px] border-black w-screen z-[4] flex justify-center gap-10 items-center ">
         <Link href={"/"}>
           <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
             Inicio
@@ -15,8 +14,7 @@ export default function Home() {
         </Link>
         <Link href={"/modulos"}>
           <span
-            id="h"
-            style={{ viewTransitionName: "p" }}
+            style={{ viewTransitionName: "titulo-modulos" }}
             className="text-[1rem] lg:text-[1.1rem] cursor-pointer"
           >
             Modulos
@@ -48,9 +46,6 @@ export default function Home() {
 
           <Link href={"/modulos"}>
             <button
-              onClick={() => {
-                abrirMenuPrincipal();
-              }}
               id="four"
               style={{ transitionDuration: "100ms" }}
               className="relative  text-black border-2 border-black transition-all p-4 rounded-[0.5rem] text-[1rem] md:text-[1.2rem] font-semibold"
