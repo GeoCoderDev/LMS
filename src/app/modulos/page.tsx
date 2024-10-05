@@ -6,7 +6,7 @@ const Modulos = () => {
     <div className="flex items-center justify-center flex-col p-4 h-[100dvh] w-screen gap-8">
       <span
         style={{ viewTransitionName: "titulo-modulos" }}
-        className="text-[2rem] lg:text-[2.2rem] cursor-pointer"
+        className="text-[2rem] lg:text-[2.2rem] "
       >
         Modulos
       </span>

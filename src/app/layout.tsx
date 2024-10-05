@@ -34,17 +34,32 @@ export default function RootLayout({
         >
           {children}
 
-          <div className=" fixed top-0 right-0 h-[100dvh] flex flex-col items-center justify-center translate-x-[90%] hover:translate-x-[-90%] bg-black w-[30vw] min-w-[20rem]">
-            <Accesibility
-              className="transition-all hover:rotate-[-360deg] hover:scale-[1.25] w-[1rem] aspect-auto border-blue-500 z-[5] cursor-pointer "
-              color="#fff"
-              title="Accesibilidad"
-            />
-            <AccesibilityBackground
-              className="w-[3vw] h-full absolute top-0 left-0"
-              color="black"
-              title="Accesibilidad"
-            />
+          <div
+            style={{
+              gridTemplateColumns: "3vw minmax(200px,30vw)",
+              gridTemplateRows: "1fr",
+            }}
+            className="items-center fixed top-0 right-0 h-[100dvh] -bg-black min-w-min grid translate-x-[30vw] hover:translate-x-[0]"
+          >
+            <div className="relative -border-2 h-full flex flex-col min-w-min -min-h-min items-center justify-center translate-x-[1px]">
+              <div
+                style={{
+                  borderTop: "4vh transparent solid",
+                  borderBottom: "4vh transparent solid",
+                }}
+                className="absolute flex flex-col items-center justify-center h-[50vh] w-0 top-0 border-r-[3vw] border-black  translate-y-[50%]"
+              ></div>
+              <Accesibility
+                className="w-[45%] aspect-auto z-[10]"
+                color="white"
+                title=""
+              />
+            </div>
+            <div className=" bg-black w-full h-full flex items-center justify-center flex-col p-4 text-white">
+
+                <h2>Comandos de Voz</h2>
+
+            </div>
           </div>
         </body>
       </html>
