@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import AccesibilityBackground from "@/components/AccecibilityBackground";
 import Accesibility from "@/components/icons/Accesibility";
 
 const geistSans = localFont({
