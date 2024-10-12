@@ -31,6 +31,14 @@ export default function Home() {
           </span>
         </Link>
       </header>
+
+      <div className="w-0 h-0 absolute top-0 left-0" style={{ viewTransitionName: "modulo-splash-1" }}></div>
+      <div className="w-0 h-0 absolute top-0 right-0" style={{ viewTransitionName: "modulo-splash-2" }}></div>
+      <div className="w-0 h-0 absolute bottom-0 left-0" style={{ viewTransitionName: "modulo-splash-3" }}></div>
+      <div className="w-0 h-0 absolute bottom-0 right-0" style={{ viewTransitionName: "modulo-splash-4" }}></div>
+
+
+
       <div className="flex flex-col w-screen h-[90dvh] items-center justify-center gap-[8vh]">
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="px-[10vw]">

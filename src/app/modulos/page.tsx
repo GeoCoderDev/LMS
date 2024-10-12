@@ -10,18 +10,24 @@ const Modulos = () => {
       >
         Modulos
       </span>
-      <div
-        className="min-w-min min-h-min gap-8"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gridTemplateRows: "1fr 1fr",
-        }}
-      >
-        <ModuleCard id={1} />
-        <ModuleCard id={2} />
-        <ModuleCard id={3} />
-        <ModuleCard id={4} />
+
+      <div className="min-w-min min-h-min gap-8 grid grid-cols-[1fr_1fr] grid-rows-[1fr_1fr] content-stretch">
+        <ModuleCard
+          id={1}
+          titulo="Origen, Modelos, Normas y Herramientas para la Calidad del Software"
+        />
+        <ModuleCard
+          id={2}
+          titulo="Verificación y Validación de la Documentación del Análisis de Requerimientos"
+        />
+        <ModuleCard
+          id={3}
+          titulo="Verificación y Validación de la Documentación del Diseño del Sistema"
+        />
+        <ModuleCard
+          id={4}
+          titulo="Factores Críticos de Éxito para el Desarrollo del Software"
+        />
       </div>
     </div>
   );
