@@ -1,14 +1,46 @@
 import React from "react";
+import { IconProps } from "./icons/Icons";
+import FlechaDiagonal from "./icons/FlechaDiagonal";
 
-const ModuleCard = ({ id, titulo }: { id: number; titulo: string }) => {
+const ModuleCard = ({
+  id,
+  titulo,
+  LogoTSX,
+  texto,
+  brokenBackgroundColor,
+  backgroundButtonGradient,
+}: {
+  id: number;
+  titulo: string;
+  LogoTSX: ({}: IconProps) => React.ReactNode;
+  texto: string;
+  brokenBackgroundColor: string;
+  backgroundButtonGradient: string;
+}) => {
   return (
     <div
       style={{ viewTransitionName: `modulo-splash-${id}` }}
-      className="book flex items-center justify-center w-[10rem] h-[10rem] border-2 border-black rounded-[1rem]"
+      className="overflow-hidden -p-4 flex flex-col items-center justify-center  min-w-[10rem] max-w-[25vw] min-h-[10rem] -border-2 border-black rounded-[1rem] h-full shadow-[0px_0px_8px_2px_#00000080]"
     >
-      <p className="mx-10">{titulo}</p>
-      <div className="book-cover flex items-center justify-center w-[10rem] h-min min-h-[10rem] border-2 border-black rounded-[1rem]">
-        <p>{titulo}</p>
+      <div
+        style={{ backgroundColor: brokenBackgroundColor }}
+        className=" flex flex-1 items-center justify-center  -min-h-min w-full py-4 h-[12rem] min-h-[12rem]"
+      >
+        <LogoTSX className="w-[8rem]" />
+      </div>
+      <div className="p-4 w-full flex flex-col items-center justify-center gap-2 ">
+        <span className="self-start text-[#4A5568] font-semibold text-[0.8rem]">
+          Modulo 0{id}
+        </span>
+        <h3 className="font-bold">{titulo}</h3>
+        <p className="text-[0.8rem]">{texto}</p>
+        <button
+          style={{ backgroundImage: backgroundButtonGradient }}
+          className="flex items-center justify-center gap-2 bg-black text-white p-1 px-2 rounded-[0.5rem] font-semibold text-[0.8rem] mt-2"
+        >
+          Ver Contenido
+          <FlechaDiagonal color="white" className="w-[0.8rem]" />
+        </button>
       </div>
     </div>
   );
