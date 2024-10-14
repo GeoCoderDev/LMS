@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <header className="sticky h-[10dvh] max-h-[100px] -border-b-[1px] border-black w-screen z-[4] flex justify-center gap-10 items-center ">
         <Link href={"/"}>
-          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+          <span style={{ viewTransitionName: "titulo-inicio" }} className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
             Inicio
           </span>
         </Link>

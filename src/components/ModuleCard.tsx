@@ -1,6 +1,7 @@
 import React from "react";
 import { IconProps } from "./icons/Icons";
 import FlechaDiagonal from "./icons/FlechaDiagonal";
+import { Link } from "next-view-transitions";
 
 const ModuleCard = ({
   id,
@@ -20,7 +21,7 @@ const ModuleCard = ({
   return (
     <div
       style={{ viewTransitionName: `modulo-splash-${id}` }}
-      className="overflow-hidden -p-4 flex flex-col items-center justify-center  min-w-[10rem] max-w-[25vw] min-h-[10rem] -border-2 border-black rounded-[1rem] h-full shadow-[0px_0px_8px_2px_#00000080]"
+      className="overflow-hidden -p-4 flex flex-col items-center justify-center  min-w-[10rem] max-w-full min-h-[10rem] -border-2 border-black rounded-[1rem] h-full shadow-[0px_0px_8px_2px_#00000080]"
     >
       <div
         style={{ backgroundColor: brokenBackgroundColor }}
@@ -32,15 +33,22 @@ const ModuleCard = ({
         <span className="self-start text-[#4A5568] font-semibold text-[0.8rem]">
           Modulo 0{id}
         </span>
-        <h3 className="font-bold">{titulo}</h3>
-        <p className="text-[0.8rem]">{texto}</p>
-        <button
-          style={{ backgroundImage: backgroundButtonGradient }}
-          className="flex items-center justify-center gap-2 bg-black text-white p-1 px-2 rounded-[0.5rem] font-semibold text-[0.8rem] mt-2"
+        <h3
+          className="font-bold self-start"
+          style={{ viewTransitionName: `titulo-modulo-${id}` }}
         >
-          Ver Contenido
-          <FlechaDiagonal color="white" className="w-[0.8rem]" />
-        </button>
+          {titulo}
+        </h3>
+        <p className="text-[0.8rem]">{texto}</p>
+        <Link href={`modulos/${id}`} as={`modulos/${id}`}>
+          <button
+            style={{ backgroundImage: backgroundButtonGradient }}
+            className="flex items-center justify-center gap-2 bg-black text-white p-1 px-2 rounded-[0.5rem] font-semibold text-[0.8rem] mt-2"
+          >
+            Ver Contenido
+            <FlechaDiagonal color="white" className="w-[0.8rem]" />
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -1,15 +1,24 @@
+import Casa from "@/components/icons/Casa";
 import LogoModulo1 from "@/components/icons/LogoModulo1";
 import LogoModulo2 from "@/components/icons/LogoModulo2";
 import LogoModulo3 from "@/components/icons/LogoModulo3";
 import LogoModulo4 from "@/components/icons/LogoModulo4";
 import ModuleCard from "@/components/ModuleCard";
+import { Link } from "next-view-transitions";
 import React from "react";
 
 const Modulos = () => {
   return (
     <div className="flex items-center justify-center flex-col min-h-[100dvh] h-min max-w-[100vw] -overflow-hidden gap-4">
-      <header className="sticky top-0 w-full flex flex-col items-center justify-center bg-[#ffffff75] border-black border-b-[1px] -shadow-[0px_0px_10px_2px_#00000025] h-min z-[2] py-2 [backdrop-filter:blur(10px)]">
-        <button>Inicio</button>
+      <header className="sticky top-0 w-full flex flex-col items-center justify-center bg-[#ffffff75] border-black -border-b-[1px] -shadow-[0px_0px_10px_2px_#00000025] h-min z-[2] py-8 [backdrop-filter:blur(10px)] gap-2">
+        <Link href={"/"} as={"/"}>
+          <span
+            className="text-white bg-black"
+            style={{ viewTransitionName: "titulo-inicio" }}
+          >
+            <Casa className="w-[2rem] " color="black" />{" "}
+          </span>
+        </Link>
         <span
           style={{ viewTransitionName: "titulo-modulos" }}
           className="text-[2rem] lg:text-[2.2rem]"

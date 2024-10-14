@@ -3,7 +3,7 @@ import { IconProps } from "./Icons";
 
 const LogoModulo3 = ({
   className,
-  title = "Verificación y Validación de la Documentación del Análisis de Requerimientos",
+  title = "Verificación y validación de la documentación del diseño del Sistema",
 }: IconProps) => {
   return (
     <div title={title}>
