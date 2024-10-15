@@ -3,7 +3,7 @@ import { IconProps } from "./Icons";
 
 const Casa = ({ className, color, title }: IconProps) => {
   return (
-    <div title={title}>
+    <div title={title ?? "Casa"}>
       <svg
         className={className}
         viewBox="0 0 52 49"

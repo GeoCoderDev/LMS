@@ -35,7 +35,7 @@ const ModuleCard = ({
         </span>
         <h3
           className="font-bold self-start"
-          style={{ viewTransitionName: `titulo-modulo-${id}` }}
+          style={{ viewTransitionName: `titulo-modulo-${id}`}}
         >
           {titulo}
         </h3>

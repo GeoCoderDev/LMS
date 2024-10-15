@@ -20,12 +20,12 @@ const page = () => {
       </header>
       <section
         style={{
-          backgroundImage: "linear-gradient(90deg, #1E40AF 0%, #03ACCD 100%)",
+          backgroundImage: "linear-gradient(90deg, #D35400 0%, #F39C12 100%)",
         }}
         className="bg-[#1E40AF] max-w-screen h-min flex items-center justify-items-center content-center  justify-center -md:justify-between flex-wrap  text-white p-8 text-[1.5rem] gap-6"
       >
         <h2
-          style={{ viewTransitionName: "titulo-modulo-4 self" }}
+          style={{ viewTransitionName: "titulo-modulo-4" }}
           className="justify-self-start font-bold"
         >
           Origen, Modelos, Normas y Herramientas para la Calidad del Software

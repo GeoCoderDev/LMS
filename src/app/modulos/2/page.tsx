@@ -26,7 +26,7 @@ const page = () => {
         className="bg-[#1E40AF] max-w-screen h-min flex items-center justify-items-center content-center  justify-center -md:justify-between flex-wrap  text-white p-8 text-[1.5rem] gap-6"
       >
         <h2
-          style={{ viewTransitionName: "titulo-modulo-2 self" }}
+          style={{ viewTransitionName: "titulo-modulo-2" }}
           className="justify-self-start font-bold"
         >
           Verificación y Validación de la Documentación del Análisis de
