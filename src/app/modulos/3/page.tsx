@@ -1,23 +1,12 @@
-import Buscador from "@/components/Buscador";
-import Casa from "@/components/icons/Casa";
-import LogoModuloBlanco1 from "@/components/icons/LogoModuloBlanco1";
-import { Link } from "next-view-transitions";
+
+
+import LogoModuloBlanco3 from "@/components/icons/LogoModuloBlanco3";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <header className="sticky top-0 w-full flex  items-center justify-between px-[3vw] bg-[#ffffff] border-black -border-b-[1px] -shadow-[0px_0px_10px_2px_#00000025] h-max py-4 z-[2] -[backdrop-filter:blur(10px)] gap-4">
-        <Link href={"/"} as={"/"}>
-          <span
-            className="text-white bg-black"
-            style={{ viewTransitionName: "titulo-inicio" }}
-          >
-            <Casa className="w-[2rem] " color="black" />
-          </span>
-        </Link>
-        <Buscador />
-      </header>
+
       <section
         style={{
           backgroundImage: "linear-gradient(90deg, #7B1FA2 0%, #CC73CB 100%)",
@@ -30,7 +19,7 @@ const page = () => {
         >
           Origen, Modelos, Normas y Herramientas para la Calidad del Software
         </h2>
-        <LogoModuloBlanco1 className="w-[8rem] " color="white" />
+        <LogoModuloBlanco3 className="w-[8rem] " color="white" />
       </section>
     </>
   );
