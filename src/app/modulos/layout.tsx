@@ -3,11 +3,10 @@ import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="">
+    <div className="h-min-[100dvh] flex flex-col">
       <CebeceraConBuscador />
-      <div>
-
-      {children}
+      <div className="flex flex-1 flex-col items-center justify-center -border-2">
+        {children}
       </div>
     </div>
   );

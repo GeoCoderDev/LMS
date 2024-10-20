@@ -1,5 +1,4 @@
-
-
+import { Bloque } from "@/components/Bloque";
 import LogoModuloBlanco4 from "@/components/icons/LogoModuloBlanco4";
 
 import React from "react";
@@ -11,16 +10,46 @@ const page = () => {
         style={{
           backgroundImage: "linear-gradient(90deg, #D35400 0%, #F39C12 100%)",
         }}
-        className="bg-[#1E40AF] max-w-screen h-min flex items-center justify-items-center content-center  justify-center -md:justify-between flex-wrap  text-white p-8 text-[1.5rem] gap-6"
+        className="bg-[#1E40AF] max-w-screen h-min flex items-center justify-items-center content-center  justify-center -md:justify-between flex-wrap w-full text-white p-8 text-[1.5rem] gap-6"
       >
         <h2
           style={{ viewTransitionName: "titulo-modulo-4" }}
           className="justify-self-start font-bold"
         >
-          Origen, Modelos, Normas y Herramientas para la Calidad del Software
+          Factores críticos de éxito para el desarrollo del software
         </h2>
         <LogoModuloBlanco4 className="w-[8rem] " color="white" />
       </section>
+      <div className="mt-8 -border-2 flex max-w-screen w-[90vw] items-stretch justify-center gap-4 flex-wrap mb-10">
+        <Bloque
+          title="Definición y Características de los Factores Críticos de Éxito"
+          href="/modulos/1/origen-evolucion-ingenieria-software"
+        />
+        <Bloque
+          title="Factores Técnicos Críticos para el Desarrollo del Software"
+          href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+        />
+        <Bloque
+          title="Factores Humanos en el Desarrollo de Software"
+          href="/modulos/1/herramientas-calidad-software"
+        />
+        <Bloque
+          title="Factores Organizacionales Críticos"
+          href="/modulos/1/normas-estandares-calidad-software"
+        />
+        <Bloque
+          title="Metodologías y Procesos como Factores de Éxito"
+          href="/modulos/1/normas-estandares-calidad-software"
+        />
+        <Bloque
+          title="Factores Externos"
+          href="/modulos/1/normas-estandares-calidad-software"
+        />
+        <Bloque
+          title="Ejemplos de Factores Críticos de Éxito en Proyectos Reales"
+          href="/modulos/1/normas-estandares-calidad-software"
+        />
+      </div>
     </>
   );
 };

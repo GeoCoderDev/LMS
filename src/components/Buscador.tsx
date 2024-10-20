@@ -15,7 +15,7 @@ const Buscador = () => {
     >
       <Lupa className="w-[1.4rem]" color="black" />
       <input
-        className="border-2 outline-1 border-black text-[0.8rem] rounded-[1rem] w-[min(40rem,70vw)] p-2"
+        className="bg-[#00000000] border-2 outline-1 border-black text-[0.8rem] rounded-[1rem] w-[min(40rem,70vw)] p-2"
         type="search"
         name=""
         id=""
