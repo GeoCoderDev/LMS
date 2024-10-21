@@ -25,22 +25,32 @@ const Modulo2 = () => {
         <Bloque
           title="Conceptos Fundamentales de la Verificación y Validación (V&V)"
           href="/modulos/1/origen-evolucion-ingenieria-software"
+          id={1}
+          moduleNumber={2}
         />
         <Bloque
           title="Verificación de la Documentación de Requerimientos"
           href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          id={2}
+          moduleNumber={2}
         />
         <Bloque
           title="Validación de la Documentación de Requerimientos"
           href="/modulos/1/herramientas-calidad-software"
+          id={3}
+          moduleNumber={2}
         />
         <Bloque
           title="Revisión Formal del Documento de Requerimientos"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={4}
+          moduleNumber={2}
         />
         <Bloque
           title="Herramientas para V&V en el Análisis de Requerimientos"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={5}
+          moduleNumber={2}
         />
       </div>
     </>

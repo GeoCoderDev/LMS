@@ -1,4 +1,5 @@
 import CebeceraConBuscador from "@/components/CebeceraConBuscador";
+import Footer from "@/components/Footer";
 import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
@@ -8,6 +9,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex flex-1 flex-col items-center justify-center -border-2">
         {children}
       </div>
+      <Footer />
     </div>
   );
 };

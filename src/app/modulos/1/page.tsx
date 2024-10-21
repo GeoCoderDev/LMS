@@ -24,18 +24,26 @@ const Modulo1 = () => {
         <Bloque
           title="Origen y Evolución de la Ingeniería de Software"
           href="/modulos/1/origen-evolucion-ingenieria-software"
+          id={1}
+          moduleNumber={1}
         />
         <Bloque
           title="Calidad del Software: Conceptos, Modelos y Criterios"
           href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          id={2}
+          moduleNumber={1}
         />
         <Bloque
           title="Herramientas para la Calidad del Software"
           href="/modulos/1/herramientas-calidad-software"
+          id={3}
+          moduleNumber={1}
         />
         <Bloque
           title="Normas y Estándares de Calidad en el Software"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={4}
+          moduleNumber={1}
         />
       </div>
     </>

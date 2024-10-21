@@ -23,22 +23,32 @@ const page = () => {
         <Bloque
           title="Conceptos Fundamentales del Diseño del Sistema"
           href="/modulos/1/origen-evolucion-ingenieria-software"
+          id={1}
+          moduleNumber={3}
         />
         <Bloque
           title="Verificación de la Documentación del Diseño"
           href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          id={2}
+          moduleNumber={3}
         />
         <Bloque
           title="Validación de la Documentación del Diseño"
           href="/modulos/1/herramientas-calidad-software"
+          id={3}
+          moduleNumber={3}
         />
         <Bloque
           title="Revisión Formal del Diseño del Sistema"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={4}
+          moduleNumber={3}
         />
         <Bloque
           title="Herramientas para la Verificación y Validación del Diseño"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={5}
+          moduleNumber={3}
         />
       </div>
     </>

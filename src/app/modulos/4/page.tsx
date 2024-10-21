@@ -24,30 +24,44 @@ const page = () => {
         <Bloque
           title="Definición y Características de los Factores Críticos de Éxito"
           href="/modulos/1/origen-evolucion-ingenieria-software"
+          id={1}
+          moduleNumber={4}
         />
         <Bloque
           title="Factores Técnicos Críticos para el Desarrollo del Software"
           href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          id={2}
+          moduleNumber={4}
         />
         <Bloque
           title="Factores Humanos en el Desarrollo de Software"
           href="/modulos/1/herramientas-calidad-software"
+          id={3}
+          moduleNumber={4}
         />
         <Bloque
           title="Factores Organizacionales Críticos"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={4}
+          moduleNumber={4}
         />
         <Bloque
           title="Metodologías y Procesos como Factores de Éxito"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={5}
+          moduleNumber={4}
         />
         <Bloque
           title="Factores Externos"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={6}
+          moduleNumber={4}
         />
         <Bloque
           title="Ejemplos de Factores Críticos de Éxito en Proyectos Reales"
           href="/modulos/1/normas-estandares-calidad-software"
+          id={7}
+          moduleNumber={4}
         />
       </div>
     </>
