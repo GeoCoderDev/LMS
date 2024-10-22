@@ -3,20 +3,72 @@ import React from "react";
 import Accesibility from "./icons/Accesibility";
 import Microfono from "./icons/Microfono";
 
+// Definición del constructor de SpeechRecognition
+interface SpeechRecognitionConstructor {
+  new (): SpeechRecognition;
+}
+
+// Interfaz para la API de reconocimiento de voz
+interface SpeechRecognition extends EventTarget {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  start(): void;
+  stop(): void;
+  abort(): void;
+  onresult: (event: SpeechRecognitionEvent) => void;
+  onerror: (event: SpeechRecognitionErrorEvent) => void;
+}
+
+// Interfaz para el evento de resultado
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+}
+
+interface SpeechRecognitionResultList {
+  readonly length: number;
+  item(index: number): SpeechRecognitionResult;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionResult {
+  readonly length: number;
+  item(index: number): SpeechRecognitionAlternative;
+  [index: number]: SpeechRecognitionAlternative;
+  isFinal: boolean;
+}
+
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
+}
+
+// Interfaz para el evento de error
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+  message: string;
+}
+
+// Interfaz extendida de Window
+interface IWindow extends Window {
+  SpeechRecognition: SpeechRecognitionConstructor;
+  webkitSpeechRecognition: SpeechRecognitionConstructor;
+}
+
 const AccesibilityMenu = () => {
   const iniciarComandosDeVoz = () => {
     if (typeof window !== "undefined") {
+      const windowWithSpeech = window as unknown as IWindow;
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        windowWithSpeech.SpeechRecognition ||
+        windowWithSpeech.webkitSpeechRecognition;
       const synth = window.speechSynthesis;
 
-      // Función para dar una bienvenida por voz
       const speak = (message: string, callback?: () => void) => {
         const utterance = new SpeechSynthesisUtterance(message);
-        utterance.lang = "es-ES"; // Español
+        utterance.lang = "es-ES";
 
-        // Ejecutar el callback cuando la voz termine de hablar
         utterance.onend = () => {
           if (callback) callback();
         };
@@ -24,7 +76,6 @@ const AccesibilityMenu = () => {
         synth.speak(utterance);
       };
 
-      // Si la API de reconocimiento de voz no está disponible, notificar al usuario
       if (!SpeechRecognition) {
         speak(
           "Lo siento, tu navegador no es compatible con los comandos de voz."
@@ -37,42 +88,38 @@ const AccesibilityMenu = () => {
       recognition.continuous = false;
       recognition.interimResults = false;
 
-      // Función para manejar los comandos de voz reconocidos
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event: SpeechRecognitionEvent) => {
         const transcript = event.results[0][0].transcript.toLowerCase();
         console.log("Comando de voz reconocido:", transcript);
-        console.log(transcript);
+
         if (transcript.includes("buscar")) {
-          // Indicar al usuario que diga el término de búsqueda
           speak("Por favor, di el término que deseas buscar.", () => {
-            // Iniciar nueva sesión de reconocimiento para captar el término de búsqueda
             recognition.start();
 
-            recognition.onresult = (event: any) => {
+            recognition.onresult = (event: SpeechRecognitionEvent) => {
               const searchQuery = event.results[0][0].transcript.toLowerCase();
               console.log("Término de búsqueda:", searchQuery);
 
-              // Poner el término de búsqueda en el input de tipo search
               const searchInput = document.getElementById(
                 "buscador-global"
               ) as HTMLInputElement;
+              
               if (searchInput) {
                 searchInput.value = searchQuery;
 
-                // Enviar el formulario de búsqueda
                 const searchForm = document.getElementById(
                   "formulario-busqueda"
                 ) as HTMLFormElement;
+
                 if (searchForm) {
                   searchForm.addEventListener("submit", (event) => {
-                    event.preventDefault(); // Evita que se recargue la página
+                    event.preventDefault();
                     console.log(
                       "Formulario enviado con la búsqueda:",
                       searchQuery
                     );
                   });
 
-                  // Forzar el envío del formulario (sin recargar)
                   searchForm.dispatchEvent(new Event("submit"));
                 }
               }
@@ -115,18 +162,16 @@ const AccesibilityMenu = () => {
         }
       };
 
-      // Manejar errores en el reconocimiento de voz
-      recognition.onerror = (event: any) => {
+      recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
         console.error("Error en el reconocimiento de voz:", event.error);
         speak("Ocurrió un error al reconocer tu voz. Intenta nuevamente.");
       };
 
-      // Función para iniciar el reconocimiento de voz después de que el navegador termine de hablar
       const startVoiceRecognition = () => {
         speak(
           "Bienvenido. Puedes usar los comandos de voz: Buscar, Módulo 1, Módulo 2, Módulo 3, Módulo 4.",
           () => {
-            recognition.start(); // Inicia la escucha de voz cuando el mensaje termina
+            recognition.start();
           }
         );
       };
