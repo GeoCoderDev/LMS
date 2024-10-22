@@ -24,31 +24,31 @@ const Modulo2 = () => {
       <div className="mt-8 -border-2 flex max-w-screen w-[90vw] items-center justify-center gap-4 flex-wrap mb-10">
         <Bloque
           title="Conceptos Fundamentales de la Verificación y Validación (V&V)"
-          href="/modulos/1/origen-evolucion-ingenieria-software"
+          href="/modulos/2/conceptos-fundamentales-vyv"
           id={1}
           moduleNumber={2}
         />
         <Bloque
           title="Verificación de la Documentación de Requerimientos"
-          href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          href="/modulos/2/verificacion-documentacion-requerimientos"
           id={2}
           moduleNumber={2}
         />
         <Bloque
           title="Validación de la Documentación de Requerimientos"
-          href="/modulos/1/herramientas-calidad-software"
+          href="/modulos/2/validacion-documentacion-requerimientos"
           id={3}
           moduleNumber={2}
         />
         <Bloque
           title="Revisión Formal del Documento de Requerimientos"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/2/revision-formal-documento-requerimientos"
           id={4}
           moduleNumber={2}
         />
         <Bloque
           title="Herramientas para V&V en el Análisis de Requerimientos"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/2/herramientas-vyv-analisis-requerimientos"
           id={5}
           moduleNumber={2}
         />

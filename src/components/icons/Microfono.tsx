@@ -1,9 +1,9 @@
 import React from "react";
 import { IconProps } from "./Icons";
 
-const Microfono = ({ title, color, className }: IconProps) => {
+const Microfono = ({ title, color, className, onClick }: IconProps) => {
   return (
-    <div title={title}>
+    <div title={title} onClick={onClick}>
       <svg
         className={`aspect-auto ${className}`}
         viewBox="0 0 224 224"

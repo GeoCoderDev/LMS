@@ -22,31 +22,31 @@ const page = () => {
       <div className="mt-8 -border-2 flex max-w-screen w-[90vw] items-center justify-center gap-4 flex-wrap mb-10">
         <Bloque
           title="Conceptos Fundamentales del Diseño del Sistema"
-          href="/modulos/1/origen-evolucion-ingenieria-software"
+          href="/modulos/3/conceptos-fundamentales-diseno-sistema"
           id={1}
           moduleNumber={3}
         />
         <Bloque
           title="Verificación de la Documentación del Diseño"
-          href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          href="/modulos/3/verificacion-documentacion-diseno"
           id={2}
           moduleNumber={3}
         />
         <Bloque
           title="Validación de la Documentación del Diseño"
-          href="/modulos/1/herramientas-calidad-software"
+          href="/modulos/3/validacion-documentacion-diseno"
           id={3}
           moduleNumber={3}
         />
         <Bloque
           title="Revisión Formal del Diseño del Sistema"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/3/revision-formal-diseno-sistema"
           id={4}
           moduleNumber={3}
         />
         <Bloque
           title="Herramientas para la Verificación y Validación del Diseño"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/3/herramientas-vyv-diseno-sistema"
           id={5}
           moduleNumber={3}
         />

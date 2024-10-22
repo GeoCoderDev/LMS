@@ -23,43 +23,43 @@ const page = () => {
       <div className="mt-8 -border-2 flex max-w-screen w-[90vw] items-stretch justify-center gap-4 flex-wrap mb-10">
         <Bloque
           title="Definición y Características de los Factores Críticos de Éxito"
-          href="/modulos/1/origen-evolucion-ingenieria-software"
+          href="/modulos/4/definicion-caracteristicas-factores-criticos-exito"
           id={1}
           moduleNumber={4}
         />
         <Bloque
           title="Factores Técnicos Críticos para el Desarrollo del Software"
-          href="/modulos/1/calidad-software-conceptos-modelos-criterios"
+          href="/modulos/4/factores-tecnicos-criticos-desarrollo-software"
           id={2}
           moduleNumber={4}
         />
         <Bloque
           title="Factores Humanos en el Desarrollo de Software"
-          href="/modulos/1/herramientas-calidad-software"
+          href="/modulos/4/factores-humanos-desarrollo-software"
           id={3}
           moduleNumber={4}
         />
         <Bloque
           title="Factores Organizacionales Críticos"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/4/factores-organizacionales-criticos"
           id={4}
           moduleNumber={4}
         />
         <Bloque
           title="Metodologías y Procesos como Factores de Éxito"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/4/metodologias-procesos-factores-exito"
           id={5}
           moduleNumber={4}
         />
         <Bloque
           title="Factores Externos"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/4/factores-externos"
           id={6}
           moduleNumber={4}
         />
         <Bloque
           title="Ejemplos de Factores Críticos de Éxito en Proyectos Reales"
-          href="/modulos/1/normas-estandares-calidad-software"
+          href="/modulos/4/ejemplos-factores-criticos-exito-proyectos-reales"
           id={7}
           moduleNumber={4}
         />

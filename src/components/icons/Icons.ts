@@ -1,7 +1,6 @@
-export interface IconProps{
-    
-    title?: string;
-    color?: string;
-    className?: string;
-
+export interface IconProps {
+  title?: string;
+  color?: string;
+  className?: string;
+  onClick?: () => void;
 }
