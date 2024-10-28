@@ -105,7 +105,7 @@ const useCommandVoices = (route: string) => {
 
   useEffect(() => {
     if (!window) return;
-
+    console.log(route);
     window.document.addEventListener("keydown", (event) => {
       // Detectar Ctrl + Alt + C (Anunciar comandos disponibles)
       if (event.ctrlKey && event.altKey && event.key === "c") {
