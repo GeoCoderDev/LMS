@@ -13,7 +13,7 @@ const useCommandVoices = (route: string) => {
   );
 
   const iniciarComandosDeVoz = () => {
-    console.log("Ruta actual:", route);
+    if (!window) return;
 
     const C_V_Buscar = new CommandVoice(
       ["buscar"],
