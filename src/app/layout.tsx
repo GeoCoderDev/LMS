@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import AccesibilityMenu from "@/components/shared/AccesibilityMenu";
+
+import Menu from "@/components/shared/Menu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +37,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {children}
-          <AccesibilityMenu />
+          <Menu />
         </body>
       </html>
     </ViewTransitions>
