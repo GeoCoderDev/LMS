@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import AccesibilityMenu from "@/components/AccesibilityMenu";
+import AccesibilityMenu from "@/components/shared/AccesibilityMenu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

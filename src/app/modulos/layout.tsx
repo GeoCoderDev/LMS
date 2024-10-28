@@ -1,5 +1,6 @@
-import CebeceraConBuscador from "@/components/CebeceraConBuscador";
-import Footer from "@/components/Footer";
+import CebeceraConBuscador from "@/components/shared/CebeceraConBuscador";
+import Footer from "@/components/shared/Footer";
+
 import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {

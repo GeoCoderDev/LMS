@@ -1,7 +1,7 @@
 import { Link } from "next-view-transitions";
 import React from "react";
-import Buscador from "./Buscador";
-import Casa from "./icons/Casa";
+import Buscador from "../Buscador";
+import Casa from "../icons/Casa";
 
 const CebeceraConBuscador = () => {
   return (
