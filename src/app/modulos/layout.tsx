@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 import React from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const route = usePathname();
   const moduleRegex = /^\/modulos?(?:\/\d)?$/;
   return (
@@ -27,4 +27,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;
