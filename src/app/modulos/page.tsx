@@ -11,7 +11,7 @@ const Modulos = () => {
     <div className="flex items-center justify-center flex-col min-h-[100dvh] h-min -border-2 max-w-[100vw] -overflow-hidden gap-4">
       <span
         style={{ viewTransitionName: "titulo-modulos" }}
-        className="text-[2rem] lg:text-[2.2rem]"
+        className="text-[2rem] lg:text-[2.2rem] mt-4 mb-3"
       >
         Modulos
       </span>
