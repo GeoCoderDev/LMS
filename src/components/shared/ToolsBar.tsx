@@ -1,5 +1,4 @@
 import React from "react";
-import Equis from "../icons/Equis";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
