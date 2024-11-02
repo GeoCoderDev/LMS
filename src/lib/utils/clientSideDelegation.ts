@@ -53,8 +53,8 @@ export const initializeDelegacion = () => {
 
   // EVENTO MOUSEMOVE
 
-  var mapaDeEventosMouseMove = new Map<number, EventPayload>();
-  var eventosMouseMoveID = 0;
+  let mapaDeEventosMouseMove = new Map<number, EventPayload>();
+  let eventosMouseMoveID = 0;
 
   function agregarEventoMouseMove(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -87,8 +87,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEOUT
-  var mapaDeEventosMouseOut = new Map<number, EventPayload>();
-  var eventosMouseOutID = 0;
+  let mapaDeEventosMouseOut = new Map<number, EventPayload>();
+  let eventosMouseOutID = 0;
 
   function agregarEventoMouseOut(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -121,8 +121,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEDOWN
-  var mapaDeEventosMouseDown = new Map<number, EventPayload>();
-  var eventosMouseDownID = 0;
+  let mapaDeEventosMouseDown = new Map<number, EventPayload>();
+  let eventosMouseDownID = 0;
 
   function agregarEventoMouseDown(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -155,8 +155,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEUP
-  var mapaDeEventosMouseUp = new Map<number, EventPayload>();
-  var eventosMouseUpID = 0;
+  let mapaDeEventosMouseUp = new Map<number, EventPayload>();
+  let eventosMouseUpID = 0;
 
   function agregarEventoMouseUp(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -189,8 +189,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEENTER
-  var mapaDeEventosMouseEnter = new Map<number, EventPayload>();
-  var eventosMouseEnterID = 0;
+  let mapaDeEventosMouseEnter = new Map<number, EventPayload>();
+  let eventosMouseEnterID = 0;
 
   function agregarEventoMouseEnter(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -223,8 +223,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEOVER
-  var mapaDeEventosMouseOver = new Map<number, EventPayload>();
-  var eventosMouseOverID = 0;
+  let mapaDeEventosMouseOver = new Map<number, EventPayload>();
+  let eventosMouseOverID = 0;
 
   function agregarEventoMouseOver(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -257,8 +257,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHSTART
-  var mapaDeEventosTouchStart = new Map<number, EventPayload>();
-  var eventosTouchStartID = 0;
+  let mapaDeEventosTouchStart = new Map<number, EventPayload>();
+  let eventosTouchStartID = 0;
 
   function agregarEventoTouchStart(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -291,8 +291,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHMOVE
-  var mapaDeEventosTouchMove = new Map<number, EventPayload>();
-  var eventosTouchMoveID = 0;
+  let mapaDeEventosTouchMove = new Map<number, EventPayload>();
+  let eventosTouchMoveID = 0;
 
   function agregarEventoTouchMove(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -325,8 +325,8 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHEND
-  var mapaDeEventosTouchEnd = new Map<number, EventPayload>();
-  var eventosTouchEndID = 0;
+  let mapaDeEventosTouchEnd = new Map<number, EventPayload>();
+  let eventosTouchEndID = 0;
 
   function agregarEventoTouchEnd(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -359,8 +359,8 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO CHANGE
-  var mapaDeEventosChange = new Map<number, EventPayload>();
-  var eventosChangeID = 0;
+  let mapaDeEventosChange = new Map<number, EventPayload>();
+  let eventosChangeID = 0;
 
   function agregarEventoChange(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -393,8 +393,8 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO INPUT
-  var mapaDeEventosInput = new Map<number, EventPayload>();
-  var eventosInputID = 0;
+  let mapaDeEventosInput = new Map<number, EventPayload>();
+  let eventosInputID = 0;
 
   function agregarEventoInput(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -427,8 +427,8 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO KEYUP
-  var mapaDeEventosKeyup = new Map<number, EventPayload>();
-  var eventosKeyupID = 0;
+  let mapaDeEventosKeyup = new Map<number, EventPayload>();
+  let eventosKeyupID = 0;
 
   function agregarEventoKeyup(
     querySelectorOElementoHTML: string | HTMLElement,
@@ -461,8 +461,8 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO KEYDOWN
-  var mapaDeEventosKeydown = new Map<number, EventPayload>();
-  var eventosKeydownID = 0;
+  let mapaDeEventosKeydown = new Map<number, EventPayload>();
+  let eventosKeydownID = 0;
 
   function agregarEventoKeydown(
     querySelectorOElementoHTML: string | HTMLElement,
