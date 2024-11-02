@@ -4,6 +4,7 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 
 import Menu from "@/components/shared/Menu";
+import ProviderStore from "@/store/Provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,8 +37,10 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {children}
-          <Menu />
+          <ProviderStore>
+            {children}
+            <Menu />
+          </ProviderStore>
         </body>
       </html>
     </ViewTransitions>

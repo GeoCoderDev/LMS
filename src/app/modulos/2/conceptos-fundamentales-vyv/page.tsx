@@ -7,8 +7,8 @@ const page = () => {
       sectionTitle="Conceptos Fundamentales de la Verificación y Validación (V&V)"
       contentToRead={
         <>
-          <article>
-            <h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2 py-4">
+          <article className="-border-2 border-green-500">
+            <h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2 pt-2">
               Definición de Verificación y Validación
             </h2>
 
@@ -35,11 +35,21 @@ const page = () => {
                   La <strong>verificación</strong> se pregunta: “¿Estamos
                   construyendo el producto correctamente?” Se enfoca en el
                   cumplimiento de los requisitos técnicos y especificaciones.
+                  <img
+                    src="/images/png/modulo2/seccion1/Validacion.png"
+                    alt="Figura de validacion"
+                    className="w-full object-contain h-[8rem] my-4"
+                  />
                 </li>
                 <li className="mb-2">
                   La <strong>validación</strong> se pregunta: “¿Estamos
                   construyendo el producto correcto?” Se centra en la
                   satisfacción y necesidades del usuario final.
+                  <img
+                    src="/images/png/modulo2/seccion1/Verificacion.png"
+                    alt="Figura de Verificacion"
+                    className="w-full object-contain h-[7rem] my-4"
+                  />
                 </li>
                 <li>
                   Ambas prácticas son fundamentales en el desarrollo de software
@@ -50,6 +60,17 @@ const page = () => {
             </section>
           </article>
         </>
+      }
+      resources={
+        <iframe
+          className="aspect-[560/315] w-[min(24rem,80%)] rounded-[1rem]"
+          src="https://www.youtube.com/embed/Tpb3v5QYwI4?si=4JH-P9fkaPYrloh4"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen={true}
+          frameBorder={"0"}
+        ></iframe>
       }
     />
   );
