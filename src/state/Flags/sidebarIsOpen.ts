@@ -7,7 +7,7 @@ const sidebarIsOpenSlice = createSlice({
   name: "sidebarIsOpened",
   initialState,
   reducers: {
-    switchSidebarIsOpen(state, action) {
+    switchSidebarIsOpen(state) {
       return !state;
     },
     setSidebarIsOpen(state, action: PayloadAction<ReduxPayload<boolean>>) {
