@@ -53,7 +53,7 @@ export const initializeDelegacion = () => {
 
   // EVENTO MOUSEMOVE
 
-  let mapaDeEventosMouseMove = new Map<number, EventPayload>();
+  const mapaDeEventosMouseMove = new Map<number, EventPayload>();
   let eventosMouseMoveID = 0;
 
   function agregarEventoMouseMove(
@@ -87,7 +87,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEOUT
-  let mapaDeEventosMouseOut = new Map<number, EventPayload>();
+  const mapaDeEventosMouseOut = new Map<number, EventPayload>();
   let eventosMouseOutID = 0;
 
   function agregarEventoMouseOut(
@@ -121,7 +121,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEDOWN
-  let mapaDeEventosMouseDown = new Map<number, EventPayload>();
+  const mapaDeEventosMouseDown = new Map<number, EventPayload>();
   let eventosMouseDownID = 0;
 
   function agregarEventoMouseDown(
@@ -155,7 +155,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEUP
-  let mapaDeEventosMouseUp = new Map<number, EventPayload>();
+  const mapaDeEventosMouseUp = new Map<number, EventPayload>();
   let eventosMouseUpID = 0;
 
   function agregarEventoMouseUp(
@@ -189,7 +189,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEENTER
-  let mapaDeEventosMouseEnter = new Map<number, EventPayload>();
+  const mapaDeEventosMouseEnter = new Map<number, EventPayload>();
   let eventosMouseEnterID = 0;
 
   function agregarEventoMouseEnter(
@@ -223,7 +223,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO MOUSEOVER
-  let mapaDeEventosMouseOver = new Map<number, EventPayload>();
+  const mapaDeEventosMouseOver = new Map<number, EventPayload>();
   let eventosMouseOverID = 0;
 
   function agregarEventoMouseOver(
@@ -257,7 +257,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHSTART
-  let mapaDeEventosTouchStart = new Map<number, EventPayload>();
+  const mapaDeEventosTouchStart = new Map<number, EventPayload>();
   let eventosTouchStartID = 0;
 
   function agregarEventoTouchStart(
@@ -291,7 +291,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHMOVE
-  let mapaDeEventosTouchMove = new Map<number, EventPayload>();
+  const mapaDeEventosTouchMove = new Map<number, EventPayload>();
   let eventosTouchMoveID = 0;
 
   function agregarEventoTouchMove(
@@ -325,7 +325,7 @@ export const initializeDelegacion = () => {
   });
 
   // EVENTO TOUCHEND
-  let mapaDeEventosTouchEnd = new Map<number, EventPayload>();
+  const mapaDeEventosTouchEnd = new Map<number, EventPayload>();
   let eventosTouchEndID = 0;
 
   function agregarEventoTouchEnd(
@@ -359,7 +359,7 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO CHANGE
-  let mapaDeEventosChange = new Map<number, EventPayload>();
+  const mapaDeEventosChange = new Map<number, EventPayload>();
   let eventosChangeID = 0;
 
   function agregarEventoChange(
@@ -393,7 +393,7 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO INPUT
-  let mapaDeEventosInput = new Map<number, EventPayload>();
+  const mapaDeEventosInput = new Map<number, EventPayload>();
   let eventosInputID = 0;
 
   function agregarEventoInput(
@@ -427,7 +427,7 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO KEYUP
-  let mapaDeEventosKeyup = new Map<number, EventPayload>();
+  const mapaDeEventosKeyup = new Map<number, EventPayload>();
   let eventosKeyupID = 0;
 
   function agregarEventoKeyup(
@@ -461,7 +461,7 @@ export const initializeDelegacion = () => {
   });
 
   //EVENTO KEYDOWN
-  let mapaDeEventosKeydown = new Map<number, EventPayload>();
+  const mapaDeEventosKeydown = new Map<number, EventPayload>();
   let eventosKeydownID = 0;
 
   function agregarEventoKeydown(
