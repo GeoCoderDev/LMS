@@ -16,6 +16,7 @@ const sidebarIsOpenSlice = createSlice({
   },
 });
 
-export const { setSidebarIsOpen, switchSidebarIsOpen } =
-  sidebarIsOpenSlice.actions;
+const { setSidebarIsOpen, switchSidebarIsOpen } = sidebarIsOpenSlice.actions;
+
+export { setSidebarIsOpen, switchSidebarIsOpen };
 export default sidebarIsOpenSlice.reducer;
