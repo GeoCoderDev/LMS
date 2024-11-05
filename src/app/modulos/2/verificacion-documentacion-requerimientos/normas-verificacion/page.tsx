@@ -1,6 +1,6 @@
 import PDFIcon from "@/components/icons/extensions/PDFIcon";
 import DownloadFileButton from "@/components/shared/DownloadFileButton";
-import Figure from "@/components/shared/Figure";
+
 import PageInformation from "@/components/shared/PageInformation";
 import URLMetadataViewer from "@/components/shared/URLMetadataViewer";
 

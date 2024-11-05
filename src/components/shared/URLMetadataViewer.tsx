@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   Calendar,
   ExternalLink,
-  Hash,
   ImageIcon,
   LinkIcon,
 } from "lucide-react";

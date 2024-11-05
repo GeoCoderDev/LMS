@@ -1,14 +1,9 @@
 import PDFIcon from "@/components/icons/extensions/PDFIcon";
 import DownloadFileButton from "@/components/shared/DownloadFileButton";
-import Figure from "@/components/shared/Figure";
 import PageInformation from "@/components/shared/PageInformation";
-import URLMetadataViewer from "@/components/shared/URLMetadataViewer";
 
 const page = () => {
-  const externalResource1 =
-    "https://visuresolutions.com/es/blog/requirements-verification/";
-  const externalResource2 =
-    "https://pmcollege.edu.ni/la-matriz-de-trazabilidad-de-requisitos/";
+
 
   return (
     <PageInformation
