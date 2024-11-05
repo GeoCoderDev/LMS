@@ -24,7 +24,7 @@ const page = () => {
             <img
               src="/images/png/modulo2/seccion1/Validacion.png"
               alt="Figura de validacion"
-              className=" object-contain h-full my-4"
+              className=" object-contain h-[7rem] w-full my-4"
             />
             <br />
             <p>
