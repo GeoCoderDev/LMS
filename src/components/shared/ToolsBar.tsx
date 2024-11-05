@@ -3,6 +3,7 @@ import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
 import Detener from "../icons/Detener";
+import Compartir from "../icons/Compartir";
 
 const ToolsBar = ({
   viewResources,
@@ -49,6 +50,7 @@ const ToolsBar = ({
           <Detener className="w-[2rem]" color="#c62525" title="Dejar de leer" />
         )}
       </button>
+      <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
     </div>
   );
 };

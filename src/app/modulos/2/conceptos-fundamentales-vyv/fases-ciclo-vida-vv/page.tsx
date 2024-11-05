@@ -3,6 +3,8 @@ import DownloadFileButton from "@/components/shared/DownloadFileButton";
 import PageInformation from "@/components/shared/PageInformation";
 
 const page = () => {
+
+
   return (
     <PageInformation
       sectionTitle="Conceptos Fundamentales de la Verificación y Validación (V&V)"
