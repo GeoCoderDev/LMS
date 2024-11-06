@@ -5,7 +5,6 @@ import Sonido from "../icons/Sonido";
 import Detener from "../icons/Detener";
 import Compartir from "../icons/Compartir";
 import { Link } from "next-view-transitions";
-import { usePathname } from "next/navigation";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
 
 const ToolsBar = ({

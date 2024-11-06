@@ -26,8 +26,8 @@ export function getNavigationPaths(
 
   // Convertir secciones a array ordenado
   const secciones = Object.entries(currentModule.secciones)
-    .filter(([key, value]) => typeof value !== "string")
-    .map(([key, value]) => value as Seccion);
+    .filter(([, value]) => typeof value !== "string")
+    .map(([, value]) => value as Seccion);
 
   // Encontrar la sección actual
   const currentSeccion = secciones.find((seccion) =>
@@ -43,8 +43,8 @@ export function getNavigationPaths(
 
   // Convertir subsecciones a array ordenado
   const currentSubsecciones = Object.entries(currentSeccion.subsecciones)
-    .filter(([key, value]) => typeof value !== "string")
-    .map(([key, value]) => value as Subseccion);
+    .filter(([, value]) => typeof value !== "string")
+    .map(([, value]) => value as Subseccion);
 
   // Encontrar la subsección actual por su path
   const currentSubseccionIndex = currentSubsecciones.findIndex(
@@ -65,8 +65,8 @@ export function getNavigationPaths(
     if (currentSeccionIndex > 0) {
       const prevSeccion = secciones[currentSeccionIndex - 1];
       const prevSubsecciones = Object.entries(prevSeccion.subsecciones)
-        .filter(([key, value]) => typeof value !== "string")
-        .map(([key, value]) => value as Subseccion);
+        .filter(([, value]) => typeof value !== "string")
+        .map(([, value]) => value as Subseccion);
 
       const lastSubseccion = prevSubsecciones[prevSubsecciones.length - 1];
       return {
@@ -88,8 +88,8 @@ export function getNavigationPaths(
     if (currentSeccionIndex < secciones.length - 1) {
       const nextSeccion = secciones[currentSeccionIndex + 1];
       const nextSubsecciones = Object.entries(nextSeccion.subsecciones)
-        .filter(([key, value]) => typeof value !== "string")
-        .map(([key, value]) => value as Subseccion);
+        .filter(([, value]) => typeof value !== "string")
+        .map(([, value]) => value as Subseccion);
 
       const firstSubseccion = nextSubsecciones[0];
       return {
