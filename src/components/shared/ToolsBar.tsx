@@ -4,19 +4,28 @@ import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
 import Detener from "../icons/Detener";
 import Compartir from "../icons/Compartir";
+import { Link } from "next-view-transitions";
+import { usePathname } from "next/navigation";
+import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
 
 const ToolsBar = ({
   viewResources,
   setViewResources,
+  currentPath,
 }: {
   viewResources: boolean;
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
+  currentPath: string;
 }) => {
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
-      <button className="bg-[#6720C2] text-white px-5 py-2 rounded-[1rem] font-semibold">
+      <Link
+        href={getUpperPath(currentPath) + "/quiz"}
+        as={getUpperPath(currentPath) + "/quiz"}
+        className="bg-[#6720C2] text-white px-5 py-2 rounded-[1rem] font-semibold"
+      >
         Ir al Quiz
-      </button>
+      </Link>
 
       <button
         onClick={() => {

@@ -1,30 +1,30 @@
 // Interfaces base para la estructura de datos
-interface Subseccion {
+export interface Subseccion {
   path: string;
   title: string;
 }
 
-interface SubseccionesMap {
+export interface SubseccionesMap {
   [key: string]: string | Subseccion;
 }
 
-interface Seccion {
+export interface Seccion {
   index: string;
   title: string;
   subsecciones: SubseccionesMap;
 }
 
-interface SeccionesMap {
+export interface SeccionesMap {
   [key: string | number]: Seccion;
 }
 
-interface Modulo {
+export interface Modulo {
   index: string;
   title: string;
   secciones: SeccionesMap;
 }
 
-interface Contenido {
+export interface Contenido {
   modulos: {
     index: string; // Movemos index aquí como parte de un objeto anidado
     [key: string | number]: Modulo | string; // Permite tanto módulos como el string del index
@@ -198,11 +198,11 @@ export const contenido: Contenido = {
           subsecciones: {
             1: {
               path: "/modulos/2/herramientas-vyv-analisis-requerimientos/gestion-requisitos",
-              title: "Gestión de Requisitos",
+              title: "Herramientas de Gestión de Requisitos",
             },
             2: {
               path: "/modulos/2/herramientas-vyv-analisis-requerimientos/colaboracion-documentacion",
-              title: "Colaboración y Documentación",
+              title: "Herramientas de Colaboración y Documentación",
             },
           },
         },
