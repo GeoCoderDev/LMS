@@ -3,6 +3,7 @@ import { Pregunta } from "@/lib/quiz/interfaces";
 import React from "react";
 import { createQuizData} from "@/lib/quiz/createQuizData";
 
+
 const page = () => {
   const preguntas: Pregunta[] = [
     {
@@ -238,13 +239,14 @@ const page = () => {
     },
   ];
 
-  // Para usar este array de preguntas con el quiz:
-  const quizData = createQuizData(preguntas, 10, 10); // 10 preguntas, 10 puntos cada una
+
+  const quizData = createQuizData(preguntas, 10, 10); 
+
 
   return (
     <Quiz
       quiz={quizData}
-      sectionTitle="Modulo 2 | Seccion 1: Conceptos Fundamentales de la Verificación y Validación (V&V)"
+      
     />
   );
 };

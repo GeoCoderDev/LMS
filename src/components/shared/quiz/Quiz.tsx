@@ -5,16 +5,12 @@ import Equis from "@/components/icons/Equis";
 import { ArrowRight } from "lucide-react";
 import CloseQuizModal from "./CloseQuizModal";
 import { QuizData, Respuesta } from "@/lib/quiz/interfaces";
+import { usePathname } from "next/navigation";
+import { getRouteTitles } from "@/lib/assets/Contenido";
 
 const durationAndDelayMS = 1000;
 
-const Quiz = ({
-  sectionTitle,
-  quiz,
-}: {
-  sectionTitle: string;
-  quiz: QuizData;
-}) => {
+const Quiz = ({ quiz }: { quiz: QuizData }) => {
   const [viewCloseModal, setViewCloseModal] = useState(false);
   const [quizStart, setQuizStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -60,6 +56,8 @@ const Quiz = ({
   };
 
   const getCurrentQuestion = () => preguntasAleatorias[currentQuestionIndex];
+
+  const path = usePathname();
 
   return (
     <div className="top-0 fixed w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] bg-[#2B223E] overflow-auto z-[100] flex items-center justify-center">
@@ -139,7 +137,8 @@ const Quiz = ({
             </span>
           </div>
           <div className="text-[#cfcafe] max-w-[24rem] text-[1.2rem] text-center">
-            {sectionTitle}
+            {getRouteTitles(path).moduleTitle} |{" "}
+            {getRouteTitles(path).sectionTitle}
           </div>
           <button
             onClick={() => {

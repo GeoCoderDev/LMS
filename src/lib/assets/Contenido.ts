@@ -416,3 +416,27 @@ export function getSubsecciones(currentPath: string) {
 
   return [];
 }
+
+export function getRouteTitles(currentPath: string) {
+  // Obtener número de módulo del path
+  const moduleNumber = currentPath.split("/")[2];
+
+  // Obtener el módulo
+  const modulo = contenido.modulos[moduleNumber];
+  if (!modulo) return { moduleTitle: "", sectionTitle: "" };
+
+  // Buscar la sección que contiene este path
+  const seccion = Object.values((modulo as Modulo).secciones).find((seccion) =>
+    currentPath.startsWith(seccion.index)
+  );
+
+  if (!seccion)
+    return { moduleTitle: (modulo as Modulo).title, sectionTitle: "" };
+
+  return {
+    moduleTitle: `Módulo ${moduleNumber}: ${(modulo as Modulo).title}`,
+    sectionTitle: `Sección ${Object.keys((modulo as Modulo).secciones).find(
+      (key) => (modulo as Modulo).secciones[key].index === seccion.index
+    )}: ${seccion.title}`,
+  };
+}
