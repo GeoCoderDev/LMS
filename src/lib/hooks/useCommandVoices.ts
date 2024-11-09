@@ -19,7 +19,6 @@ const useCommandVoices = (route: string) => {
   );
 
   const dispatch = useDispatch();
-  console.log(commandVoicesState);
 
   const speaker = Speaker.getInstance();
   speaker.onStart = () => {
@@ -106,16 +105,12 @@ const useCommandVoices = (route: string) => {
       window.document.removeEventListener("keydown", combinationKeys);
       window.removeEventListener("beforeunload", stopSpeakerAndListener);
     };
-  }, [commandVoicesState]);
-
-  // useEffect(() => {
-  //   if (speaker.speaking) {
-  //     dispatch(setCommandVoicesState({ value: CommandVoicesStates.SPEAKING }));
-  //   } else {
-  //     dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
-  //   }
-  //   console.log(speaker.speaking);
-  // }, [speaker.speaking]);
+  }, [
+    commandVoicesState,
+    iniciarComandosDeVoz,
+    speaker,
+    stopListeningOrSpeaking,
+  ]);
 
   return { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking };
 };
