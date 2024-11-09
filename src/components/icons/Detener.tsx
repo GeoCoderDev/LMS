@@ -1,9 +1,9 @@
 import React from "react";
 import { IconProps } from "./Icons";
 
-const Detener = ({ className, color, title }: IconProps) => {
+const Detener = ({ className, color, title, onClick }: IconProps) => {
   return (
-    <div title={title ?? "Detener"}>
+    <div title={title ?? "Detener"} onClick={onClick}>
       <svg
         className={`${className}`}
         viewBox="0 0 193 193"

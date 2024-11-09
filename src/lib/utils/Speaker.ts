@@ -52,6 +52,7 @@ export class Speaker {
       callback?.();
     };
     this.synth.speak(utterance);
+    
     this.callbackStart?.();
   }
 

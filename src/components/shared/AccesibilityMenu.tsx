@@ -3,14 +3,18 @@
 import { usePathname } from "next/navigation";
 import Accesibility from "../icons/Accesibility";
 import Microfono from "../icons/Microfono";
-import { ColorCommandVoices } from "@/lib/interfaces/CommandVoicesState";
+import {
+  ColorCommandVoices,
+  CommandVoicesStates,
+} from "@/lib/interfaces/CommandVoicesState";
 
 import useCommandVoices from "@/lib/hooks/useCommandVoices";
 
 const AccesibilityMenu = () => {
   const route = usePathname();
 
-  const { iniciarComandosDeVoz, commandVoicesState } = useCommandVoices(route);
+  const { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking } =
+    useCommandVoices(route);
 
   return (
     <div className="z-[101] grid max-sm:w-screen min-h-min items-center fixed max-sm:bottom-0 max-sm:left-0 max-sm:h-[4dvh] max-sm:grid-rows-[4dvh_minmax(min-content,200px)] grid-cols-[1fr] max-sm:translate-y-[calc(100%-4dvh)] max-sm:hover:translate-y-0 sm:min-w-min sm:top-0 sm:right-0 sm:h-[100dvh] sm:translate-x-[calc(100%-3vw)] sm:hover:translate-x-[0] sm:grid-cols-[3vw_minmax(min-content,200px)] sm:grid-rows-[1fr]">
@@ -22,20 +26,31 @@ const AccesibilityMenu = () => {
           title=""
         />
       </div>
-      <div
-        
-        className=" bg-black w-full h-full flex items-center justify-center flex-col p-4 hover gap-4 cursor-pointer -border-2 [transition-duration:0ms]"
-      >
-        <h2 className="text-[1.2rem] font-semibold text-white">Comandos de Voz</h2>
+      <div className=" bg-black w-full h-full flex items-center justify-center flex-col p-4 hover gap-4 cursor-pointer -border-2 [transition-duration:0ms]">
+        <h2 className="text-[1.2rem] font-semibold text-white">
+          Comandos de Voz
+        </h2>
         <Microfono
           onClick={iniciarComandosDeVoz}
           className="w-[8rem] "
           color={ColorCommandVoices[commandVoicesState]}
           title=""
         />
-        <button className="-border-2 font-semibold bg-white text-black px-3 py-2 rounded-[0.6rem]">
-          Omitir
-        </button>
+        {commandVoicesState !== CommandVoicesStates.IDLE && (
+          <button
+            onClick={() => {
+              stopListeningOrSpeaking();
+            }}
+            className={`-border-2 font-semibold bg-white text-black w-[6rem] py-2 rounded-[0.6rem] ${
+              commandVoicesState === CommandVoicesStates.LISTENING &&
+              "bg-red-500 text-white"
+            }`}
+          >
+            {(commandVoicesState === CommandVoicesStates.LISTENING &&
+              "Cancelar") ||
+              (commandVoicesState === CommandVoicesStates.SPEAKING && "Omitir")}
+          </button>
+        )}
       </div>
     </div>
   );

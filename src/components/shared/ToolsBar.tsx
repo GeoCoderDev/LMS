@@ -6,6 +6,11 @@ import Detener from "../icons/Detener";
 import Compartir from "../icons/Compartir";
 import { Link } from "next-view-transitions";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
+import useCommandVoices from "@/lib/hooks/useCommandVoices";
+import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
+
+import { getCurrentToRead } from "@/lib/assets/Contenido";
+import { Speaker } from "@/lib/utils/Speaker";
 
 const ToolsBar = ({
   viewResources,
@@ -16,6 +21,18 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
+  const { commandVoicesState, stopListeningOrSpeaking } =
+    useCommandVoices(currentPath);
+
+  const speaker = Speaker.getInstance();
+
+  const startReading = () => {
+    const contentToRead = getCurrentToRead(currentPath);
+    if (!contentToRead) return;
+
+    speaker.start(contentToRead);
+  };
+
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
       <Link
@@ -47,16 +64,28 @@ const ToolsBar = ({
         )}
       </button>
       <button
-        onClick={() => {
-          setViewResources(!viewResources);
-        }}
         className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2"
       >
-        {viewResources ? (
-          <Sonido className="w-[2.1rem] " color="#6720C2" title="Leer" />
-        ) : (
-          <Detener className="w-[2rem]" color="#c62525" title="Dejar de leer" />
-        )}
+        {(commandVoicesState === CommandVoicesStates.SPEAKING && (
+          <Detener
+            onClick={() => {
+              stopListeningOrSpeaking();
+            }}
+            className="w-[2rem]"
+            color="#c62525"
+            title="Dejar de leer"
+          />
+        )) ||
+          (commandVoicesState === CommandVoicesStates.IDLE && (
+            <Sonido
+              onClick={() => {
+                startReading();
+              }}
+              className="w-[2.1rem] "
+              color="#6720C2"
+              title="Leer"
+            />
+          ))}
       </button>
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
     </div>

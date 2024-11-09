@@ -1,4 +1,8 @@
-import { IWindow, SpeechRecognitionEvent } from "./CommandVoices.interface";
+import {
+  IWindow,
+  SpeechRecognition,
+  SpeechRecognitionEvent,
+} from "./CommandVoices.interface";
 import { Speaker } from "./Speaker";
 
 export class Listener {
@@ -8,7 +12,7 @@ export class Listener {
   private callbackStop?: () => void;
   private callbackStart?: () => void;
   private speaker: Speaker = Speaker.getInstance();
-
+  private currentRecognizer?: SpeechRecognition;
   private constructor() {}
 
   // Método para obtener la instancia única de Listener
@@ -39,6 +43,7 @@ export class Listener {
 
     // Crear una nueva instancia de SpeechRecognition cada vez que se llama a start
     const recognition = new SpeechRecognition();
+    this.currentRecognizer = recognition;
     recognition.lang = "es-ES";
     recognition.interimResults = false; // Solo resultados finales
     recognition.continuous = false; // Detenerse tras un solo resultado
@@ -47,29 +52,43 @@ export class Listener {
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       let transcript = event.results[0][0].transcript;
       transcript = transcript.replace(/\.$/, ""); // Eliminar el punto final si existe
+      transcript = transcript.toLowerCase();
       this.currentCallbackOnResult?.(transcript);
     };
 
-    // Cambia el estado de 'listening' a false cuando termina de escuchar
     recognition.onend = () => {
-      this.callbackStop?.();
+      // this.callbackStop?.();
     };
 
-    recognition.onerror = () => {
+    // Evento que se activa cuando no se detecta sonido o el usuario guarda silencio
+    recognition.onsoundend = () => {
+      this.callbackStop?.();
+      // this.speaker.start("No se detectó ningún sonido. Intenta hablar de nuevo.");
+    };
+
+    recognition.onerror = (event) => {
       try {
-        this.speaker.start(
-          "Ocurrió un error al reconocer tu voz. Intenta nuevamente."
-        );
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        if (event.error === "aborted") {
+          console.log(
+            "El reconocimiento de voz fue abortado intencionalmente."
+          );
+        } else {
+          this.speaker.start(
+            "Ocurrió un error al reconocer tu voz. Intenta nuevamente.",
+            () => {
+              this.callbackStop?.();
+            }
+          );
+        }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         alert("Ocurrió un error al reconocer tu voz. Intenta nuevamente.");
+        this.callbackStop?.();
       }
-
-      this.callbackStop?.();
     };
 
-    this.callbackStart?.();
     recognition.start();
+    this.callbackStart?.();
   }
 
   set onStop(callback: () => void) {
@@ -84,6 +103,7 @@ export class Listener {
    */
   public stop() {
     this.callbackStop?.();
+    this.currentRecognizer?.abort();
     // No es necesario llamar a `recognition.stop()` porque se crea una nueva instancia en cada `start`
   }
 }

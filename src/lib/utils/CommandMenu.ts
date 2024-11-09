@@ -6,7 +6,6 @@
 //   SpeechRecognitionEvent,
 // } from "./CommandVoices.interface";
 
-
 // export class CommandMenu {
 //   private speaker: Speaker = Speaker.getInstance();
 
@@ -74,11 +73,6 @@
 //   }
 // }
 
-
-
-
-
-
 import { CommandVoice } from "./CommandVoice";
 import { Speaker } from "./Speaker";
 import { Listener } from "./Listener";
@@ -95,7 +89,9 @@ export class CommandMenu {
   start() {
     if (typeof window === "undefined") return;
 
-    if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
+    if (
+      !("SpeechRecognition" in window || "webkitSpeechRecognition" in window)
+    ) {
       this.speaker.start(
         "Lo siento, tu navegador no es compatible con los comandos de voz."
       );
@@ -108,6 +104,7 @@ export class CommandMenu {
         if (this.commandVoices[i].testTranscrip(transcript)) {
           this.commandVoices[i].action().then(() => {
             if (this.commandVoices[i].finalPhrase) {
+              // this.listener.stop();
               this.speaker.start(this.commandVoices[i].finalPhrase!);
             }
           });
@@ -118,8 +115,6 @@ export class CommandMenu {
       this.speaker.start("Comando no reconocido. Intenta nuevamente.");
     };
 
-
-
     const startVoiceRecognition = () => {
       this.speaker.start(this.presentationText, () => {
         this.listener.start(handleResult); // Inicia Listener con el callback de resultado
@@ -128,7 +123,5 @@ export class CommandMenu {
 
     // Ejecuta el inicio del reconocimiento de voz
     startVoiceRecognition();
-
-
   }
 }

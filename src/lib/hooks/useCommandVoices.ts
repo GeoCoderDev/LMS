@@ -24,21 +24,27 @@ const useCommandVoices = (route: string) => {
   const speaker = Speaker.getInstance();
   speaker.onStart = () => {
     dispatch(setCommandVoicesState({ value: CommandVoicesStates.SPEAKING }));
-    console.log(27);
   };
   speaker.onStop = () => {
-      dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
+    dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
   };
 
   const listener = Listener.getInstance();
 
   listener.onStart = () => {
-    console.log(35);
     dispatch(setCommandVoicesState({ value: CommandVoicesStates.LISTENING }));
   };
   listener.onStop = () => {
-    console.log(38);
-    // dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
+    if (commandVoicesState !== CommandVoicesStates.SPEAKING)
+      dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
+  };
+
+  const stopListeningOrSpeaking = () => {
+    if (commandVoicesState === CommandVoicesStates.SPEAKING) {
+      speaker.stop(true);
+    } else if (commandVoicesState === CommandVoicesStates.LISTENING) {
+      listener.stop();
+    }
   };
 
   const iniciarComandosDeVoz = () => {
@@ -60,17 +66,19 @@ const useCommandVoices = (route: string) => {
 
   useEffect(() => {
     if (!window) return;
-    window.document.addEventListener("keydown", (event) => {
+
+    const combinationKeys = (event: KeyboardEvent) => {
       // Detectar Ctrl + Alt + C (Anunciar comandos disponibles)
       if (event.ctrlKey && event.altKey && event.key === "c") {
         event.preventDefault();
         iniciarComandosDeVoz();
       }
 
-      // Detectar Ctrl + Alt + X (Interrumpir el habla del navegador)
+      // Detectar Ctrl + Alt + X (Interrumpir el habla o reconocimiento del navegador)
       if (event.ctrlKey && event.altKey && event.key === "x") {
         event.preventDefault();
-        speaker.stop(true);
+
+        stopListeningOrSpeaking();
       }
 
       // Detectar Ctrl + Alt + S (Silenciar todo y volver a estado "idle")
@@ -83,8 +91,22 @@ const useCommandVoices = (route: string) => {
       if (event.ctrlKey && event.altKey && event.key === "r") {
         event.preventDefault();
       }
-    });
-  }, []);
+    };
+
+    window.document.addEventListener("keydown", combinationKeys);
+
+    const stopSpeakerAndListener = () => {
+      stopListeningOrSpeaking();
+      stopListeningOrSpeaking();
+    };
+
+    window.addEventListener("beforeunload", stopSpeakerAndListener);
+
+    return () => {
+      window.document.removeEventListener("keydown", combinationKeys);
+      window.removeEventListener("beforeunload", stopSpeakerAndListener);
+    };
+  }, [commandVoicesState]);
 
   // useEffect(() => {
   //   if (speaker.speaking) {
@@ -95,7 +117,7 @@ const useCommandVoices = (route: string) => {
   //   console.log(speaker.speaking);
   // }, [speaker.speaking]);
 
-  return { iniciarComandosDeVoz, commandVoicesState };
+  return { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking };
 };
 
 export default useCommandVoices;

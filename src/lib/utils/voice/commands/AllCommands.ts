@@ -1,10 +1,10 @@
 import { CommandVoice } from "../../CommandVoice";
+import { Listener } from "../../Listener";
 import { Speaker } from "../../Speaker";
-import { VoiceConverterActuator } from "../../VoiceConverter";
+
 import { C_M_Modulo_2 } from "./CommandMenus";
 
 const speaker = Speaker.getInstance();
-
 //Comandos Modulo 1
 
 export const C_V_Modulo_1 = new CommandVoice(
@@ -381,9 +381,10 @@ export const C_V_Buscar = new CommandVoice(
   () => {
     return new Promise((resolve) => {
       speaker.start("Por favor, di el término que deseas buscar.", () => {
-        const voiceConverterActuator = new VoiceConverterActuator();
+        
+        const listener = Listener.getInstance();
 
-        voiceConverterActuator.start((transcript) => {
+        listener.start((transcript) => {
           const searchInput = document.getElementById(
             "buscador-global"
           ) as HTMLInputElement;
