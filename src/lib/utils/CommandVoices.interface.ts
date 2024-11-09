@@ -1,4 +1,3 @@
-// Definición del constructor de SpeechRecognition
 export interface SpeechRecognitionConstructor {
   new (): SpeechRecognition;
 }
@@ -13,6 +12,7 @@ export interface SpeechRecognition extends EventTarget {
   abort(): void;
   onresult: (event: SpeechRecognitionEvent) => void;
   onerror: (event: SpeechRecognitionErrorEvent) => void;
+  onend: () => void; // Evento para el final del reconocimiento
 }
 
 // Interfaz para el evento de resultado
