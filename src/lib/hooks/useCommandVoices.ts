@@ -106,12 +106,7 @@ const useCommandVoices = (route: string) => {
       window.document.removeEventListener("keydown", combinationKeys);
       window.removeEventListener("beforeunload", stopSpeakerAndListener);
     };
-  }, [
-    commandVoicesState,
-    iniciarComandosDeVoz,
-    speaker,
-    stopListeningOrSpeaking,
-  ]);
+  }, []);
 
   return { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking };
 };
