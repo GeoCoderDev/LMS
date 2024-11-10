@@ -39,6 +39,7 @@ const useCommandVoices = (route: string) => {
   };
 
   const stopListeningOrSpeaking = () => {
+    if (!window) return;
     if (commandVoicesState === CommandVoicesStates.SPEAKING) {
       speaker.stop(true);
     } else if (commandVoicesState === CommandVoicesStates.LISTENING) {
