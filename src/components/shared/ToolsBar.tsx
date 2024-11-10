@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from "react"; // Añadido useCallback
+import React, { useCallback } from "react";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
@@ -24,12 +24,8 @@ const ToolsBar = ({
   const { commandVoicesState, stopListeningOrSpeaking } =
     useCommandVoices(currentPath);
 
-  // Mover los handlers fuera del JSX
-  const handleResourcesToggle = useCallback(() => {
-    setViewResources(!viewResources);
-  }, [viewResources, setViewResources]);
-
   const handleStartSpeaking = useCallback(() => {
+    if (!window) return;
     const speaker = Speaker.getInstance();
     const contentToRead = getCurrentToRead(currentPath);
     if (!contentToRead) return;
@@ -47,7 +43,9 @@ const ToolsBar = ({
       </Link>
 
       <button
-        onClick={handleResourcesToggle}
+        onClick={() => {
+          setViewResources(!viewResources);
+        }}
         className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2"
       >
         {viewResources ? (
