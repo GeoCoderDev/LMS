@@ -1,17 +1,16 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react"; // Añadido useCallback
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
-// import Sonido from "../icons/Sonido";
-// import Detener from "../icons/Detener";
+import Sonido from "../icons/Sonido";
+import Detener from "../icons/Detener";
 import Compartir from "../icons/Compartir";
 import { Link } from "next-view-transitions";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
-// import useCommandVoices from "@/lib/hooks/useCommandVoices";
-// import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
-
-// import { getCurrentToRead } from "@/lib/assets/Contenido";
-// import { Speaker } from "@/lib/utils/Speaker";
+import useCommandVoices from "@/lib/hooks/useCommandVoices";
+import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
+import { getCurrentToRead } from "@/lib/assets/Contenido";
+import { Speaker } from "@/lib/utils/Speaker";
 
 const ToolsBar = ({
   viewResources,
@@ -22,11 +21,23 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
-  // const { commandVoicesState, stopListeningOrSpeaking } =
-  //   useCommandVoices(currentPath);
+  const { commandVoicesState, stopListeningOrSpeaking } =
+    useCommandVoices(currentPath);
+
+  // Mover los handlers fuera del JSX
+  const handleResourcesToggle = useCallback(() => {
+    setViewResources(!viewResources);
+  }, [viewResources, setViewResources]);
+
+  const handleStartSpeaking = useCallback(() => {
+    const speaker = Speaker.getInstance();
+    const contentToRead = getCurrentToRead(currentPath);
+    if (!contentToRead) return;
+    speaker.start(contentToRead);
+  }, [currentPath]);
 
   return (
-    <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
+    <div className="flex items-center justify-start flex-wrap w-full px-6 py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
       <Link
         href={getUpperPath(currentPath) + "/quiz"}
         as={getUpperPath(currentPath) + "/quiz"}
@@ -36,9 +47,7 @@ const ToolsBar = ({
       </Link>
 
       <button
-        onClick={() => {
-          setViewResources(!viewResources);
-        }}
+        onClick={handleResourcesToggle}
         className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2"
       >
         {viewResources ? (
@@ -55,33 +64,23 @@ const ToolsBar = ({
           />
         )}
       </button>
-      {/* <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
-        {(commandVoicesState === CommandVoicesStates.SPEAKING && (
+      <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
+        {commandVoicesState === CommandVoicesStates.SPEAKING ? (
           <Detener
-            onClick={() => {
-              stopListeningOrSpeaking();
-            }}
+            onClick={stopListeningOrSpeaking}
             className="w-[2rem]"
             color="#c62525"
             title="Dejar de leer"
           />
-        )) ||
-          (commandVoicesState === CommandVoicesStates.IDLE && (
-            <Sonido
-              onClick={() => {
-                const speaker = Speaker.getInstance();
-
-                const contentToRead = getCurrentToRead(currentPath);
-                if (!contentToRead) return;
-
-                speaker.start(contentToRead);
-              }}
-              className="w-[2.1rem] "
-              color="#6720C2"
-              title="Leer"
-            />
-          ))}
-      </button> */}
+        ) : commandVoicesState === CommandVoicesStates.IDLE ? (
+          <Sonido
+            onClick={handleStartSpeaking}
+            className="w-[2.1rem] "
+            color="#6720C2"
+            title="Leer"
+          />
+        ) : null}
+      </button>
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
     </div>
   );

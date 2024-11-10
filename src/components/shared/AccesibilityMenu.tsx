@@ -41,7 +41,10 @@ const AccesibilityMenu = () => {
             onClick={() => {
               stopListeningOrSpeaking();
             }}
-            className={`-border-2 font-semibold bg-white text-black w-[6rem] py-2 rounded-[0.6rem] ${
+            className={`-border-2 font-semibold  w-[6rem] py-2 rounded-[0.6rem] ${
+              commandVoicesState === CommandVoicesStates.SPEAKING &&
+              "bg-white text-black"
+            } ${
               commandVoicesState === CommandVoicesStates.LISTENING &&
               "bg-red-500 text-white"
             }`}
