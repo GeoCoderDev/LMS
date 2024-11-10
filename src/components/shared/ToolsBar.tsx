@@ -11,6 +11,7 @@ import useCommandVoices from "@/lib/hooks/useCommandVoices";
 import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
 
 import { getCurrentToRead } from "@/lib/assets/Contenido";
+import { usePathname } from "next/navigation";
 
 const ToolsBar = ({
   viewResources,
@@ -21,10 +22,10 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
-
-  
+  const contentToRead = getCurrentToRead(currentPath);
+  const path = usePathname();
   const { commandVoicesState, stopListeningOrSpeaking, readMessage } =
-    useCommandVoices(currentPath);
+    useCommandVoices(path);
 
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
@@ -70,7 +71,6 @@ const ToolsBar = ({
           (commandVoicesState === CommandVoicesStates.IDLE && (
             <Sonido
               onClick={() => {
-                const contentToRead = getCurrentToRead(currentPath);
                 if (!contentToRead) return;
                 readMessage(contentToRead);
               }}

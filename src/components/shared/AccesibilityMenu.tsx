@@ -11,10 +11,10 @@ import {
 import useCommandVoices from "@/lib/hooks/useCommandVoices";
 
 const AccesibilityMenu = () => {
-  const route = usePathname();
+  const path = usePathname();
 
   const { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking } =
-    useCommandVoices(route);
+    useCommandVoices(path);
 
   return (
     <div className="z-[101] grid max-sm:w-screen min-h-min items-center fixed max-sm:bottom-0 max-sm:left-0 max-sm:h-[4dvh] max-sm:grid-rows-[4dvh_minmax(min-content,200px)] grid-cols-[1fr] max-sm:translate-y-[calc(100%-4dvh)] max-sm:hover:translate-y-0 sm:min-w-min sm:top-0 sm:right-0 sm:h-[100dvh] sm:translate-x-[calc(100%-3vw)] sm:hover:translate-x-[0] sm:grid-cols-[3vw_minmax(min-content,200px)] sm:grid-rows-[1fr]">
