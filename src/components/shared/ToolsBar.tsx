@@ -24,15 +24,6 @@ const ToolsBar = ({
   const { commandVoicesState, stopListeningOrSpeaking } =
     useCommandVoices(currentPath);
 
-  const speaker = Speaker.getInstance();
-
-  const startReading = () => {
-    const contentToRead = getCurrentToRead(currentPath);
-    if (!contentToRead) return;
-
-    speaker.start(contentToRead);
-  };
-
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
       <Link
@@ -63,9 +54,7 @@ const ToolsBar = ({
           />
         )}
       </button>
-      <button
-        className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2"
-      >
+      <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
         {(commandVoicesState === CommandVoicesStates.SPEAKING && (
           <Detener
             onClick={() => {
@@ -79,7 +68,12 @@ const ToolsBar = ({
           (commandVoicesState === CommandVoicesStates.IDLE && (
             <Sonido
               onClick={() => {
-                startReading();
+                const speaker = Speaker.getInstance();
+
+                const contentToRead = getCurrentToRead(currentPath);
+                if (!contentToRead) return;
+
+                speaker.start(contentToRead);
               }}
               className="w-[2.1rem] "
               color="#6720C2"
