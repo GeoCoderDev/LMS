@@ -38,9 +38,7 @@ const AccesibilityMenu = () => {
         />
         {commandVoicesState !== CommandVoicesStates.IDLE && (
           <button
-            onClick={() => {
-              stopListeningOrSpeaking();
-            }}
+            onClick={stopListeningOrSpeaking}
             className={`-border-2 font-semibold  w-[6rem] py-2 rounded-[0.6rem] ${
               commandVoicesState === CommandVoicesStates.SPEAKING &&
               "bg-white text-black"

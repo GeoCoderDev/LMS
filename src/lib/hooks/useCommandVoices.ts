@@ -48,6 +48,7 @@ const useCommandVoices = (route: string) => {
   };
 
   const readMessage = (contentToRead: string) => {
+    if (!window) return;
     speaker.start(contentToRead);
   };
 

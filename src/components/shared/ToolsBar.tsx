@@ -21,6 +21,8 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
+
+  
   const { commandVoicesState, stopListeningOrSpeaking, readMessage } =
     useCommandVoices(currentPath);
 
