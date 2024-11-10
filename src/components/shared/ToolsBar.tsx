@@ -2,16 +2,16 @@
 import React from "react";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
-import Sonido from "../icons/Sonido";
-import Detener from "../icons/Detener";
+// import Sonido from "../icons/Sonido";
+// import Detener from "../icons/Detener";
 import Compartir from "../icons/Compartir";
 import { Link } from "next-view-transitions";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
-import useCommandVoices from "@/lib/hooks/useCommandVoices";
-import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
+// import useCommandVoices from "@/lib/hooks/useCommandVoices";
+// import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
 
-import { getCurrentToRead } from "@/lib/assets/Contenido";
-import { Speaker } from "@/lib/utils/Speaker";
+// import { getCurrentToRead } from "@/lib/assets/Contenido";
+// import { Speaker } from "@/lib/utils/Speaker";
 
 const ToolsBar = ({
   viewResources,
@@ -22,8 +22,8 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
-  const { commandVoicesState, stopListeningOrSpeaking } =
-    useCommandVoices(currentPath);
+  // const { commandVoicesState, stopListeningOrSpeaking } =
+  //   useCommandVoices(currentPath);
 
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
@@ -55,7 +55,7 @@ const ToolsBar = ({
           />
         )}
       </button>
-      <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
+      {/* <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
         {(commandVoicesState === CommandVoicesStates.SPEAKING && (
           <Detener
             onClick={() => {
@@ -81,7 +81,7 @@ const ToolsBar = ({
               title="Leer"
             />
           ))}
-      </button>
+      </button> */}
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
     </div>
   );
