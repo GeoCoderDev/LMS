@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
