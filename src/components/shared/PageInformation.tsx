@@ -5,6 +5,7 @@ import MiniSidebar from "./MiniSidebar";
 
 import ToolsBar from "./ToolsBar";
 import { usePathname } from "next/navigation";
+import NoSSRToolsBar from "./NoSSRToolsBar";
 
 const PageInformation = ({
   sectionTitle,
@@ -63,7 +64,7 @@ const PageInformation = ({
           </span>
         </div>
       </div>
-      <ToolsBar
+      <NoSSRToolsBar
         currentPath={path}
         viewResources={viewResources}
         setViewResources={setViewResources}

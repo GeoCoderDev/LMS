@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 
-import Menu from "@/components/shared/Menu";
 import ProviderStore from "@/store/Provider";
+import NoSSRAccesibilityMenu from "@/components/shared/NoSSRAccesibilityMenu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <ProviderStore>
             {children}
-            <Menu />
+            <NoSSRAccesibilityMenu />
           </ProviderStore>
         </body>
       </html>
