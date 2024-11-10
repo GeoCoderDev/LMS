@@ -47,6 +47,10 @@ const useCommandVoices = (route: string) => {
     }
   };
 
+  const readMessage = (contentToRead: string) => {
+    speaker.start(contentToRead);
+  };
+
   const iniciarComandosDeVoz = () => {
     if (!window) return;
     console.log(route);
@@ -106,11 +110,14 @@ const useCommandVoices = (route: string) => {
       window.document.removeEventListener("keydown", combinationKeys);
       window.removeEventListener("beforeunload", stopSpeakerAndListener);
     };
-  }, [
-    commandVoicesState,    
-  ]);
+  }, [commandVoicesState]);
 
-  return { iniciarComandosDeVoz, commandVoicesState, stopListeningOrSpeaking };
+  return {
+    iniciarComandosDeVoz,
+    commandVoicesState,
+    stopListeningOrSpeaking,
+    readMessage,
+  };
 };
 
 export default useCommandVoices;

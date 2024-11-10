@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from "react";
+import React from "react";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
@@ -9,34 +9,26 @@ import { Link } from "next-view-transitions";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
 import useCommandVoices from "@/lib/hooks/useCommandVoices";
 import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
+
 import { getCurrentToRead } from "@/lib/assets/Contenido";
-import { Speaker } from "@/lib/utils/Speaker";
-import { usePathname } from "next/navigation";
 
 const ToolsBar = ({
   viewResources,
   setViewResources,
+  currentPath,
 }: {
   viewResources: boolean;
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
+  currentPath: string;
 }) => {
-  const path = usePathname();
-  const { commandVoicesState, stopListeningOrSpeaking } =
-    useCommandVoices(path);
-
-  const handleStartSpeaking = useCallback(() => {
-    if (!window) return;
-    const speaker = Speaker.getInstance();
-    const contentToRead = getCurrentToRead(path);
-    if (!contentToRead) return;
-    speaker.start(contentToRead);
-  }, [path]);
+  const { commandVoicesState, stopListeningOrSpeaking, readMessage } =
+    useCommandVoices(currentPath);
 
   return (
-    <div className="flex items-center justify-start flex-wrap w-full px-6 py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
+    <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
       <Link
-        href={getUpperPath(path) + "/quiz"}
-        as={getUpperPath(path) + "/quiz"}
+        href={getUpperPath(currentPath) + "/quiz"}
+        as={getUpperPath(currentPath) + "/quiz"}
         className="bg-[#6720C2] text-white px-5 py-2 rounded-[1rem] font-semibold"
       >
         Ir al Quiz
@@ -63,21 +55,28 @@ const ToolsBar = ({
         )}
       </button>
       <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
-        {commandVoicesState === CommandVoicesStates.SPEAKING ? (
+        {(commandVoicesState === CommandVoicesStates.SPEAKING && (
           <Detener
-            onClick={stopListeningOrSpeaking}
+            onClick={() => {
+              stopListeningOrSpeaking();
+            }}
             className="w-[2rem]"
             color="#c62525"
             title="Dejar de leer"
           />
-        ) : commandVoicesState === CommandVoicesStates.IDLE ? (
-          <Sonido
-            onClick={handleStartSpeaking}
-            className="w-[2.1rem] "
-            color="#6720C2"
-            title="Leer"
-          />
-        ) : null}
+        )) ||
+          (commandVoicesState === CommandVoicesStates.IDLE && (
+            <Sonido
+              onClick={() => {
+                const contentToRead = getCurrentToRead(currentPath);
+                if (!contentToRead) return;
+                readMessage(contentToRead);
+              }}
+              className="w-[2.1rem] "
+              color="#6720C2"
+              title="Leer"
+            />
+          ))}
       </button>
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
     </div>
