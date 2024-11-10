@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import SubHeader from "./SubHeader";
 import MiniSidebar from "./MiniSidebar";
-
-import ToolsBar from "./ToolsBar";
 import { usePathname } from "next/navigation";
 import NoSSRToolsBar from "./NoSSRToolsBar";
 
