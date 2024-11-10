@@ -11,32 +11,32 @@ import useCommandVoices from "@/lib/hooks/useCommandVoices";
 import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
 import { getCurrentToRead } from "@/lib/assets/Contenido";
 import { Speaker } from "@/lib/utils/Speaker";
+import { usePathname } from "next/navigation";
 
 const ToolsBar = ({
   viewResources,
   setViewResources,
-  currentPath,
 }: {
   viewResources: boolean;
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
-  currentPath: string;
 }) => {
+  const path = usePathname();
   const { commandVoicesState, stopListeningOrSpeaking } =
-    useCommandVoices(currentPath);
+    useCommandVoices(path);
 
   const handleStartSpeaking = useCallback(() => {
     if (!window) return;
     const speaker = Speaker.getInstance();
-    const contentToRead = getCurrentToRead(currentPath);
+    const contentToRead = getCurrentToRead(path);
     if (!contentToRead) return;
     speaker.start(contentToRead);
-  }, [currentPath]);
+  }, [path]);
 
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6 py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)]">
       <Link
-        href={getUpperPath(currentPath) + "/quiz"}
-        as={getUpperPath(currentPath) + "/quiz"}
+        href={getUpperPath(path) + "/quiz"}
+        as={getUpperPath(path) + "/quiz"}
         className="bg-[#6720C2] text-white px-5 py-2 rounded-[1rem] font-semibold"
       >
         Ir al Quiz

@@ -64,7 +64,7 @@ const PageInformation = ({
         </div>
       </div>
       <ToolsBar
-        currentPath={path}
+        // currentPath={path}
         viewResources={viewResources}
         setViewResources={setViewResources}
       />
