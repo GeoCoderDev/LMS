@@ -100,7 +100,7 @@ const Quiz = ({ quiz }: { quiz: QuizData }) => {
               <li
                 key={index}
                 onClick={() => handleAnswerSelection(respuesta)}
-                className="text-white bg-[#3C2F4F] p-3 rounded cursor-pointer hover:bg-[#4B3B63] transition"
+                className="text-white bg-[#3C2F4F] p-3 rounded cursor-pointer hover:bg-[#4B3B63] transition max-w-[80vw]"
               >
                 {respuesta.texto}
               </li>

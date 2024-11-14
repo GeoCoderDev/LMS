@@ -1,4 +1,4 @@
-import { Contenido, Modulo, Seccion, Subseccion } from "./Contenido";
+import { contenido, Contenido, Modulo, Seccion, Subseccion } from "./Contenido";
 
 interface NavigationResult {
   path: string;
@@ -100,4 +100,62 @@ export function getNavigationPaths(
   }
 
   return null;
+}
+
+export function generateBreadcrumb(
+  currentPath: string
+): { label: string; href: string }[] {
+  const breadcrumb: { label: string; href: string }[] = [
+    { label: "Módulos", href: "/modulos" },
+  ];
+
+  // Obtener número de módulo del path
+  const moduleNumber = currentPath.split("/")[2];
+  const modulo = contenido.modulos[moduleNumber];
+  if (!modulo) return breadcrumb;
+
+  // Agregar módulo al breadcrumb
+  breadcrumb.push({
+    label: `(Módulo ${moduleNumber}) ${(modulo as Modulo).title}`,
+    href: (modulo as Modulo).index,
+  });
+
+  // Buscar la sección y subsección correspondientes al path actual
+  let seccionActualKey: string | null = null;
+  let subseccionActualKey: string | null = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let seccionActual: any = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let subseccionActual: any = null;
+
+  for (const seccionKey in (modulo as Modulo).secciones) {
+    const seccion = (modulo as Modulo).secciones[seccionKey];
+    const subseccion = Object.entries(seccion.subsecciones).find(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ([, subsec]: any) => currentPath.startsWith(subsec.path)
+    );
+    if (subseccion) {
+      seccionActualKey = seccionKey;
+      seccionActual = seccion;
+      subseccionActualKey = subseccion[0];
+      subseccionActual = subseccion[1];
+      break;
+    }
+  }
+
+  if (!seccionActual || !subseccionActual) return breadcrumb;
+
+  // Agregar sección con su key al breadcrumb
+  breadcrumb.push({
+    label: `(Sección ${seccionActualKey}) ${seccionActual.title}`,
+    href: "./",
+  });
+
+  // Agregar subsección con su key al breadcrumb
+  breadcrumb.push({
+    label: `(Subsección ${subseccionActualKey}) ${subseccionActual.title}`,
+    href: subseccionActual.path,
+  });
+
+  return breadcrumb;
 }

@@ -9,7 +9,6 @@ const page = () => {
 
   return (
     <PageInformation
-      sectionTitle="Conceptos Fundamentales de la Verificación y Validación (V&V)"
       contentToRead={
         <>
           <article>

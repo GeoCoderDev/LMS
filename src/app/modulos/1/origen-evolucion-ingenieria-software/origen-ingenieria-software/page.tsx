@@ -4,10 +4,10 @@ import React from "react";
 const page = () => {
   return (
     <PageInformation
-      sectionTitle=" Herramientas de Colaboración y Documentación"
+
       contentToRead={
         <>
-          <article className="py-8 px-4 bg-white text-gray-800">
+          <article className=" bg-white text-gray-800">
             <h2 className="-sticky top-0 bg-white text-[1.75rem] font-semibold mb-2 pt-2">
               Origen de la Ingeniería de Software
             </h2>

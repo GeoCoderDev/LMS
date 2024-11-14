@@ -10,7 +10,6 @@ const page = () => {
 
   return (
     <PageInformation
-      sectionTitle="Verificación de la Documentación de Requerimientos"
       contentToRead={
         <>
           <article className="-py-8 -px-4 bg-white -text-gray-800">
