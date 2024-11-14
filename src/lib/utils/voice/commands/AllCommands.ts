@@ -1,3 +1,4 @@
+import { buscarSubseccionesPorTitulo } from "@/components/shared/CebeceraConBuscador";
 import { CommandVoice } from "../../CommandVoice";
 import { Listener } from "../../Listener";
 import { Speaker } from "../../Speaker";
@@ -81,7 +82,7 @@ export const C_V_Modulo_2 = new CommandVoice(
     return new Promise((resolve) => {
       speaker.start("Redirigiendo al Módulo 2.", () => {
         resolve(null);
-        
+
         C_M_Modulo_2.start();
       });
       window.location.href = "/modulos/2";
@@ -381,7 +382,6 @@ export const C_V_Buscar = new CommandVoice(
   () => {
     return new Promise((resolve) => {
       speaker.start("Por favor, di el término que deseas buscar.", () => {
-        
         const listener = Listener.getInstance();
 
         listener.start((transcript) => {
@@ -399,7 +399,8 @@ export const C_V_Buscar = new CommandVoice(
             if (searchForm) {
               searchForm.addEventListener("submit", (event) => {
                 event.preventDefault();
-                console.log("Formulario enviado con la búsqueda:", transcript);
+                
+                console.log(buscarSubseccionesPorTitulo(transcript));
               });
 
               searchForm.dispatchEvent(new Event("submit"));
