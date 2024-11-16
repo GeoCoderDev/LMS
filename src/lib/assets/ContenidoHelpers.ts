@@ -159,3 +159,100 @@ export function generateBreadcrumb(
 
   return breadcrumb;
 }
+
+export function getSubsectionTitle(currentPath: string): string | null {
+  // Obtener número de módulo del path
+  const moduleNumber = currentPath.split("/")[2];
+
+  // Obtener el módulo
+  const modulo = contenido.modulos[moduleNumber];
+  if (!modulo || typeof modulo === "string") return null;
+
+  // Buscar la sección que contiene este path
+  const seccion = Object.values(modulo.secciones).find((seccion) =>
+    currentPath.startsWith(seccion.index)
+  );
+
+  if (!seccion) return null;
+
+  // Buscar la subsección que coincide exactamente con el path
+  const subseccion = Object.values(seccion.subsecciones).find(
+    (subseccion) => (subseccion as Subseccion).path === currentPath
+  ) as Subseccion | undefined;
+
+  // Retornar el título si existe la subsección
+  return subseccion?.title || null;
+}
+
+export interface SubseccionSearchResult {
+  title: string; // Título de la subsección
+  path: string; // Ruta de la subsección
+  breadcrumbText: string; // Texto formateado: "Módulo X | Sección Y | Subsección Z"
+}
+
+export function buscarSubseccionesPorTitulo(
+  searchTerm: string
+): SubseccionSearchResult[] {
+  const palabrasBusqueda = searchTerm.toLowerCase().trim().split(/\s+/);
+  const resultados: SubseccionSearchResult[] = [];
+
+  // Iteramos sobre cada módulo
+  Object.entries(contenido.modulos).forEach(([moduloKey, modulo]) => {
+    // Verificamos que sea un módulo válido y no el índice
+    if (modulo && typeof modulo !== "string" && "secciones" in modulo) {
+      // Iteramos sobre cada sección
+      Object.entries(modulo.secciones).forEach(([seccionKey, seccion]) => {
+        if (seccion && seccion.subsecciones) {
+          // Iteramos sobre cada subsección
+          Object.entries(seccion.subsecciones).forEach(
+            ([subseccionKey, subseccion]) => {
+              if (subseccion && typeof subseccion !== "string") {
+                const tituloLower = subseccion.title.toLowerCase();
+                const contieneTodasLasPalabras = palabrasBusqueda.every(
+                  (palabra) => tituloLower.includes(palabra)
+                );
+
+                if (contieneTodasLasPalabras) {
+                  // Construimos el texto del breadcrumb
+                  const breadcrumbText = `Módulo ${moduloKey} | Sección ${seccionKey} | Subsección ${subseccionKey}`;
+
+                  resultados.push({
+                    title: subseccion.title,
+                    path: subseccion.path,
+                    breadcrumbText: breadcrumbText,
+                  });
+                }
+              }
+            }
+          );
+        }
+      });
+    }
+  });
+
+  return resultados;
+}
+
+// Función auxiliar para obtener información más detallada si se necesita
+export function obtenerDetallesSubseccion(
+  path: string
+): SubseccionSearchResult | null {
+  for (const [moduloKey, modulo] of Object.entries(contenido.modulos)) {
+    if (modulo && typeof modulo !== "string" && "secciones" in modulo) {
+      for (const [seccionKey, seccion] of Object.entries(modulo.secciones)) {
+        for (const [subseccionKey, subseccion] of Object.entries(
+          seccion.subsecciones
+        )) {
+          if (typeof subseccion !== "string" && subseccion.path === path) {
+            return {
+              title: subseccion.title,
+              path: subseccion.path,
+              breadcrumbText: `Módulo ${moduloKey} | Sección ${seccionKey} | Subsección ${subseccionKey}`,
+            };
+          }
+        }
+      }
+    }
+  }
+  return null;
+}

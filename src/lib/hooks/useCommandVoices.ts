@@ -7,11 +7,17 @@ import {
   C_M_Home,
   C_M_Modulo_1,
   C_M_Modulo_2,
+  C_M_Modulo_3,
+  C_M_Modulo_4,
+  C_M_Subsecciones,
 } from "../utils/voice/commands/CommandMenus";
 import { useDispatch, useSelector } from "react-redux";
 import { setCommandVoicesState } from "@/state/others/commandVoicesState";
 import { RootState } from "../../store/index";
 import { Listener } from "../utils/Listener";
+import { CommandVoice } from "../utils/CommandVoice";
+import { setSearcherResults } from "@/state/others/searcherResults";
+import { SubseccionSearchResult } from "../assets/ContenidoHelpers";
 
 const useCommandVoices = (route: string) => {
   const commandVoicesState = useSelector(
@@ -33,9 +39,15 @@ const useCommandVoices = (route: string) => {
   listener.onStart = () => {
     dispatch(setCommandVoicesState({ value: CommandVoicesStates.LISTENING }));
   };
+
   listener.onStop = () => {
+    // CommandVoice.iterateNext = false;
     if (commandVoicesState !== CommandVoicesStates.SPEAKING)
       dispatch(setCommandVoicesState({ value: CommandVoicesStates.IDLE }));
+  };
+
+  CommandVoice.callback1 = (searcherResults: SubseccionSearchResult[]) => {
+    dispatch(setSearcherResults({ value: searcherResults }));
   };
 
   const stopListeningOrSpeaking = () => {
@@ -54,7 +66,6 @@ const useCommandVoices = (route: string) => {
 
   const iniciarComandosDeVoz = () => {
     if (!window) return;
-    console.log(route);
 
     if (route === "/" || route === "/modulos") {
       C_M_Home.start();
@@ -63,9 +74,11 @@ const useCommandVoices = (route: string) => {
     } else if (route === "/modulos/2") {
       C_M_Modulo_2.start();
     } else if (route === "/modulos/3") {
-      C_M_Modulo_1.start();
+      C_M_Modulo_3.start();
     } else if (route === "/modulos/4") {
-      C_M_Modulo_1.start();
+      C_M_Modulo_4.start();
+    } else if (route.split("/").length === 5 && route.startsWith("/modulos/")) {
+      C_M_Subsecciones.start(route);
     }
   };
 

@@ -41,7 +41,8 @@ export const contenido: Contenido = {
       secciones: {
         1: {
           index: "/modulos/1/origen-evolucion-ingenieria-software",
-          title: "Origen y Evolución de la Ingeniería de Software",
+          title:
+            "Origen, Modelos, Normas y Herramientas para la Calidad del Software",
           subsecciones: {
             1: {
               path: "/modulos/1/origen-evolucion-ingenieria-software/origen-ingenieria-software",
@@ -132,7 +133,8 @@ export const contenido: Contenido = {
     },
     2: {
       index: "/modulos/2",
-      title: "Verificación y Validación",
+      title:
+        "Verificación y Validación de la Documentación del Análisis de Requerimientos",
       secciones: {
         1: {
           index: "/modulos/2/conceptos-fundamentales-vyv",
@@ -638,7 +640,8 @@ export const contenido: Contenido = {
     },
     3: {
       index: "/modulos/3",
-      title: "Diseño de Sistema",
+      title:
+        "Verificación y Validación de la Documentación del Diseño del Sistema",
       secciones: {
         1: {
           index: "/modulos/3/conceptos-fundamentales-diseno-sistema",
@@ -744,42 +747,43 @@ export const contenido: Contenido = {
     },
     4: {
       index: "/modulos/4",
-      title: "Factores Críticos de Éxito",
+      title: "Factores Críticos de Éxito para el Desarrollo del Software",
       secciones: {
         1: {
           index:
             "/modulos/4/definicion-caracteristicas-factores-criticos-exito",
-          title: "Definición y Características de Factores Críticos de Éxito",
+          title:
+            "Definición y Características de los Factores Críticos de Éxito",
           subsecciones: {
             1: {
-              path: "/modulos/4/definicion-caracteristicas-factores-criticos-exito/concepto",
-              title: "Concepto",
+              path: "/modulos/4/definicion-caracteristicas-factores-criticos-exito/concepto-fce",
+              title: "Concepto de Factores Críticos de Éxito (FCE)",
               toRead: "Prueba",
             },
             2: {
-              path: "/modulos/4/definicion-caracteristicas-factores-criticos-exito/tipos",
-              title: "Tipos",
+              path: "/modulos/4/definicion-caracteristicas-factores-criticos-exito/tipos-fce",
+              title: "Tipos de Factores Críticos de Éxito",
               toRead: "Prueba",
             },
           },
         },
         2: {
           index: "/modulos/4/factores-tecnicos-criticos-desarrollo-software",
-          title: "Factores Técnicos Críticos en el Desarrollo de Software",
+          title: "Factores Técnicos Críticos para el Desarrollo del Software",
           subsecciones: {
             1: {
               path: "/modulos/4/factores-tecnicos-criticos-desarrollo-software/eleccion-arquitectura",
-              title: "Elección de Arquitectura",
+              title: "Elección Correcta de la Arquitectura del Software",
               toRead: "Prueba",
             },
             2: {
               path: "/modulos/4/factores-tecnicos-criticos-desarrollo-software/seleccion-tecnologias",
-              title: "Selección de Tecnologías",
+              title: "Selección de Tecnologías y Herramientas Adecuadas",
               toRead: "Prueba",
             },
             3: {
               path: "/modulos/4/factores-tecnicos-criticos-desarrollo-software/calidad-codigo",
-              title: "Calidad de Código",
+              title: "Calidad del Código y Mantenibilidad",
               toRead: "Prueba",
             },
           },
@@ -790,17 +794,17 @@ export const contenido: Contenido = {
           subsecciones: {
             1: {
               path: "/modulos/4/factores-humanos-desarrollo-software/capacitacion-habilidades",
-              title: "Capacitación y Habilidades",
+              title: "Capacitación y Habilidades del Equipo de Desarrollo",
               toRead: "Prueba",
             },
             2: {
               path: "/modulos/4/factores-humanos-desarrollo-software/comunicacion-efectiva",
-              title: "Comunicación Efectiva",
+              title: "Comunicación Efectiva en el Equipo",
               toRead: "Prueba",
             },
             3: {
               path: "/modulos/4/factores-humanos-desarrollo-software/liderazgo-gestion",
-              title: "Liderazgo y Gestión",
+              title: "Liderazgo y Gestión de Proyectos",
               toRead: "Prueba",
             },
           },
@@ -811,17 +815,17 @@ export const contenido: Contenido = {
           subsecciones: {
             1: {
               path: "/modulos/4/factores-organizacionales-criticos/planificacion-gestion",
-              title: "Planificación y Gestión",
+              title: "Planificación y Gestión de Proyectos",
               toRead: "Prueba",
             },
             2: {
               path: "/modulos/4/factores-organizacionales-criticos/gestion-riesgos",
-              title: "Gestión de Riesgos",
+              title: "Gestión de Riesgos en el Desarrollo de Software",
               toRead: "Prueba",
             },
             3: {
-              path: "/modulos/4/factores-organizacionales-criticos/control-financiero",
-              title: "Control Financiero",
+              path: "/modulos/4/factores-organizacionales-criticos/presupuesto-control",
+              title: "Presupuesto y Control Financiero",
               toRead: "Prueba",
             },
           },
@@ -832,17 +836,51 @@ export const contenido: Contenido = {
           subsecciones: {
             1: {
               path: "/modulos/4/metodologias-procesos-factores-exito/metodologias-agiles",
-              title: "Metodologías Ágiles",
+              title: "Aplicación de Metodologías Ágiles",
               toRead: "Prueba",
             },
             2: {
-              path: "/modulos/4/metodologias-procesos-factores-exito/gestion-procesos",
-              title: "Gestión de Procesos",
+              path: "/modulos/4/metodologias-procesos-factores-exito/gestion-calidad",
+              title: "Gestión de la Calidad del Software",
               toRead: "Prueba",
             },
             3: {
-              path: "/modulos/4/metodologias-procesos-factores-exito/mejora-continua",
-              title: "Mejora Continua",
+              path: "/modulos/4/metodologias-procesos-factores-exito/entregas-continuas",
+              title: "Entregas Continuas e Integración Continua (CI/CD)",
+              toRead: "Prueba",
+            },
+          },
+        },
+        6: {
+          index: "/modulos/4/factores-externos",
+          title: "Factores Externos",
+          subsecciones: {
+            1: {
+              path: "/modulos/4/factores-externos/relacion-clientes",
+              title: "Relación con Clientes y Stakeholders",
+              toRead: "Prueba",
+            },
+            2: {
+              path: "/modulos/4/factores-externos/impacto-competencia",
+              title: "Impacto de la Competencia y el Mercado",
+              toRead: "Prueba",
+            },
+          },
+        },
+        7: {
+          index: "/modulos/4/ejemplos-factores-criticos-exito-proyectos-reales",
+          title: "Ejemplos de Factores Críticos de Éxito en Proyectos Reales",
+          subsecciones: {
+            1: {
+              path: "/modulos/4/ejemplos-factores-criticos-exito-proyectos-reales/caso-empresa-global",
+              title:
+                "Caso de Estudio: Desarrollo de Software en una Empresa Global",
+              toRead: "Prueba",
+            },
+            2: {
+              path: "/modulos/4/ejemplos-factores-criticos-exito-proyectos-reales/caso-proyecto-fallido",
+              title:
+                "Caso de Estudio: Proyecto Fallido por No Identificar los FCE",
               toRead: "Prueba",
             },
           },
