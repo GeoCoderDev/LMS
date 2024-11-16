@@ -2,23 +2,21 @@
 import React, { useState } from "react";
 import SubHeader from "./SubHeader";
 import MiniSidebar from "./MiniSidebar";
-
-import ToolsBar from "./ToolsBar";
+import { usePathname } from "next/navigation";
+import NoSSRToolsBar from "./NoSSRToolsBar";
 
 const PageInformation = ({
-  sectionTitle,
   contentToRead,
   resources,
 }: {
   contentToRead: React.ReactNode;
-  sectionTitle: string;
   resources: React.ReactNode;
 }) => {
   const [viewResources, setViewResources] = useState(true);
-
+  const path = usePathname();
   return (
     <main className="w-full h-full grid grid-cols-1 grid-rows-[max-content_1fr_max-content] max-h-full overflow-hidden">
-      <SubHeader sectionTitle={sectionTitle} />
+      <SubHeader currentPath={path} />
       <div
         className={` w-full h-full overflow-hidden grid max-md:grid-cols-1 max-md:grid-rows-[1fr_1fr] grid-cols-[1fr_1fr] grid-rows-1 transition-all ${
           !viewResources &&
@@ -62,7 +60,8 @@ const PageInformation = ({
           </span>
         </div>
       </div>
-      <ToolsBar
+      <NoSSRToolsBar
+        currentPath={path}
         viewResources={viewResources}
         setViewResources={setViewResources}
       />

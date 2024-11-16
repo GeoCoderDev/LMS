@@ -1,4 +1,3 @@
-// Definición del constructor de SpeechRecognition
 export interface SpeechRecognitionConstructor {
   new (): SpeechRecognition;
 }
@@ -13,6 +12,9 @@ export interface SpeechRecognition extends EventTarget {
   abort(): void;
   onresult: (event: SpeechRecognitionEvent) => void;
   onerror: (event: SpeechRecognitionErrorEvent) => void;
+  onend: () => void; // Evento para el final del reconocimiento
+  onspeechend: () => void; // Evento para detectar el final del habla
+  onsoundend: () => void; // Evento para detectar el final del habla
 }
 
 // Interfaz para el evento de resultado
@@ -39,14 +41,22 @@ export interface SpeechRecognitionAlternative {
   confidence: number;
 }
 
-// Interfaz para el evento de error
-export interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-  message: string;
-}
-
 // Interfaz extendida de Window
 export interface IWindow extends Window {
   SpeechRecognition: SpeechRecognitionConstructor;
   webkitSpeechRecognition: SpeechRecognitionConstructor;
+}
+
+// Interfaz para el evento de error con tipos específicos para el campo error
+export interface SpeechRecognitionErrorEvent extends Event {
+  error:
+    | "no-speech"
+    | "audio-capture"
+    | "aborted"
+    | "network"
+    | "not-allowed"
+    | "service-not-allowed"
+    | "bad-grammar"
+    | "language-not-supported";
+  message: string;
 }

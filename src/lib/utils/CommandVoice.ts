@@ -1,7 +1,12 @@
+import { SubseccionSearchResult } from "../assets/ContenidoHelpers";
+
 export class CommandVoice {
+  public static callback1?: (searcherResults: SubseccionSearchResult[]) => void;
+
+  // public static iterateNext: boolean = false;
   constructor(
     private variantCommands: string[],
-    public action: () => Promise<unknown>,
+    public action: () => Promise<null | boolean>,
     public finalPhrase?: string
   ) {}
 

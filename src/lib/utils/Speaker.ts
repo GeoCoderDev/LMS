@@ -1,9 +1,11 @@
 export class Speaker {
   private static instance: Speaker | null = null;
   private synth: SpeechSynthesis;
-  public speaking: boolean = false; // Variable para indicar si el navegador está hablando
+
   private interrumpible: boolean = true;
   public currentCallback?: () => void;
+  private callbackStop?: () => void;
+  private callbackStart?: () => void;
 
   // Constructor privado para evitar instanciación directa
   private constructor() {
@@ -39,27 +41,42 @@ export class Speaker {
 
     this.interrumpible = interrumpible;
 
-    this.speaking = true; // Cambia a true cuando se inicia la síntesis de voz
+
     const utterance = new SpeechSynthesisUtterance(message);
     utterance.lang = "es-ES";
     this.currentCallback = callback;
     // Al finalizar la síntesis, se cambia speaking a false y se ejecuta el callback
     utterance.onend = () => {
-      this.speaking = false;
+
+      this.callbackStop?.();
       callback?.();
     };
     this.synth.speak(utterance);
+    
+    this.callbackStart?.();
   }
 
   /**
-   * Método para interrumpir la síntesis de voz en curso.
+   * Método para interrumpir la síntesis de voz en curso
+   * @param omitToCallback Este parametro sirve para especificar si despues de la parilacion del speaker se debe ejecutar un callback
    */
-  public stop(omit: boolean = false) {
-    if (this.speaking && this.interrumpible) {
+  public stop(omitToCallback: boolean = false) {
+    if (this.interrumpible) {
       this.synth.cancel();
-      this.speaking = false; // Cambia a false cuando se cancela la síntesis
-      if (omit) this.currentCallback?.();
+      this.callbackStop?.();
+
+      if (omitToCallback) {
+        this.currentCallback?.();
+      }
     }
+  }
+
+  set onStop(callback: () => void) {
+    this.callbackStop = callback;
+  }
+
+  set onStart(callback: () => void) {
+    this.callbackStart = callback;
   }
 
   public silenceOmit() {}

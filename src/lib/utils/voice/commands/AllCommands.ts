@@ -1,10 +1,18 @@
+import {
+  buscarSubseccionesPorTitulo,
+  SubseccionSearchResult,
+} from "@/lib/assets/ContenidoHelpers";
 import { CommandVoice } from "../../CommandVoice";
+import { Listener } from "../../Listener";
 import { Speaker } from "../../Speaker";
-import { VoiceConverterActuator } from "../../VoiceConverter";
+
 import { C_M_Modulo_2 } from "./CommandMenus";
+import { getCurrentToRead } from "@/lib/assets/Contenido";
+import { generateSearchResultsSpeech } from "@/lib/helpers/functions/generateSearchResultsSpeech";
+import { CommandMenu } from "../../CommandMenu";
+import { numberToText } from "@/lib/helpers/functions/numberToText";
 
 const speaker = Speaker.getInstance();
-
 //Comandos Modulo 1
 
 export const C_V_Modulo_1 = new CommandVoice(
@@ -81,7 +89,7 @@ export const C_V_Modulo_2 = new CommandVoice(
     return new Promise((resolve) => {
       speaker.start("Redirigiendo al Módulo 2.", () => {
         resolve(null);
-        
+
         C_M_Modulo_2.start();
       });
       window.location.href = "/modulos/2";
@@ -89,7 +97,7 @@ export const C_V_Modulo_2 = new CommandVoice(
   }
 );
 
-export const C_VModulo_2_Seccion_1 = new CommandVoice(
+export const C_V_Modulo_2_Seccion_1 = new CommandVoice(
   ["conceptos fundamentales vyv", "sección 1", "sección uno"],
   () => {
     return new Promise((resolve) => {
@@ -102,7 +110,7 @@ export const C_VModulo_2_Seccion_1 = new CommandVoice(
   }
 );
 
-export const C_VModulo_2_Seccion_2 = new CommandVoice(
+export const C_V_Modulo_2_Seccion_2 = new CommandVoice(
   [
     "verificación de la documentación de requerimientos",
     "sección 2",
@@ -120,7 +128,7 @@ export const C_VModulo_2_Seccion_2 = new CommandVoice(
   }
 );
 
-export const C_VModulo_2_Seccion_3 = new CommandVoice(
+export const C_V_Modulo_2_Seccion_3 = new CommandVoice(
   [
     "validación de la documentación de requerimientos",
     "sección 3",
@@ -138,7 +146,7 @@ export const C_VModulo_2_Seccion_3 = new CommandVoice(
   }
 );
 
-export const C_VModulo_2_Seccion_4 = new CommandVoice(
+export const C_V_Modulo_2_Seccion_4 = new CommandVoice(
   [
     "revisión formal del documento de requerimientos",
     "sección 4",
@@ -156,7 +164,7 @@ export const C_VModulo_2_Seccion_4 = new CommandVoice(
   }
 );
 
-export const C_VModulo_2_Seccion_5 = new CommandVoice(
+export const C_V_Modulo_2_Seccion_5 = new CommandVoice(
   [
     "herramientas vyv para análisis de requerimientos",
     "sección 5",
@@ -186,12 +194,12 @@ export const C_V_Modulo_3 = new CommandVoice(
   }
 );
 
-export const C_VModulo_3_Seccion_1 = new CommandVoice(
-  ["conceptos fundamentales de diseño de sistema", "sección 1", "sección uno"],
+export const C_V_Modulo_3_Seccion_1 = new CommandVoice(
+  ["conceptos fundamentales del diseño", "sección 1", "sección uno"],
   () => {
     return new Promise((resolve) => {
       speaker.start(
-        "Redirigiendo a Conceptos Fundamentales de Diseño de Sistema.",
+        "Redirigiendo a Conceptos Fundamentales del Diseño de Sistema.",
         () => resolve(null)
       );
       window.location.href =
@@ -200,47 +208,8 @@ export const C_VModulo_3_Seccion_1 = new CommandVoice(
   }
 );
 
-export const C_VModulo_3_Seccion_2 = new CommandVoice(
-  ["herramientas vyv para diseño de sistema", "sección 2", "sección dos"],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start(
-        "Redirigiendo a Herramientas VyV para Diseño de Sistema.",
-        () => resolve(null)
-      );
-      window.location.href = "/modulos/3/herramientas-vyv-diseno-sistema";
-    });
-  }
-);
-
-export const C_VModulo_3_Seccion_3 = new CommandVoice(
-  ["revisión formal del diseño de sistema", "sección 3", "sección tres"],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start(
-        "Redirigiendo a Revisión Formal del Diseño de Sistema.",
-        () => resolve(null)
-      );
-      window.location.href = "/modulos/3/revision-formal-diseno-sistema";
-    });
-  }
-);
-
-export const C_VModulo_3_Seccion_4 = new CommandVoice(
-  ["validación de la documentación de diseño", "sección 4", "sección cuatro"],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start(
-        "Redirigiendo a Validación de la Documentación de Diseño.",
-        () => resolve(null)
-      );
-      window.location.href = "/modulos/3/validacion-documentacion-diseno";
-    });
-  }
-);
-
-export const C_VModulo_3_Seccion_5 = new CommandVoice(
-  ["verificación de la documentación de diseño", "sección 5", "sección cinco"],
+export const C_V_Modulo_3_Seccion_2 = new CommandVoice(
+  ["verificación de documentación", "sección 2", "sección dos"],
   () => {
     return new Promise((resolve) => {
       speaker.start(
@@ -252,6 +221,49 @@ export const C_VModulo_3_Seccion_5 = new CommandVoice(
   }
 );
 
+export const C_V_Modulo_3_Seccion_3 = new CommandVoice(
+  ["validación de documentación", "sección 3", "sección tres"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start(
+        "Redirigiendo a Validación de la Documentación de Diseño.",
+        () => resolve(null)
+      );
+      window.location.href = "/modulos/3/validacion-documentacion-diseno";
+    });
+  }
+);
+
+export const C_V_Modulo_3_Seccion_4 = new CommandVoice(
+  ["revisión formal del diseño", "sección 4", "sección cuatro"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start(
+        "Redirigiendo a Revisión Formal del Diseño del Sistema.",
+        () => resolve(null)
+      );
+      window.location.href = "/modulos/3/revision-formal-diseno-sistema";
+    });
+  }
+);
+
+export const C_V_Modulo_3_Seccion_5 = new CommandVoice(
+  [
+    "herramientas de V y V",
+    "herramientas de verificación y validación",
+    "sección 5",
+    "sección cinco",
+  ],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start(
+        "Redirigiendo a Herramientas para la Verificación y Validación del Diseño.",
+        () => resolve(null)
+      );
+      window.location.href = "/modulos/3/herramientas-vyv-diseno-sistema";
+    });
+  }
+);
 //Comandos Modulo 4
 
 export const C_V_Modulo_4 = new CommandVoice(
@@ -264,44 +276,77 @@ export const C_V_Modulo_4 = new CommandVoice(
   }
 );
 
-export const C_VModulo_4_Seccion_1 = new CommandVoice(
+export const C_V_Modulo_4_Seccion_1 = new CommandVoice(
   [
-    "definición de características y factores críticos de éxito",
+    "definición y características de factores críticos",
     "sección 1",
     "sección uno",
   ],
   () => {
     return new Promise((resolve) => {
       speaker.start(
-        "Redirigiendo a Definición de Características y Factores Críticos de Éxito.",
+        "Redirigiendo a Definición y Características de los Factores Críticos de Éxito.",
         () => resolve(null)
       );
       window.location.href =
-        "/modulos/4/definicion-caracteristicas-factores-criticos-exito";
+        "/modulos/4/definicion-caracteristicas-factores-criticos";
     });
   }
 );
 
-export const C_VModulo_4_Seccion_2 = new CommandVoice(
-  [
-    "ejemplos de factores críticos de éxito en proyectos reales",
-    "sección 2",
-    "sección dos",
-  ],
+export const C_V_Modulo_4_Seccion_2 = new CommandVoice(
+  ["factores técnicos críticos", "sección 2", "sección dos"],
   () => {
     return new Promise((resolve) => {
       speaker.start(
-        "Redirigiendo a Ejemplos de Factores Críticos de Éxito en Proyectos Reales.",
+        "Redirigiendo a Factores Técnicos Críticos para el Desarrollo del Software.",
         () => resolve(null)
       );
-      window.location.href =
-        "/modulos/4/ejemplos-factores-criticos-exito-proyectos-reales";
+      window.location.href = "/modulos/4/factores-tecnicos-criticos";
     });
   }
 );
 
-export const C_VModulo_4_Seccion_3 = new CommandVoice(
-  ["factores externos", "sección 3", "sección tres"],
+export const C_V_Modulo_4_Seccion_3 = new CommandVoice(
+  ["factores humanos", "sección 3", "sección tres"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start(
+        "Redirigiendo a Factores Humanos en el Desarrollo de Software.",
+        () => resolve(null)
+      );
+      window.location.href = "/modulos/4/factores-humanos";
+    });
+  }
+);
+
+export const C_V_Modulo_4_Seccion_4 = new CommandVoice(
+  ["factores organizacionales", "sección 4", "sección cuatro"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start("Redirigiendo a Factores Organizacionales Críticos.", () =>
+        resolve(null)
+      );
+      window.location.href = "/modulos/4/factores-organizacionales";
+    });
+  }
+);
+
+export const C_V_Modulo_4_Seccion_5 = new CommandVoice(
+  ["metodologías y procesos", "sección 5", "sección cinco"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start(
+        "Redirigiendo a Metodologías y Procesos como Factores de Éxito.",
+        () => resolve(null)
+      );
+      window.location.href = "/modulos/4/metodologias-procesos";
+    });
+  }
+);
+
+export const C_V_Modulo_4_Seccion_6 = new CommandVoice(
+  ["factores externos", "sección 6", "sección seis"],
   () => {
     return new Promise((resolve) => {
       speaker.start("Redirigiendo a Factores Externos.", () => resolve(null));
@@ -310,105 +355,148 @@ export const C_VModulo_4_Seccion_3 = new CommandVoice(
   }
 );
 
-export const C_VModulo_4_Seccion_4 = new CommandVoice(
-  [
-    "factores humanos en el desarrollo de software",
-    "sección 4",
-    "sección cuatro",
-  ],
+export const C_V_Modulo_4_Seccion_7 = new CommandVoice(
+  ["ejemplos de factores críticos", "sección 7", "sección siete"],
   () => {
     return new Promise((resolve) => {
       speaker.start(
-        "Redirigiendo a Factores Humanos en el Desarrollo de Software.",
+        "Redirigiendo a Ejemplos de Factores Críticos de Éxito en Proyectos Reales.",
         () => resolve(null)
       );
-      window.location.href = "/modulos/4/factores-humanos-desarrollo-software";
-    });
-  }
-);
-
-export const C_VModulo_4_Seccion_5 = new CommandVoice(
-  ["factores organizacionales críticos", "sección 5", "sección cinco"],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start("Redirigiendo a Factores Organizacionales Críticos.", () =>
-        resolve(null)
-      );
-      window.location.href = "/modulos/4/factores-organizacionales-criticos";
-    });
-  }
-);
-
-export const C_VModulo_4_Seccion_6 = new CommandVoice(
-  [
-    "factores técnicos críticos en el desarrollo de software",
-    "sección 6",
-    "sección seis",
-  ],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start(
-        "Redirigiendo a Factores Técnicos Críticos en el Desarrollo de Software.",
-        () => resolve(null)
-      );
-      window.location.href =
-        "/modulos/4/factores-tecnicos-criticos-desarrollo-software";
-    });
-  }
-);
-
-export const C_VModulo_4_Seccion_7 = new CommandVoice(
-  [
-    "metodologías y procesos para factores de éxito",
-    "sección 7",
-    "sección siete",
-  ],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start(
-        "Redirigiendo a Metodologías y Procesos para Factores de Éxito.",
-        () => resolve(null)
-      );
-      window.location.href = "/modulos/4/metodologias-procesos-factores-exito";
+      window.location.href = "/modulos/4/ejemplos-factores-criticos";
     });
   }
 );
 
 //Comandos Especiales
 
-export const C_V_Buscar = new CommandVoice(
-  ["buscar"],
-  () => {
-    return new Promise((resolve) => {
-      speaker.start("Por favor, di el término que deseas buscar.", () => {
-        const voiceConverterActuator = new VoiceConverterActuator();
-
-        voiceConverterActuator.start((transcript) => {
-          const searchInput = document.getElementById(
-            "buscador-global"
-          ) as HTMLInputElement;
-
-          if (searchInput) {
-            searchInput.value = transcript;
-
-            const searchForm = document.getElementById(
-              "formulario-busqueda"
-            ) as HTMLFormElement;
-
-            if (searchForm) {
-              searchForm.addEventListener("submit", (event) => {
-                event.preventDefault();
-                console.log("Formulario enviado con la búsqueda:", transcript);
-              });
-
-              searchForm.dispatchEvent(new Event("submit"));
-            }
-          }
-
-          resolve(null);
+// Función para crear comandos de voz para cada resultado
+function createResultCommands(
+  searchResults: SubseccionSearchResult[]
+): CommandVoice[] {
+  return searchResults.map((result, index) => {
+    const num = index + 1;
+    return new CommandVoice(
+      [
+        `resultado ${num}`,
+        `resultado${num}`,
+        `resultado ${numberToText(num)}`,
+        `resultado${numberToText(num)}`,
+        `resultado, ${num}`,
+        `resultado, ${numberToText(num)}`,
+        // Variantes adicionales para posibles transcripciones de Edge
+        `resultado ${num}.`,
+        `resultado, ${num}.`,
+        `resultado ${numberToText(num)}.`,
+        `resultado, ${numberToText(num)}.`,
+      ],
+      () => {
+        return new Promise((resolve) => {
+          speaker.start(`Redirigiendo a ${result.title}`, () => {
+            // CommandVoice.iterateNext = false;
+            window.location.href = result.path;
+            resolve(null);
+          });
         });
+      }
+    );
+  });
+}
+export const C_V_Buscar = new CommandVoice(["buscar"], () => {
+  return new Promise((resolve) => {
+    speaker.start("Por favor, di el término que deseas buscar.", () => {
+      const listener = Listener.getInstance();
+
+      listener.start((transcript) => {
+        const searchInput = document.getElementById(
+          "buscador-global"
+        ) as HTMLInputElement;
+
+        if (searchInput) {
+          searchInput.value = transcript;
+
+          const searchForm = document.getElementById(
+            "formulario-busqueda"
+          ) as HTMLFormElement;
+
+          if (searchForm) {
+            searchForm.addEventListener("submit", (event) => {
+              event.preventDefault();
+
+              const searcherResults = buscarSubseccionesPorTitulo(transcript);
+
+              CommandVoice.callback1?.(searcherResults);
+
+              const resultsToRead =
+                generateSearchResultsSpeech(searcherResults);
+              speaker.start("Buscando...", () => {
+                // Crear comandos para cada resultado
+                const resultCommands = createResultCommands(searcherResults);
+
+                //Comandos Adicionales
+
+                // Comando para repetir resultados
+                const repeatResultsCommand = new CommandVoice(
+                  ["repetir resultados", "repetir", "repite los resultados"],
+                  () => {
+                    return new Promise((resolve2) => {
+                      const resultsToRead =
+                        generateSearchResultsSpeech(searcherResults);
+                      speaker.start(resultsToRead, () => resolve2(null));
+                    });
+                  }
+                );
+
+                // Comando para nueva búsqueda
+                const newSearchCommand = new CommandVoice(
+                  ["nueva búsqueda", "buscar otra vez", "buscar de nuevo"],
+                  () => {
+                    return new Promise(() => {
+                      // CommandVoice.iterateNext = true;
+                      resolve(true);
+                    });
+                  }
+                );
+
+                // Combinar todos los comandos
+                const allCommands = [
+                  ...resultCommands,
+                  repeatResultsCommand,
+                  newSearchCommand,
+                ];
+
+                // Crear y iniciar el menú de comandos
+                const commandMenu = new CommandMenu(
+                  resultsToRead,
+                  allCommands
+                );
+
+                commandMenu.start();
+              });
+              // resolve(null);
+            });
+
+            searchForm.dispatchEvent(new Event("submit"));
+          }
+        }
+
+        // resolve(null);
       });
     });
-  },
-  "Buscando..."
-);
+  });
+});
+
+export const C_V_Leer = new CommandVoice(["leer"], () => {
+  return new Promise((resolve) => {
+    if (window) {
+      const urlObject = new URL(window.location.href);
+      const contentToRead = getCurrentToRead(urlObject.pathname);
+      if (contentToRead)
+        speaker.start("Leendo...", () => {
+          speaker.start(contentToRead);
+        });
+    }
+
+    resolve(null);
+  });
+});

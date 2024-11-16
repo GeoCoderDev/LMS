@@ -1,9 +1,9 @@
 import React from "react";
 import { IconProps } from "./Icons";
 
-const Sonido = ({ className, color, title }: IconProps) => {
+const Sonido = ({ className, color, title, onClick }: IconProps) => {
   return (
-    <div title={title ?? "Sonido"}>
+    <div title={title ?? "Sonido"} onClick={onClick}>
       <svg
         className={` ${className}`}
         viewBox="0 0 231 190"

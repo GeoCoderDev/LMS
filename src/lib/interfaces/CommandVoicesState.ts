@@ -6,6 +6,6 @@ export enum CommandVoicesStates {
 
 export const ColorCommandVoices = {
   "IDLE": "white",
-  "SPEAKING": "red",
-  "LISTENING": "green",
+  "SPEAKING": "#FF4500",
+  "LISTENING": "#32CD32",
 };

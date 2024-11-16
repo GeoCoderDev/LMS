@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
     return (
         <PageInformation
-            sectionTitle=" Herramientas de Colaboración y Documentación"
+           
             contentToRead={
                 <>
                     <article className="-border-2 border-green-500">

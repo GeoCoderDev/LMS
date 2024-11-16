@@ -1,8 +1,15 @@
 import React from 'react'
 
 const AcercaDe = () => {
+
+
   return (
-    <div>AcercaDe</div>
+    <div className=''>AcercaDe  
+
+
+
+    </div>
+
   )
 }
 

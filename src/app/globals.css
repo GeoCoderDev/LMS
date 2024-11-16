@@ -9,10 +9,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
+
+
 .content-to-read,
-.resources-visualizer {
+.resources-visualizer, #searcher-results {
   /* Estilos para el scrollbar */
   &::-webkit-scrollbar {
     width: 12px; /* Ancho del scrollbar */

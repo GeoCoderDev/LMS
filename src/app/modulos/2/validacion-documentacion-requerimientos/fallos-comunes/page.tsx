@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
     return (
         <PageInformation
-            sectionTitle=" Ejemplos de Fallos Comunes en la Validación"
+           
             contentToRead={
             <>
                 <article className="-border-2 border-green-500">
