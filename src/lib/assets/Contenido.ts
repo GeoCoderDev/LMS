@@ -100,18 +100,18 @@ export const contenido: Contenido = {
               path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales",
               title: "Normas Internacionales",
             },
-            "1.1": {
-              path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales/iso-9001",
-              title: "ISO 9001",
-            },
+            // "1.1": {
+            //  path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales/iso-9001",
+            //  title: "ISO 9001",
+            //},
             "2": {
               path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad",
               title: "Estándares de Calidad",
             },
-            "2.1": {
-              path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad/ieee-estandares",
-              title: "IEEE Estándares",
-            },
+            //"2.1": {
+            //  path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad/ieee-estandares",
+            //  title: "IEEE Estándares",
+            //},
           },
         },
       },
