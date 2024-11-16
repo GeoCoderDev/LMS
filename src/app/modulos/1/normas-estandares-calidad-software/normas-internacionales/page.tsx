@@ -5,7 +5,6 @@ const page = () => {
 
     return (
         <PageInformation
-            sectionTitle="Normas y Estándares de Calidad en el Software"
             contentToRead={
                 <>
                     <article className="-py-8 -px-4 bg-white -text-gray-800">

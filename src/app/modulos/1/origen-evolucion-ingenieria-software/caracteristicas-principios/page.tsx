@@ -5,7 +5,6 @@ const page = () => {
 
     return (
         <PageInformation
-            sectionTitle="Origen y Evolución de la Ingeniería de Software"
             contentToRead={
                 <>
                 <article className="-py-8 -px-4 bg-white -text-gray-800">

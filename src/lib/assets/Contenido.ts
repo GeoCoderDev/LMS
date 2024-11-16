@@ -112,35 +112,23 @@ export const contenido: Contenido = {
               title: "Normas Internacionales",
               toRead: "Prueba",
             },
-<<<<<<< HEAD
-            // "1.1": {
-            //  path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales/iso-9001",
-            //  title: "ISO 9001",
-            //},
-=======
+            
             "1.1": {
               path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales/iso-9001",
               title: "ISO 9001",
               toRead: "Prueba",
             },
->>>>>>> f648659ebdf8210849b8df297b7ded969186782a
             "2": {
               path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad",
               title: "Estándares de Calidad",
               toRead: "Prueba",
             },
-<<<<<<< HEAD
-            //"2.1": {
-            //  path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad/ieee-estandares",
-            //  title: "IEEE Estándares",
-            //},
-=======
-            "2.1": {
+        
+            "2.2": {
               path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad/ieee-estandares",
               title: "IEEE Estándares",
               toRead: "Prueba",
             },
->>>>>>> f648659ebdf8210849b8df297b7ded969186782a
           },
         },
       },
