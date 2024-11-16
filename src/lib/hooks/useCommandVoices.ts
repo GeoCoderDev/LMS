@@ -18,6 +18,7 @@ import { Listener } from "../utils/Listener";
 import { CommandVoice } from "../utils/CommandVoice";
 import { setSearcherResults } from "@/state/others/searcherResults";
 import { SubseccionSearchResult } from "../assets/ContenidoHelpers";
+import { setShowResults } from "@/state/Flags/showResults";
 
 const useCommandVoices = (route: string) => {
   const commandVoicesState = useSelector(
@@ -48,6 +49,7 @@ const useCommandVoices = (route: string) => {
 
   CommandVoice.callback1 = (searcherResults: SubseccionSearchResult[]) => {
     dispatch(setSearcherResults({ value: searcherResults }));
+    dispatch(setShowResults({ value: true }));
   };
 
   const stopListeningOrSpeaking = () => {
