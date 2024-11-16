@@ -12,6 +12,7 @@ import { CommandVoicesStates } from "@/lib/interfaces/CommandVoicesState";
 
 import { getCurrentToRead } from "@/lib/assets/Contenido";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { getNavigationPaths } from "@/lib/assets/ContenidoHelpers";
 
 const ToolsBar = ({
   viewResources,
@@ -25,6 +26,11 @@ const ToolsBar = ({
   const contentToRead = getCurrentToRead(currentPath);
   const { commandVoicesState, stopListeningOrSpeaking, readMessage } =
     useCommandVoices(currentPath);
+
+  const [prev, next] = [
+    getNavigationPaths(currentPath, "prev"),
+    getNavigationPaths(currentPath, "next"),
+  ];
 
   return (
     <div className="flex items-center justify-start flex-wrap w-full px-6  py-4 border-[#7d7d7d30] border-t-2 gap-[max(1.5rem,2vw)] max-md:gap-[1rem]">
@@ -81,12 +87,21 @@ const ToolsBar = ({
       </button>
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
 
-      <button title="Anterior Subsección" className="p-0">
-        <ArrowBigLeft color="#6720C2" size={"1.8rem"}/>
-      </button>
-      <button title="Siguiente Subsección" className="p-0">
-        <ArrowBigRight color="#6720C2" size={"1.8rem"}/>{" "}
-      </button>
+      {prev && (
+        <Link
+          href={prev.path}
+          as={prev.path}
+          title={prev.title}
+          className="p-0"
+        >
+          <ArrowBigLeft color="#6720C2" size={"1.8rem"} />
+        </Link>
+      )}
+      {next && (
+        <Link href={next.path} title={next.title} className="p-0">
+          <ArrowBigRight color="#6720C2" size={"1.8rem"} />{" "}
+        </Link>
+      )}
     </div>
   );
 };

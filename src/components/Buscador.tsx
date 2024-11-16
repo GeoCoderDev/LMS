@@ -88,7 +88,7 @@ const Buscador = () => {
           onClick={handleChangeOrClick}
           onChange={handleChangeOrClick}
           ref={inputSearchRef as MutableRefObject<HTMLInputElement>}
-          className="bg-white border-2 outline-1 border-black text-[0.8rem] rounded-[1rem] w-[min(40rem,70vw)] p-2 z-[10]"
+          className="bg-transparent border-2 outline-1 border-black text-[0.8rem] rounded-[1rem] w-[min(40rem,70vw)] p-2 z-[10]"
           type="search"
           name=""
           id="buscador-global"

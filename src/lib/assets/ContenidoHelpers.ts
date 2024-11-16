@@ -1,4 +1,4 @@
-import { contenido, Contenido, Modulo, Seccion, Subseccion } from "./Contenido";
+import { contenido, Modulo, Seccion, Subseccion } from "./Contenido";
 
 interface NavigationResult {
   path: string;
@@ -8,7 +8,7 @@ interface NavigationResult {
 export function getNavigationPaths(
   currentPath: string,
   direction: "prev" | "next",
-  contenido: Contenido
+
 ): NavigationResult | null {
   // Obtener número de módulo del path
   const pathParts = currentPath.split("/");
