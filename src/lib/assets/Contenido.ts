@@ -112,6 +112,7 @@ export const contenido: Contenido = {
               title: "Normas Internacionales",
               toRead: "Prueba",
             },
+            
             "1.1": {
               path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales/iso-9001",
               title: "ISO 9001",
@@ -122,7 +123,8 @@ export const contenido: Contenido = {
               title: "Estándares de Calidad",
               toRead: "Prueba",
             },
-            "2.1": {
+        
+            "2.2": {
               path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad/ieee-estandares",
               title: "IEEE Estándares",
               toRead: "Prueba",
