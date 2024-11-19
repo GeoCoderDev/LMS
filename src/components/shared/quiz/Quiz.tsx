@@ -60,7 +60,7 @@ const Quiz = ({ quiz }: { quiz: QuizData }) => {
   const path = usePathname();
 
   return (
-    <div className="top-0 fixed w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] bg-[#2B223E] overflow-auto z-[100] flex items-center justify-center">
+    <div className="top-0 fixed w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] bg-[#2B223E] overflow-auto z-[108] flex items-center justify-center">
       {viewCloseModal && (
         <CloseQuizModal setViewCloseModal={setViewCloseModal} />
       )}

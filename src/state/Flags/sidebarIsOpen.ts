@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = false;
 
 const sidebarIsOpenSlice = createSlice({
-  name: "sidebarIsOpened",
+  name: "sidebarIsOpen",
   initialState,
   reducers: {
     switchSidebarIsOpen(state) {

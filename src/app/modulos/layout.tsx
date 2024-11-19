@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const moduleRegex = /^\/modulos?(?:\/\d)?$/;
   return (
     <div
-      className={`min-h-[100dvh] max-h-[100dvh] w-full grid grid-cols-1 grid-rows-[max-content_1fr_max-content] ${
+      className={`min-h-[100dvh] relative max-h-[100dvh] w-full grid grid-cols-1 grid-rows-[max-content_1fr_max-content] ${
         moduleRegex.test(route) ? "" : "overflow-hidden"
       }`}
     >

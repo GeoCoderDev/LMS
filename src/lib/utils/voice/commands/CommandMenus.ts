@@ -1,6 +1,7 @@
 import { getSubsectionTitle } from "@/lib/assets/ContenidoHelpers";
 import { CommandMenu } from "../../CommandMenu";
 import {
+  C_V_Anterior,
   C_V_Buscar,
   C_V_Leer,
   C_V_Modulo_1,
@@ -24,6 +25,7 @@ import {
   C_V_Modulo_4_Seccion_5,
   C_V_Modulo_4_Seccion_6,
   C_V_Modulo_4_Seccion_7,
+  C_V_Siguiente,
   C_VModulo_1_Seccion_1,
   C_VModulo_1_Seccion_2,
   C_VModulo_1_Seccion_3,
@@ -93,7 +95,7 @@ export const C_M_Modulo_4 = new CommandMenu(
 );
 export const C_M_Subsecciones = new CommandMenu(
   ``,
-  [C_V_Leer],
+  [C_V_Leer, C_V_Siguiente, C_V_Anterior],
   (currentPath: string) => {
     const subsectionTitle = getSubsectionTitle(currentPath);
     return `Te encuentras en la subsección: ${subsectionTitle}. 

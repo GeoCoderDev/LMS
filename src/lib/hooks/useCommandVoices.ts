@@ -20,7 +20,7 @@ import { setSearcherResults } from "@/state/others/searcherResults";
 import { SubseccionSearchResult } from "../assets/ContenidoHelpers";
 import { setShowResults } from "@/state/Flags/showResults";
 
-const useCommandVoices = (route: string) => {
+const useCommandVoices = (currentPath: string) => {
   const commandVoicesState = useSelector(
     (state: RootState) => state.others.commandVoicesState
   );
@@ -52,6 +52,8 @@ const useCommandVoices = (route: string) => {
     dispatch(setShowResults({ value: true }));
   };
 
+  CommandVoice.getCurrentPath = () => currentPath;
+
   const stopListeningOrSpeaking = () => {
     if (!window) return;
     if (commandVoicesState === CommandVoicesStates.SPEAKING) {
@@ -69,18 +71,21 @@ const useCommandVoices = (route: string) => {
   const iniciarComandosDeVoz = () => {
     if (!window) return;
 
-    if (route === "/" || route === "/modulos") {
+    if (currentPath === "/" || currentPath === "/modulos") {
       C_M_Home.start();
-    } else if (route === "/modulos/1") {
+    } else if (currentPath === "/modulos/1") {
       C_M_Modulo_1.start();
-    } else if (route === "/modulos/2") {
+    } else if (currentPath === "/modulos/2") {
       C_M_Modulo_2.start();
-    } else if (route === "/modulos/3") {
+    } else if (currentPath === "/modulos/3") {
       C_M_Modulo_3.start();
-    } else if (route === "/modulos/4") {
+    } else if (currentPath === "/modulos/4") {
       C_M_Modulo_4.start();
-    } else if (route.split("/").length === 5 && route.startsWith("/modulos/")) {
-      C_M_Subsecciones.start(route);
+    } else if (
+      currentPath.split("/").length === 5 &&
+      currentPath.startsWith("/modulos/")
+    ) {
+      C_M_Subsecciones.start(currentPath);
     }
   };
 

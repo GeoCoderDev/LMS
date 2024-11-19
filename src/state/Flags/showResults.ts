@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = false;
 
 const showResultsSlice = createSlice({
-  name: "sidebarIsOpened",
+  name: "showResults",
   initialState,
   reducers: {
     setShowResults(state, action: PayloadAction<ReduxPayload<boolean>>) {

@@ -2,6 +2,7 @@ import { SubseccionSearchResult } from "../assets/ContenidoHelpers";
 
 export class CommandVoice {
   public static callback1?: (searcherResults: SubseccionSearchResult[]) => void;
+  public static getCurrentPath?: () => string;
 
   // public static iterateNext: boolean = false;
   constructor(

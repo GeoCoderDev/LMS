@@ -48,9 +48,9 @@ export const contenido: Contenido = {
               path: "/modulos/1/origen-evolucion-ingenieria-software/origen-ingenieria-software",
               title: "Origen de la Ingeniería de Software",
               toRead: `
-              **Origen de la Ingeniería de Software**
+              Origen de la Ingeniería de Software
               
-              **Historia y Contexto del Surgimiento**  
+              Historia y Contexto del Surgimiento  
               La ingeniería de software surgió en la década de 1960, impulsada por la creciente complejidad y escala de los sistemas informáticos, que dificultaba el desarrollo y mantenimiento de software de alta calidad. Antes de esto, el desarrollo de software era visto como una extensión de la programación y no se consideraba una disciplina en sí misma.  
               
               Con la conocida Crisis del Software en 1968, caracterizada por proyectos con:  
@@ -62,27 +62,27 @@ export const contenido: Contenido = {
               
               “La ingeniería de software nació para resolver problemas de escala, calidad y organización en el desarrollo de sistemas complejos.” — Alistair Cockburn  
               
-              **Principales Desafíos que Dieron Origen a la Ingeniería de Software**  
+              Principales Desafíos que Dieron Origen a la Ingeniería de Software  
               Entre los desafíos clave se encuentran:  
               - La dificultad para coordinar grandes equipos de desarrollo.  
               - La falta de herramientas y metodologías estandarizadas.  
               - El crecimiento exponencial en la demanda de software confiable y eficiente.  
               - Los problemas de escalabilidad en sistemas críticos.  
               
-              **Casos Históricos de Evolución Tecnológica en Software**  
+              Casos Históricos de Evolución Tecnológica en Software  
               Varios casos emblemáticos ayudaron a moldear la disciplina de la ingeniería de software:  
-              - **Proyecto Apollo:** El software de control de vuelo del cohete Apollo estableció estándares de desarrollo para sistemas críticos en tiempo real.  
-              - **Sistema Operativo Multics:** Un proyecto pionero en el diseño de sistemas operativos con características avanzadas como la seguridad y la gestión de memoria.  
-              - **Introducción del Modelo en Cascada:** En respuesta a la necesidad de procesos más formales, este modelo trajo un enfoque secuencial para el desarrollo de software.  
+              - Proyecto Apollo: El software de control de vuelo del cohete Apollo estableció estándares de desarrollo para sistemas críticos en tiempo real.  
+              - Sistema Operativo Multics: Un proyecto pionero en el diseño de sistemas operativos con características avanzadas como la seguridad y la gestión de memoria.  
+              - Introducción del Modelo en Cascada: En respuesta a la necesidad de procesos más formales, este modelo trajo un enfoque secuencial para el desarrollo de software.  
               `,
             },
             2: {
               path: "/modulos/1/origen-evolucion-ingenieria-software/objetivos-finalidad",
               title: "Objetivos y Finalidad",
               toRead: `
-              **Objetivos y Finalidad**
+              Objetivos y Finalidad
               
-              **Definición de objetivos clave en ingeniería de software**  
+              Definición de objetivos clave en ingeniería de software  
               Los objetivos principales de la ingeniería de software incluyen:  
               - Crear productos de alta calidad, escalables y mantenibles.  
               - Cumplir con las expectativas y necesidades de los usuarios finales.  
@@ -95,7 +95,7 @@ export const contenido: Contenido = {
               
               Además, abordan tanto los requerimientos actuales como las posibles necesidades futuras.  
               
-              **Relación con la mejora continua en proyectos**  
+              Relación con la mejora continua en proyectos  
               La ingeniería de software fomenta un enfoque de mejora continua que se refleja en:  
               - Evaluar y optimizar cada etapa del ciclo de vida del software.  
               - Asegurar la sostenibilidad de los proyectos.  
@@ -103,7 +103,7 @@ export const contenido: Contenido = {
                 - Metodologías ágiles.  
                 - Herramientas avanzadas para control de calidad y gestión de proyectos.  
               
-              **Finalidad y principios de la ingeniería de software**  
+              Finalidad y principios de la ingeniería de software  
               El propósito de la ingeniería de software va más allá de simplemente escribir código. Sus objetivos incluyen:  
               - Gestionar eficazmente los proyectos en todas las etapas de su ciclo de vida:  
                 - Planificación.  
@@ -117,7 +117,7 @@ export const contenido: Contenido = {
               - Alinear los proyectos con los objetivos estratégicos de las organizaciones.  
               - Crear sistemas robustos que soporten cambios tecnológicos y organizacionales a largo plazo.  
               
-              **Ejemplos de objetivos en proyectos de desarrollo**  
+              Ejemplos de objetivos en proyectos de desarrollo  
               - Reducir la cantidad de defectos detectados durante la fase de pruebas en un 30% en comparación con proyectos previos.  
               - Mejorar el tiempo de respuesta del sistema en un 20% bajo condiciones de carga máxima.  
               - Asegurar que el 100% de los módulos críticos del sistema pasen pruebas de estrés y seguridad antes de su despliegue.  
@@ -129,27 +129,27 @@ export const contenido: Contenido = {
               title:
                 "Características y Principios de la Ingeniería de Software",
               toRead: `
-              **Características y Principios de la Ingeniería de Software**
+              Características y Principios de la Ingeniería de Software
               
-              **Características Fundamentales**  
+              Características Fundamentales  
               Las características fundamentales de la ingeniería de software aseguran que los productos desarrollados cumplan con altos estándares de calidad. Entre las principales se encuentran:  
-              - **Fiabilidad**: Garantiza que el software funcione correctamente bajo diversas condiciones.  
-              - **Mantenibilidad**: Facilita la modificación y actualización del sistema a lo largo del tiempo.  
-              - **Eficiencia**: Optimiza el uso de recursos como tiempo de ejecución y memoria.  
+              - Fiabilidad: Garantiza que el software funcione correctamente bajo diversas condiciones.  
+              - Mantenibilidad: Facilita la modificación y actualización del sistema a lo largo del tiempo.  
+              - Eficiencia: Optimiza el uso de recursos como tiempo de ejecución y memoria.  
               
               Estas características son clave para satisfacer las expectativas tanto de los usuarios finales como de los equipos de desarrollo.  
               
-              **Principios de Calidad en Software**  
+              Principios de Calidad en Software  
               Los principios de calidad en el desarrollo de software son esenciales para crear sistemas sostenibles y flexibles. Algunos de estos principios son:  
-              - **Reusabilidad**: Permite aprovechar componentes existentes, reduciendo costos y tiempo de desarrollo.  
-              - **Modularidad**: Organiza el software en partes manejables, facilitando su comprensión y mantenimiento.  
-              - **Bajo Acoplamiento**: Asegura que los módulos interactúen mínimamente, lo que simplifica el mantenimiento y las futuras mejoras.  
+              - Reusabilidad: Permite aprovechar componentes existentes, reduciendo costos y tiempo de desarrollo.  
+              - Modularidad: Organiza el software en partes manejables, facilitando su comprensión y mantenimiento.  
+              - Bajo Acoplamiento: Asegura que los módulos interactúen mínimamente, lo que simplifica el mantenimiento y las futuras mejoras.  
               
-              **Aplicaciones Prácticas en la Industria**  
+              Aplicaciones Prácticas en la Industria  
               En la industria, estos principios se implementan ampliamente mediante prácticas como:  
-              - **Uso de Patrones de Diseño**: Proveen soluciones probadas para problemas comunes en el desarrollo de software.  
-              - **Desarrollo de Componentes Modulares**: Facilita la integración de partes reutilizables en diferentes proyectos.  
-              - **Código Reutilizable**: Mejora la productividad de los equipos y asegura la consistencia en los proyectos.  
+              - Uso de Patrones de Diseño: Proveen soluciones probadas para problemas comunes en el desarrollo de software.  
+              - Desarrollo de Componentes Modulares: Facilita la integración de partes reutilizables en diferentes proyectos.  
+              - Código Reutilizable: Mejora la productividad de los equipos y asegura la consistencia en los proyectos.  
               
               Estas prácticas son esenciales para manejar la complejidad de los sistemas y garantizar que puedan adaptarse a cambios tecnológicos y de mercado.  
               `,
@@ -158,19 +158,19 @@ export const contenido: Contenido = {
               path: "/modulos/1/origen-evolucion-ingenieria-software/importancia",
               title: "Importancia de la Ingeniería de Software",
               toRead: `
-              **Importancia de la Ingeniería de Software**
+              Importancia de la Ingeniería de Software
               
               La ingeniería de software desempeña un papel crucial en garantizar la calidad y eficiencia en el desarrollo de aplicaciones. Esta disciplina no solo minimiza los errores y reduce los costos de producción, sino que también asegura la satisfacción del cliente al proporcionar productos confiables y adaptables. Un enfoque bien estructurado en la ingeniería de software permite a las empresas obtener una ventaja competitiva significativa al ofrecer soluciones que se mantienen actualizadas frente a las cambiantes demandas del mercado.
               
-              **Impacto en la Calidad y Eficiencia de los Proyectos**
+              Impacto en la Calidad y Eficiencia de los Proyectos
               
               La implementación de prácticas sólidas en ingeniería de software mejora significativamente la calidad de los proyectos, reduciendo defectos y aumentando la eficiencia en cada etapa del desarrollo. Además, asegura que los productos sean escalables y fáciles de mantener, permitiendo que las organizaciones respondan rápidamente a las nuevas necesidades de los usuarios.
               
-              **Análisis de las Ventajas Competitivas**
+              Análisis de las Ventajas Competitivas
               
               Una buena ingeniería de software proporciona a las empresas una ventaja estratégica al reducir el tiempo de desarrollo, optimizar recursos y mejorar la experiencia del usuario. Empresas líderes como Amazon han utilizado la ingeniería de software para optimizar sus operaciones y superar a la competencia, mientras que otras organizaciones han enfrentado graves consecuencias por no aplicar principios adecuados.
               
-              **Casos de Éxito y Fracaso en Ingeniería de Software**
+              Casos de Éxito y Fracaso en Ingeniería de Software
               
               Ejemplos como el sistema de gestión de operaciones de Amazon destacan cómo una ingeniería de software bien aplicada puede mejorar la productividad y garantizar la excelencia operativa. Por otro lado, casos como el fracaso del Mars Climate Orbiter, donde errores en la gestión del software llevaron a la pérdida de la misión, subrayan la importancia de un enfoque meticuloso en esta disciplina. Estas lecciones refuerzan la necesidad de priorizar la calidad en todos los aspectos del ciclo de vida del software.
               `,
@@ -185,15 +185,15 @@ export const contenido: Contenido = {
               path: "/modulos/1/calidad-software-conceptos-modelos-criterios/concepto-calidad",
               title: "Concepto de Calidad en el Software",
               toRead: `
-              **Concepto de Calidad en el Software**
+              Concepto de Calidad en el Software
               
               La calidad en software se define como la capacidad de un producto de cumplir con las expectativas y necesidades del usuario final, además de los requisitos técnicos y de negocio. Factores como la funcionalidad, confiabilidad y facilidad de uso influyen en la percepción de calidad de un software. Asimismo, atributos esenciales como la eficiencia, seguridad y mantenibilidad son cruciales para garantizar que el software no solo sea operativo, sino también fiable y adaptable a lo largo del tiempo.
               
-              **Definición de Calidad en Software**
+              Definición de Calidad en Software
               
               En términos generales, la calidad en el software se refiere a la capacidad del producto para satisfacer los objetivos para los cuales fue diseñado. Esto implica no solo el cumplimiento de los requerimientos funcionales, sino también de los no funcionales, como la usabilidad, la eficiencia y la seguridad.
               
-              **Factores que Influyen en la Calidad del Software**
+              Factores que Influyen en la Calidad del Software
               
               La calidad en el software es afectada por múltiples factores, entre los cuales se encuentran:
               - La metodología de desarrollo empleada.
@@ -203,60 +203,60 @@ export const contenido: Contenido = {
               
               Cada uno de estos elementos contribuye de manera significativa a garantizar que el producto final cumpla con las expectativas de los usuarios.
               
-              **Criterios y Atributos Esenciales de Calidad**
+              Criterios y Atributos Esenciales de Calidad
               
               Entre los criterios esenciales de calidad en software destacan:
-              - **Fiabilidad:** Mide la capacidad del sistema para operar de manera consistente bajo diversas condiciones.
-              - **Eficiencia:** Evalúa el desempeño del sistema en términos de tiempo y recursos.
-              - **Mantenibilidad:** Asegura la facilidad de actualizar o modificar el software para cumplir nuevas necesidades o corregir defectos.
-              - **Usabilidad:** Garantiza una experiencia de usuario positiva.
-              - **Seguridad:** Protege los datos y la integridad del sistema.
+              - Fiabilidad: Mide la capacidad del sistema para operar de manera consistente bajo diversas condiciones.
+              - Eficiencia: Evalúa el desempeño del sistema en términos de tiempo y recursos.
+              - Mantenibilidad: Asegura la facilidad de actualizar o modificar el software para cumplir nuevas necesidades o corregir defectos.
+              - Usabilidad: Garantiza una experiencia de usuario positiva.
+              - Seguridad: Protege los datos y la integridad del sistema.
               `,
             },
             2: {
               path: "/modulos/1/calidad-software-conceptos-modelos-criterios/evolucion-modelos",
               title: "Evolución de los Modelos de Calidad",
               toRead: `
-              **Evolución de los Modelos de Calidad**
+              Evolución de los Modelos de Calidad
               
-              **Introducción**
+              Introducción
               
               Los modelos de calidad en software han evolucionado significativamente a lo largo del tiempo, adaptándose a las necesidades cambiantes del mercado y los avances tecnológicos. Desde los enfoques pioneros como el modelo de McCall y el modelo de Boehm, se ha recorrido un largo camino hacia modelos más detallados y específicos que consideran factores como la seguridad, la experiencia del usuario y la adaptabilidad.
               
-              **Modelos Históricos**
+              Modelos Históricos
               
               - Los primeros modelos de calidad, como el modelo de McCall, se centraron en factores fundamentales como:
-                - **Corrección:** Garantizar que el software cumpla sus especificaciones.
-                - **Eficiencia:** Optimizar el uso de recursos.
-                - **Usabilidad:** Facilitar la interacción del usuario con el sistema.
+                - Corrección: Garantizar que el software cumpla sus especificaciones.
+                - Eficiencia: Optimizar el uso de recursos.
+                - Usabilidad: Facilitar la interacción del usuario con el sistema.
               
               - Por otro lado, el modelo de Boehm amplió estas perspectivas, añadiendo criterios relacionados con:
-                - **Mantenibilidad:** Facilidad de realizar cambios y actualizaciones.
-                - **Portabilidad:** Capacidad de ser usado en diferentes entornos.
+                - Mantenibilidad: Facilidad de realizar cambios y actualizaciones.
+                - Portabilidad: Capacidad de ser usado en diferentes entornos.
               
               Estos modelos proporcionaron una base sólida para evaluar la calidad del software en sus primeras etapas de desarrollo.
               
-              **Evolución hacia Modelos Más Actuales**
+              Evolución hacia Modelos Más Actuales
               
               - A medida que el software y las expectativas de los usuarios se han vuelto más complejos, los modelos de calidad han evolucionado para incorporar criterios más detallados y específicos. 
               - Los modelos modernos consideran aspectos como:
-                - **Seguridad:** Protección frente a amenazas y vulnerabilidades.
-                - **Escalabilidad:** Capacidad de adaptarse a un aumento en la carga de trabajo.
-                - **Experiencia del Usuario (UX):** Garantizar la satisfacción y eficiencia en la interacción del usuario.
+                - Seguridad: Protección frente a amenazas y vulnerabilidades.
+                - Escalabilidad: Capacidad de adaptarse a un aumento en la carga de trabajo.
+                - Experiencia del Usuario (UX): Garantizar la satisfacción y eficiencia en la interacción del usuario.
               
               Esta evolución ha sido clave para enfrentar los desafíos asociados con nuevas tecnologías, como la inteligencia artificial y los sistemas distribuidos.
               
-              **Comparación entre Modelos Clásicos y Modernos**
+              Comparación entre Modelos Clásicos y Modernos
               
-              - **Modelos Clásicos:**
+              - Modelos Clásicos:
                 - Se enfocaban en un conjunto limitado de factores.
                 - Proporcionaban una visión general de la calidad.
               
-              - **Modelos Modernos:**
+              - Modelos Modernos:
                 - Incluyen métricas específicas para evaluar criterios como:
-                  - **Fiabilidad en entornos dinámicos.**
-                  - **Interoperabilidad.**
-                  - **Adaptabilidad.**
+                  - Fiabilidad en entornos dinámicos.
+                  - Interoperabilidad.
+                  - Adaptabilidad.
                 - Permiten una evaluación más integral y detallada.
               
               Esto permite a las organizaciones tomar decisiones más informadas y desarrollar software que no solo sea funcional, sino también competitivo en el mercado actual.
@@ -266,26 +266,26 @@ export const contenido: Contenido = {
               path: "/modulos/1/calidad-software-conceptos-modelos-criterios/criterios-calidad",
               title: "Criterios de Calidad del Software",
               toRead: `
-              **Criterios de Calidad del Software**
+              Criterios de Calidad del Software
               
               La norma ISO/IEC 25010 establece un conjunto de atributos esenciales que definen la calidad del software. Estos atributos nos permiten evaluar su desempeño y adecuación en diferentes contextos de uso. Los principales atributos incluyen la funcionalidad, la usabilidad y la seguridad. Estos son fundamentales para garantizar que el software responda adecuadamente a las necesidades del usuario, manteniendo altos estándares de eficiencia y seguridad.
               
               Por ejemplo, un sistema bancario en línea necesita tener niveles estrictos de seguridad para proteger los datos de los usuarios. Además, debe tener una interfaz intuitiva que facilite realizar transacciones de forma rápida y sencilla. Por otro lado, una aplicación educativa prioriza la usabilidad y la accesibilidad, asegurando que sea fácil de usar para personas con diferentes niveles de experiencia técnica o con discapacidades.
               
-              **Atributos de Calidad según ISO/IEC 25010**
+              Atributos de Calidad según ISO/IEC 25010
               
               Los atributos de calidad según ISO/IEC 25010 son los siguientes:
               
-              1. **Funcionalidad**: La capacidad del software para ofrecer las funciones requeridas bajo condiciones específicas.
-              2. **Usabilidad**: La facilidad con la que los usuarios pueden aprender a usar el sistema y completar tareas.
-              3. **Seguridad**: El nivel de protección contra accesos no autorizados y vulnerabilidades.
-              4. **Fiabilidad**: La capacidad del software para funcionar sin fallos durante un período determinado.
-              5. **Eficiencia**: La relación entre el rendimiento del software y los recursos utilizados.
-              6. **Mantenibilidad**: La facilidad con la que el software puede ser modificado o actualizado.
-              7. **Portabilidad**: La capacidad del software para ser utilizado en diferentes entornos.
-              8. **Compatibilidad**: La capacidad del software para interactuar con otros sistemas o aplicaciones.
+              1. Funcionalidad: La capacidad del software para ofrecer las funciones requeridas bajo condiciones específicas.
+              2. Usabilidad: La facilidad con la que los usuarios pueden aprender a usar el sistema y completar tareas.
+              3. Seguridad: El nivel de protección contra accesos no autorizados y vulnerabilidades.
+              4. Fiabilidad: La capacidad del software para funcionar sin fallos durante un período determinado.
+              5. Eficiencia: La relación entre el rendimiento del software y los recursos utilizados.
+              6. Mantenibilidad: La facilidad con la que el software puede ser modificado o actualizado.
+              7. Portabilidad: La capacidad del software para ser utilizado en diferentes entornos.
+              8. Compatibilidad: La capacidad del software para interactuar con otros sistemas o aplicaciones.
               
-              **Factores Críticos y Casos Prácticos**
+              Factores Críticos y Casos Prácticos
               
               Por otro lado, los factores críticos que definen la calidad del software dependen del contexto de uso. Por ejemplo, en el desarrollo de un sistema de comercio electrónico, la usabilidad y la eficiencia son claves para asegurar una experiencia de usuario fluida. En cambio, en una aplicación de gestión hospitalaria, la fiabilidad y la seguridad son prioritarias para proteger datos sensibles y garantizar operaciones críticas.
               
@@ -302,23 +302,23 @@ export const contenido: Contenido = {
               path: "/modulos/1/herramientas-calidad-software/planificacion-desarrollo",
               title: "Herramientas de Planificación y Desarrollo",
               toRead: `
-              **Herramientas de Planificación y Desarrollo**
+              Herramientas de Planificación y Desarrollo
               
               En la gestión de la calidad del software, las herramientas como Trello y JIRA son fundamentales para la planificación y el seguimiento de proyectos. Estas herramientas nos permiten gestionar tareas, incidentes y el backlog de manera organizada, proporcionando una visualización clara del flujo de trabajo. Esto facilita la priorización de tareas y optimiza la colaboración entre los miembros del equipo, garantizando un progreso constante hacia los objetivos establecidos.
               
-              **Herramientas de Planificación:**
+              Herramientas de Planificación:
               
-              1. **Trello**: Ideal para gestionar tareas mediante tableros, listas y tarjetas. Permite organizar el trabajo de forma visual, facilitando su seguimiento.
-              2. **JIRA**: Especialmente útil para la gestión ágil de proyectos. Incluye funcionalidades como la planificación de sprints, el seguimiento de incidencias y la administración del backlog.
+              1. Trello: Ideal para gestionar tareas mediante tableros, listas y tarjetas. Permite organizar el trabajo de forma visual, facilitando su seguimiento.
+              2. JIRA: Especialmente útil para la gestión ágil de proyectos. Incluye funcionalidades como la planificación de sprints, el seguimiento de incidencias y la administración del backlog.
               
               Ambas herramientas cuentan con funcionalidades avanzadas, como gráficos de progreso, informes y la integración con otros sistemas de gestión. Esto permite tener un control detallado de las actividades del equipo. Por ejemplo, en JIRA, se pueden gestionar incidencias desde su identificación hasta su resolución, facilitando la trazabilidad del trabajo.
               
-              **Herramientas de Desarrollo:**
+              Herramientas de Desarrollo:
               
               En el ámbito del desarrollo de software, plataformas como GitHub y GitLab juegan un rol crucial en el control de versiones y la colaboración en equipo. Estas herramientas nos permiten realizar un seguimiento detallado de los cambios realizados en el código, gestionar ramas y colaborar de manera eficiente mediante pull requests o merge requests.
               
-              1. **GitHub**: Es una plataforma ampliamente utilizada para alojar repositorios, gestionar proyectos y colaborar en el desarrollo de software.
-              2. **GitLab**: Integra funciones avanzadas como pipelines de CI/CD, herramientas de calidad y administración de proyectos, convirtiéndose en una solución integral para equipos de desarrollo.
+              1. GitHub: Es una plataforma ampliamente utilizada para alojar repositorios, gestionar proyectos y colaborar en el desarrollo de software.
+              2. GitLab: Integra funciones avanzadas como pipelines de CI/CD, herramientas de calidad y administración de proyectos, convirtiéndose en una solución integral para equipos de desarrollo.
               
               Estas plataformas no solo permiten un control eficaz del código, sino que también se integran con sistemas de calidad y herramientas de integración continua (CI/CD). Esto asegura que el código sea probado y cumpla con los estándares de calidad durante el desarrollo. Por ejemplo, los pipelines de GitLab permiten automatizar pruebas y despliegues, mejorando la eficiencia del equipo y reduciendo errores en producción.
               `,
@@ -327,27 +327,27 @@ export const contenido: Contenido = {
               path: "/modulos/1/herramientas-calidad-software/modelamiento-seguimiento",
               title: "Herramientas de Modelamiento y Seguimiento",
               toRead: `
-              **Herramientas de Modelamiento y Seguimiento**
+              Herramientas de Modelamiento y Seguimiento
               
-              **Herramientas de Modelamiento:**
+              Herramientas de Modelamiento:
               
               Las herramientas de modelamiento, como UML, implementadas en software como Enterprise Architect, son fundamentales para representar gráficamente la estructura y el comportamiento del sistema. Estas herramientas permiten crear diagramas de clases, casos de uso y secuencia, lo que ayuda a los equipos de desarrollo a comprender y planificar el diseño del software de forma clara y estructurada.
               
               Algunos de los diagramas más utilizados son:
               
-              1. **Diagramas de Clases**: Detallan las relaciones entre objetos y las estructuras de datos del sistema.
-              2. **Diagramas de Casos de Uso**: Identifican las interacciones entre los usuarios y el sistema.
-              3. **Diagramas de Secuencia**: Describen el flujo de mensajes entre los componentes del sistema.
+              1. Diagramas de Clases: Detallan las relaciones entre objetos y las estructuras de datos del sistema.
+              2. Diagramas de Casos de Uso: Identifican las interacciones entre los usuarios y el sistema.
+              3. Diagramas de Secuencia: Describen el flujo de mensajes entre los componentes del sistema.
               
               Estas representaciones son esenciales para el desarrollo de software bien diseñado, alineado con los requerimientos y las necesidades del usuario.
               
               Por ejemplo, al modelar un sistema de gestión de inventarios, se podría utilizar un diagrama de clases para mostrar las relaciones entre productos, categorías y órdenes. Esto asegura una estructura coherente para la base de datos y la lógica de negocio.
               
-              **Herramientas de Seguimiento:**
+              Herramientas de Seguimiento:
               
               En el ámbito del seguimiento de calidad, herramientas como SonarQube y Selenium juegan un papel crucial. SonarQube realiza un análisis estático del código, detectando posibles errores, vulnerabilidades y puntos de mejora en la estructura del código, lo que ayuda a mantener estándares de calidad elevados durante el desarrollo.
               
-              Por otro lado, **Selenium** permite la automatización de pruebas de software, verificando que el sistema funcione correctamente en diferentes escenarios y plataformas. Esto es especialmente útil para aplicaciones web, ya que asegura que el software sea compatible con diversos navegadores y dispositivos.
+              Por otro lado, Selenium permite la automatización de pruebas de software, verificando que el sistema funcione correctamente en diferentes escenarios y plataformas. Esto es especialmente útil para aplicaciones web, ya que asegura que el software sea compatible con diversos navegadores y dispositivos.
               
               Estas herramientas no solo optimizan la detección de errores y vulnerabilidades, sino que también mejoran la eficiencia del equipo de desarrollo al integrar procesos de control de calidad y pruebas automatizadas. Esto garantiza que el software sea robusto, funcional y de alta calidad.
               `,
@@ -362,29 +362,29 @@ export const contenido: Contenido = {
               path: "/modulos/1/normas-estandares-calidad-software/normas-internacionales",
               title: "Normas Internacionales (ISO/IEC)",
               toRead: `
-              **Normas Internacionales (ISO/IEC)**
+              Normas Internacionales (ISO/IEC)
               
-              **ISO 9001:**
+              ISO 9001:
               
               Las normas ISO/IEC establecen estándares de calidad internacionales para proyectos de software, permitiendo a las organizaciones asegurar que sus procesos y productos cumplan con criterios reconocidos globalmente. La ISO 9001 se centra en la gestión de la calidad, promoviendo prácticas para mejorar continuamente los procesos y satisfacer a los clientes en proyectos de software. Esta norma enfatiza la importancia de documentar los procedimientos y asegurar que cada fase del desarrollo sea controlada para asegurar la calidad total.
               
-              **ISO/IEC 12207:**
+              ISO/IEC 12207:
               
               La ISO/IEC 12207 define los procesos específicos para el ciclo de vida del software, desde la planificación hasta el mantenimiento. Esta norma asegura que cada fase del ciclo de vida del software esté cubierta por procesos estandarizados que garantizan un desarrollo eficiente y de alta calidad. El objetivo de esta norma es proporcionar un marco claro para gestionar los procesos de desarrollo, asegurando que el software se entregue con las especificaciones y la calidad necesarias.
               
-              **ISO/IEC 25010 (SQuaRE):**
+              ISO/IEC 25010 (SQuaRE):
               
               La ISO/IEC 25010 (SQuaRE) establece un modelo detallado de calidad para el software, categorizando las características y subcaracterísticas que son esenciales para evaluar la calidad del software. Algunas de las características clave incluyen la funcionalidad, eficiencia y usabilidad, que se desglosan en subcaracterísticas como la seguridad, la interoperabilidad, la mantenibilidad y la fiabilidad. La norma también proporciona guías prácticas sobre cómo evaluar la calidad del software a través de estos atributos.
               
-              **Objetivos de la Norma ISO 9001:**
+              Objetivos de la Norma ISO 9001:
               
               Los principales objetivos de la norma ISO 9001 son asegurar que los procesos de software se gestionen de forma eficiente y que los productos entregados cumplan con los requisitos establecidos por los clientes. La norma también promueve una mejora continua en todos los procesos, garantizando así una calidad constante en los proyectos de software.
               
-              **ISO/IEC 12207: Procesos del Ciclo de Vida del Software:**
+              ISO/IEC 12207: Procesos del Ciclo de Vida del Software:
               
               La ISO/IEC 12207 establece procesos detallados para cada fase del ciclo de vida del software, que incluyen desde la planificación, la implementación, las pruebas, hasta la operación y el mantenimiento. La aplicación práctica de esta norma en proyectos reales ayuda a optimizar la gestión del ciclo de vida del software y asegura la calidad en cada etapa, garantizando la eficiencia y el cumplimiento de los objetivos.
               
-              **ISO/IEC 25010 (SQuaRE): Modelo de Calidad del Software:**
+              ISO/IEC 25010 (SQuaRE): Modelo de Calidad del Software:
               
               La norma ISO/IEC 25010 proporciona un marco detallado para evaluar la calidad del software a través de sus características y subcaracterísticas. La norma incluye aspectos clave como la funcionalidad, fiabilidad, usabilidad y seguridad. Esta estructura permite evaluar de manera objetiva y sistemática la calidad de un sistema de software, guiando a los equipos de desarrollo y asegurando que el software cumpla con los requisitos de calidad esperados por los usuarios.
               `,
@@ -393,35 +393,35 @@ export const contenido: Contenido = {
               path: "/modulos/1/normas-estandares-calidad-software/estandares-calidad",
               title: "Estándares de Calidad (IEEE, CMMI)",
               toRead: `
-              **Estándares de Calidad (IEEE, CMMI)**
+              Estándares de Calidad (IEEE, CMMI)
               
-              **IEEE Estándares:**
+              IEEE Estándares:
               
               Los estándares de calidad propuestos por el IEEE y CMMI son esenciales en la industria del software. El IEEE establece estándares específicos, como el IEEE 730, que define la estructura para los planes de calidad de software, y el IEEE 829, que detalla los tipos de documentación de pruebas, como planes de prueba, casos de prueba e informes. Estos estándares permiten crear plantillas y guías claras para asegurar la calidad de los proyectos.
               
-              **IEEE 730 (Estándar para planes de calidad de software):**
+              IEEE 730 (Estándar para planes de calidad de software):
               
               El IEEE 730 es un estándar fundamental que proporciona la estructura para los planes de calidad del software. Este documento debe definir el enfoque general para las actividades de calidad, describir los roles y responsabilidades de los involucrados, y establecer los criterios de aceptación de los productos. Un plan de calidad bien estructurado asegura que todos los aspectos del proyecto se revisen y que se mantengan altos estándares durante el ciclo de vida del software.
               
-              - **Estructura del plan de calidad:** incluye la planificación, ejecución y evaluación de actividades de calidad.
-              - **Ejemplos prácticos de planes de calidad:** implementación de estos planes en proyectos reales muestra cómo los principios del IEEE 730 pueden ser aplicados de manera efectiva.
+              - Estructura del plan de calidad: incluye la planificación, ejecución y evaluación de actividades de calidad.
+              - Ejemplos prácticos de planes de calidad: implementación de estos planes en proyectos reales muestra cómo los principios del IEEE 730 pueden ser aplicados de manera efectiva.
               
-              **IEEE 829 (Estándar para documentación de pruebas):**
+              IEEE 829 (Estándar para documentación de pruebas):
               
               El IEEE 829 establece los tipos de documentos necesarios para la documentación de las pruebas de software, tales como el plan de pruebas, los casos de prueba y los informes. Esto garantiza que las pruebas sean exhaustivas y estén bien documentadas, lo que facilita la trazabilidad y el seguimiento de la calidad del software a lo largo de su desarrollo.
               
-              - **Tipos de documentos de pruebas:** incluye planes de pruebas, casos de prueba e informes detallados que ayudan a validar los resultados.
-              - **Plantillas y ejemplos de implementación:** las plantillas estándar proporcionadas por IEEE 829 permiten crear documentación coherente y alineada con las mejores prácticas.
+              - Tipos de documentos de pruebas: incluye planes de pruebas, casos de prueba e informes detallados que ayudan a validar los resultados.
+              - Plantillas y ejemplos de implementación: las plantillas estándar proporcionadas por IEEE 829 permiten crear documentación coherente y alineada con las mejores prácticas.
               
-              **CMMI (Capability Maturity Model Integration):**
+              CMMI (Capability Maturity Model Integration):
               
               El CMMI (Capability Maturity Model Integration) es un modelo de madurez que evalúa el nivel de desarrollo de las organizaciones en cuanto a sus procesos de software. CMMI se enfoca en mejorar los procesos y establecer áreas de procesos clave que cubren desde la planificación hasta la gestión de riesgos, ayudando a las empresas a alcanzar mayores niveles de eficacia y consistencia en el desarrollo del software.
               
-              - **Niveles de madurez organizacional:** CMMI clasifica las organizaciones en cinco niveles de madurez, desde el Nivel 1 (Inicial) hasta el Nivel 5 (Optimización). Cada nivel se centra en el fortalecimiento de los procesos y la mejora continua de las prácticas de calidad en el desarrollo de software.
+              - Niveles de madurez organizacional: CMMI clasifica las organizaciones en cinco niveles de madurez, desde el Nivel 1 (Inicial) hasta el Nivel 5 (Optimización). Cada nivel se centra en el fortalecimiento de los procesos y la mejora continua de las prácticas de calidad en el desarrollo de software.
               
-              - **Áreas de proceso que cubre CMMI:** CMMI cubre áreas de proceso esenciales, como la gestión de proyectos, el aseguramiento de la calidad, la gestión de requisitos y la mejora continua de los procesos. Estas áreas proporcionan una guía para las organizaciones en la optimización de sus capacidades y en la gestión de los riesgos asociados a sus proyectos de software.
+              - Áreas de proceso que cubre CMMI: CMMI cubre áreas de proceso esenciales, como la gestión de proyectos, el aseguramiento de la calidad, la gestión de requisitos y la mejora continua de los procesos. Estas áreas proporcionan una guía para las organizaciones en la optimización de sus capacidades y en la gestión de los riesgos asociados a sus proyectos de software.
               
-              - **Ejemplos de implementación en empresas tecnológicas:** Empresas tecnológicas de renombre han implementado CMMI para mejorar sus procesos y lograr una mayor madurez organizacional. Ejemplos como la implementación de CMMI en empresas como IBM y HP han demostrado mejoras significativas en la calidad y eficiencia del software desarrollado.
+              - Ejemplos de implementación en empresas tecnológicas: Empresas tecnológicas de renombre han implementado CMMI para mejorar sus procesos y lograr una mayor madurez organizacional. Ejemplos como la implementación de CMMI en empresas como IBM y HP han demostrado mejoras significativas en la calidad y eficiencia del software desarrollado.
               `,
             },
           },

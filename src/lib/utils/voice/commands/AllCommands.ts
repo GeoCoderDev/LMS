@@ -1,5 +1,6 @@
 import {
   buscarSubseccionesPorTitulo,
+  getNavigationPaths,
   SubseccionSearchResult,
 } from "@/lib/assets/ContenidoHelpers";
 import { CommandVoice } from "../../CommandVoice";
@@ -466,10 +467,7 @@ export const C_V_Buscar = new CommandVoice(["buscar"], () => {
                 ];
 
                 // Crear y iniciar el menú de comandos
-                const commandMenu = new CommandMenu(
-                  resultsToRead,
-                  allCommands
-                );
+                const commandMenu = new CommandMenu(resultsToRead, allCommands);
 
                 commandMenu.start();
               });
@@ -495,6 +493,61 @@ export const C_V_Leer = new CommandVoice(["leer"], () => {
         speaker.start("Leendo...", () => {
           speaker.start(contentToRead);
         });
+    }
+
+    resolve(null);
+  });
+});
+
+export const C_V_Siguiente = new CommandVoice(["siguiente"], () => {
+  return new Promise((resolve) => {
+    const currentPath = CommandVoice.getCurrentPath?.();
+
+    if (currentPath) {
+      const nextSubsection = getNavigationPaths(currentPath, "next");
+
+      if (nextSubsection.path) {
+        speaker.start(
+          `Redirigiendo a ${nextSubsection.title} ubicado en ${nextSubsection.breadcrumbText}`,
+          () => {
+            window.location.href = nextSubsection.path!;
+            resolve(null);
+          }
+        );
+      } else {
+        speaker.start(
+          `No hay una subsección siguiente en este modulo ${nextSubsection.moduleNumber}`,
+          () => resolve(null)
+        );
+      }
+    }
+
+    resolve(null);
+  });
+});
+
+
+export const C_V_Anterior = new CommandVoice(["anterior"], () => {
+  return new Promise((resolve) => {
+    const currentPath = CommandVoice.getCurrentPath?.();
+
+    if (currentPath) {
+      const prevSubsection = getNavigationPaths(currentPath, "prev");
+
+      if (prevSubsection.path) {
+        speaker.start(
+          `Redirigiendo a ${prevSubsection.title} ubicado en ${prevSubsection.breadcrumbText}`,
+          () => {
+            window.location.href = prevSubsection.path!;
+            resolve(null);
+          }
+        );
+      } else {
+        speaker.start(
+          `No hay una subsección anterior en este modulo ${prevSubsection.moduleNumber}`,
+          () => resolve(null)
+        );
+      }
     }
 
     resolve(null);

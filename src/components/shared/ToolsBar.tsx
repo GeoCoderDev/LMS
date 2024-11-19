@@ -87,18 +87,18 @@ const ToolsBar = ({
       </button>
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
 
-      {prev && (
+      {prev.path && (
         <Link
           href={prev.path}
           as={prev.path}
-          title={prev.title}
+          title={prev.title!}
           className="p-0"
         >
           <ArrowBigLeft color="#6720C2" size={"1.8rem"} />
         </Link>
       )}
-      {next && (
-        <Link href={next.path} title={next.title} className="p-0">
+      {next.path && (
+        <Link href={next.path} title={next.title!} className="p-0">
           <ArrowBigRight color="#6720C2" size={"1.8rem"} />{" "}
         </Link>
       )}
