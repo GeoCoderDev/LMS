@@ -37,7 +37,7 @@ const page = () => {
                             <li><strong>Portabilidad:</strong> La capacidad del software para ser utilizado en diferentes entornos.</li>
                             <li><strong>Compatibilidad:</strong> La capacidad del software para interactuar con otros sistemas o aplicaciones.</li>
                             <img 
-                            src="/images/png/modulo1/seccion2/atributos_De_calidad_iso.png"
+                            src="/images/png/modulo1/seccion2/atributos_de_calidad_iso.png"
                             alt="Figura atributos_De_calidad_iso"
                             className=" object-contain h-[30rem] w-full my-4"  />
                             </ul>
