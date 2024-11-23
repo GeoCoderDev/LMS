@@ -62,29 +62,31 @@ const ToolsBar = ({
           />
         )}
       </button>
-      <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
-        {(commandVoicesState === CommandVoicesStates.SPEAKING && (
-          <Detener
-            onClick={() => {
-              stopListeningOrSpeaking();
-            }}
-            className="w-[1.7rem]"
-            color="#c62525"
-            title="Dejar de leer"
-          />
-        )) ||
-          (commandVoicesState === CommandVoicesStates.IDLE && (
-            <Sonido
+      {commandVoicesState !== CommandVoicesStates.LISTENING && (
+        <button className=" -bg-black flex items-center justify-center sticky w-[2rem] h-[2rem] -border-2">
+          {(commandVoicesState === CommandVoicesStates.SPEAKING && (
+            <Detener
               onClick={() => {
-                if (!contentToRead) return;
-                readMessage(contentToRead);
+                stopListeningOrSpeaking();
               }}
-              className="w-[1.8rem] "
-              color="#6720C2"
-              title="Leer"
+              className="w-[1.7rem]"
+              color="#c62525"
+              title="Dejar de leer"
             />
-          ))}
-      </button>
+          )) ||
+            (commandVoicesState === CommandVoicesStates.IDLE && (
+              <Sonido
+                onClick={() => {
+                  if (!contentToRead) return;
+                  readMessage(contentToRead);
+                }}
+                className="w-[1.8rem] "
+                color="#6720C2"
+                title="Leer"
+              />
+            ))}
+        </button>
+      )}
       <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
 
       {prev.path && (

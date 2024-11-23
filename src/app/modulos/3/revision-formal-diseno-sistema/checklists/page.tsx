@@ -14,7 +14,7 @@ const page = () => {
 
                         <section className="mb-6 text-justify">
                             <p className="text-black mb-4">
-                            Las *checklists* o listas de verificación son herramientas esenciales para garantizar una revisión estructurada y exhaustiva en proyectos de desarrollo de software. Estas listas permiten evaluar aspectos específicos del diseño, identificando potenciales áreas de mejora y asegurando la calidad del sistema.
+                            Las checklists o listas de verificación son herramientas esenciales para garantizar una revisión estructurada y exhaustiva en proyectos de desarrollo de software. Estas listas permiten evaluar aspectos específicos del diseño, identificando potenciales áreas de mejora y asegurando la calidad del sistema.
                             </p>
                             <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-4">
                             Una checklist bien diseñada es el primer paso hacia un diseño robusto y libre de errores.
@@ -41,7 +41,7 @@ const page = () => {
                             </li>
                             </ul>
                             <p className="text-black mb-4">
-                            Por ejemplo, en el diseño de un sistema de comercio electrónico, se puede incluir en la checklist preguntas como: *¿Los módulos de pago están aislados del resto del sistema?* o *¿Se han definido medidas para mitigar ataques DDoS?*
+                            Por ejemplo, en el diseño de un sistema de comercio electrónico, se puede incluir en la checklist preguntas como: ¿Los módulos de pago están aislados del resto del sistema? o ¿Se han definido medidas para mitigar ataques DDoS?
                             </p>
                         </section>
 
@@ -62,14 +62,14 @@ const page = () => {
                             </li>
                             </ul>
                             <p className="text-black mb-4">
-                            Un ejemplo práctico sería una checklist para un sistema hospitalario que incluya preguntas como: *¿Se garantiza la encriptación de datos sensibles?* y *¿Existen medidas de respaldo y recuperación ante fallos?*
+                            Un ejemplo práctico sería una checklist para un sistema hospitalario que incluya preguntas como: ¿Se garantiza la encriptación de datos sensibles? y ¿Existen medidas de respaldo y recuperación ante fallos?
                             </p>
                         </section>
 
                         <section className="mb-6 text-justify">
                             <h3 className="text-xl font-semibold mb-2">Herramientas para la Creación de Checklists</h3>
                             <p className="text-black mb-4">
-                            Diversas herramientas digitales pueden facilitar la creación, organización y seguimiento de *checklists*. Algunas de las más utilizadas incluyen:
+                            Diversas herramientas digitales pueden facilitar la creación, organización y seguimiento de checklists. Algunas de las más utilizadas incluyen:
                             </p>
                             <ul className="list-disc pl-6 space-y-2 text-black mb-4">
                             <li>
@@ -80,7 +80,7 @@ const page = () => {
                             </li>
                             </ul>
                             <p className="text-black mb-4">
-                            Por ejemplo, se puede usar Trello para dividir las listas en tableros como *Revisión de diseño*, *Pruebas de rendimiento* y *Validación de seguridad*, asignando responsables para cada tarea.
+                            Por ejemplo, se puede usar Trello para dividir las listas en tableros como Revisión de diseño, Pruebas de rendimiento y Validación de seguridad, asignando responsables para cada tarea.
                             </p>
                         </section>
                         </article>
