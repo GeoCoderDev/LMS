@@ -93,17 +93,31 @@ export const C_M_Modulo_4 = new CommandMenu(
     C_V_Modulo_4_Seccion_7,
   ]
 );
+
 export const C_M_Subsecciones = new CommandMenu(
   ``,
-  [C_V_Leer, C_V_Siguiente, C_V_Anterior],
+  [
+    C_V_Leer,
+    C_V_Siguiente,
+    C_V_Anterior,
+    C_V_Buscar,
+    C_V_Modulo_1,
+    C_V_Modulo_2,
+    C_V_Modulo_3,
+    C_V_Modulo_4,
+  ],
   (currentPath: string) => {
     const subsectionTitle = getSubsectionTitle(currentPath);
-    return `Te encuentras en la subsección: ${subsectionTitle}. 
+    return `Te encuentras en la subsección: ${subsectionTitle}.
     Comandos de voz disponibles:
-    Di "leer" para escuchar el contenido.
-    Di "siguiente" para avanzar a la siguiente subsección.
-    Di "anterior" para regresar a la subsección previa.
-    Para detener la lectura en cualquier momento, presiona Control más Alt más X.
+    - Di "leer" para escuchar el contenido.
+    - Di "siguiente" para avanzar a la siguiente subsección.
+    - Di "anterior" para regresar a la subsección previa.
+    - Para detener la lectura en cualquier momento, presiona Control más Alt más X.
+
+    También puedes dirigirte directamente a cualquiera de los módulos diciendo: 
+    "módulo uno", "módulo dos", "módulo tres" o "módulo cuatro".
+
     ¿Qué deseas hacer?`;
   }
 );
