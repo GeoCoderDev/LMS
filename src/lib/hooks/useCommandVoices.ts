@@ -5,6 +5,7 @@ import { CommandVoicesStates } from "../interfaces/CommandVoicesState";
 
 import {
   C_M_Home,
+  C_M_Menu_Modulos,
   C_M_Modulo_1,
   C_M_Modulo_2,
   C_M_Modulo_3,
@@ -71,8 +72,10 @@ const useCommandVoices = (currentPath: string) => {
   const iniciarComandosDeVoz = () => {
     if (!window) return;
 
-    if (currentPath === "/" || currentPath === "/modulos") {
+    if (currentPath === "/") {
       C_M_Home.start();
+    } else if (currentPath === "/modulos") {
+      C_M_Menu_Modulos.start();
     } else if (currentPath === "/modulos/1") {
       C_M_Modulo_1.start();
     } else if (currentPath === "/modulos/2") {

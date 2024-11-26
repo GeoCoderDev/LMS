@@ -4,7 +4,7 @@ import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
 import Detener from "../icons/Detener";
-import Compartir from "../icons/Compartir";
+// import Compartir from "../icons/Compartir";
 import { Link } from "next-view-transitions";
 import { getUpperPath } from "@/lib/helpers/functions/getUpperPath";
 import useCommandVoices from "@/lib/hooks/useCommandVoices";
@@ -87,7 +87,7 @@ const ToolsBar = ({
             ))}
         </button>
       )}
-      <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" />
+      {/* <Compartir className="w-[1.8rem]" color="#6720C2" title="Compartir" /> */}
 
       {prev.path && (
         <Link
