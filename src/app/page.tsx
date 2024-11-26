@@ -64,6 +64,7 @@ export default function Home() {
         </div>
 
         <Mando className="aspect-auto w-[16rem] md:w-[18rem]  lg:w-[20vw] animate__animated animate__rubberBand animate__infinite animate__delay-5s" />
+        
       </div>
 
       <style
