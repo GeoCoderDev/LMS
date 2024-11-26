@@ -14,6 +14,19 @@ import { CommandMenu } from "../../CommandMenu";
 import { numberToText } from "@/lib/helpers/functions/numberToText";
 
 const speaker = Speaker.getInstance();
+
+//Comandos para otras paginas
+
+export const C_V_Contacto = new CommandVoice(
+  ["contacto", "modulo1", "módulo 1", "modulo 1", "módulo uno"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start("Redirigiendo al Módulo 1.", () => resolve(null));
+      window.location.href = "/modulos/1";
+    });
+  }
+);
+
 //Comandos Modulo 1
 
 export const C_V_Modulo_1 = new CommandVoice(
@@ -525,7 +538,6 @@ export const C_V_Siguiente = new CommandVoice(["siguiente"], () => {
     resolve(null);
   });
 });
-
 
 export const C_V_Anterior = new CommandVoice(["anterior"], () => {
   return new Promise((resolve) => {
