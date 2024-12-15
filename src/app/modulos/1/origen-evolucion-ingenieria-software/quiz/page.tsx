@@ -3,6 +3,8 @@ import { Pregunta } from "@/lib/quiz/interfaces";
 import React from "react";
 import { createQuizData } from "@/lib/quiz/createQuizData";
 
+
+
 const page = () => {
   const preguntas: Pregunta[] = [
     {

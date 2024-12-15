@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import ShowResources from "../icons/ShowResources";
 import HideResources from "../icons/HideResources";
 import Sonido from "../icons/Sonido";
@@ -14,6 +13,8 @@ import { getCurrentToRead } from "@/lib/assets/Contenido";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { getNavigationPaths } from "@/lib/assets/ContenidoHelpers";
 
+
+
 const ToolsBar = ({
   viewResources,
   setViewResources,
@@ -23,6 +24,9 @@ const ToolsBar = ({
   setViewResources: React.Dispatch<React.SetStateAction<boolean>>;
   currentPath: string;
 }) => {
+  
+
+
   const contentToRead = getCurrentToRead(currentPath);
   const { commandVoicesState, stopListeningOrSpeaking, readMessage } =
     useCommandVoices(currentPath);

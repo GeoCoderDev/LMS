@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoRecurso {
+  PDF
+  PaginaExterna
+  VideoYoutube
+}
+
+type RecursosComplementarios {
+  url     String
+  tipo    TipoRecurso
+  titulo  String?
+}
+
+model Subseccion {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  ruta        String
+  titulo      String
+  numeroOrden Int      @unique
+  paraLeer    String
+  contenidoHtml String?  // Campo para contenido HTML
+  recursosComplementarios RecursosComplementarios[] // Campo para recursos
+  seccionId   String   @db.ObjectId
+  Seccion     Seccion  @relation(fields: [seccionId], references: [id])
+}
+
+model Seccion {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  indice       String
+  titulo       String
+  numeroOrden  Int          @unique
+  subsecciones Subseccion[]
+  moduloId     String       @db.ObjectId
+  Modulo       Modulo       @relation(fields: [moduloId], references: [id])
+  Pregunta     Pregunta[]
+}
+
+model Modulo {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  indice      String    @unique
+  titulo      String
+  descripcion String
+  numeroOrden Int       @unique
+  secciones   Seccion[]
+}
+
+model Pregunta {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  pregunta   String
+  respuestas Respuesta[]
+  seccionId  String      @db.ObjectId
+  Seccion    Seccion     @relation(fields: [seccionId], references: [id])
+}
+
+type Respuesta {
+  texto      String
+  esCorrecta Boolean
+}
+
+model Administrador {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  nombreUsuario String   @unique              // Nombre de usuario único
+  contraseña    String                       // Contraseña hasheada
+  creadoEn      DateTime @default(now())     // Fecha de creación
+  actualizadoEn DateTime @updatedAt          // Fecha de última actualización
+}

@@ -7,7 +7,7 @@ const page = () => {
         <PageInformation
             contentToRead={
                 <>
-                <article className="-py-8 -px-4 bg-white -text-gray-800">
+                <article>
                     <h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2">
                         Importancia de la Ingeniería de Software
                     </h2>

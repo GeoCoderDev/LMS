@@ -1,4 +1,5 @@
-// types.ts
+
+
 export interface Respuesta {
   texto: string;
   esCorrecta: boolean;
