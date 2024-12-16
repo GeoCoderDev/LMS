@@ -14,21 +14,21 @@ enum TipoRecurso {
 }
 
 type RecursosComplementarios {
-  url     String
-  tipo    TipoRecurso
-  titulo  String?
+  url    String
+  tipo   TipoRecurso
+  titulo String?
 }
 
 model Subseccion {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  ruta        String
-  titulo      String
-  numeroOrden Int      @unique
-  paraLeer    String
-  contenidoHtml String?  // Campo para contenido HTML
+  id                      String                    @id @default(auto()) @map("_id") @db.ObjectId
+  ruta                    String
+  titulo                  String
+  numeroOrden             Int                       @unique
+  paraLeer                String
+  contenidoHtml           String? // Campo para contenido HTML
   recursosComplementarios RecursosComplementarios[] // Campo para recursos
-  seccionId   String   @db.ObjectId
-  Seccion     Seccion  @relation(fields: [seccionId], references: [id])
+  seccionId               String                    @db.ObjectId
+  Seccion                 Seccion                   @relation(fields: [seccionId], references: [id])
 }
 
 model Seccion {
@@ -66,8 +66,8 @@ type Respuesta {
 
 model Administrador {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  nombreUsuario String   @unique              // Nombre de usuario único
-  contraseña    String                       // Contraseña hasheada
-  creadoEn      DateTime @default(now())     // Fecha de creación
-  actualizadoEn DateTime @updatedAt          // Fecha de última actualización
+  nombreUsuario String   @unique // Nombre de usuario único
+  contraseña   String // Contraseña hasheada
+  creadoEn      DateTime @default(now()) // Fecha de creación
+  actualizadoEn DateTime @updatedAt // Fecha de última actualización
 }
