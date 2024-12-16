@@ -6,9 +6,10 @@ import React, { useEffect } from "react";
 import Breadcrumb from "./Breadcrumb";
 
 const SubHeader = ({ currentPath }: { currentPath: string }) => {
+      
   useEffect(() => {
     const createModulo = async () => {
-      try {
+
         const response = await fetch("/api/modulos", {
           method: "GET",    
         });
@@ -20,9 +21,7 @@ const SubHeader = ({ currentPath }: { currentPath: string }) => {
           const errorData = await response.json();
           console.error("Error al crear el módulo:", errorData.error || "Desconocido");
         }
-      } catch (error) {
-        console.error("Error al enviar la solicitud:", error);
-      }
+
     };
 
     createModulo();

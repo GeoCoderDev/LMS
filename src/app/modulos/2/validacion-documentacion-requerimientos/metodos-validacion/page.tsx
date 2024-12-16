@@ -7,7 +7,7 @@ const page = () => {
             
             contentToRead={
             <>
-                <article className="-border-2 border-green-500">
+                <article>
                     <h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2 pt-2">
                     Métodos de Validación
                     </h2>

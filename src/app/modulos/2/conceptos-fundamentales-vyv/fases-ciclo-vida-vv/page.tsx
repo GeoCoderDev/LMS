@@ -3,14 +3,11 @@ import DownloadFileButton from "@/components/shared/DownloadFileButton";
 import PageInformation from "@/components/shared/PageInformation";
 
 const page = () => {
-
-
   return (
     <PageInformation
-     
       contentToRead={
         <>
-          <article className="-py-8 -px-4 bg-white -text-gray-800">
+          <article>
             <h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2">
               Fases del Ciclo de Vida donde se Aplica V&V
             </h2>
@@ -90,6 +87,7 @@ const page = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
+          
           <DownloadFileButton
             fileURL={
               "https://drive.google.com/file/d/10-pN_uVhtIlmnL6rl0Zry8uZHkxDlLSW/view?usp=sharing"

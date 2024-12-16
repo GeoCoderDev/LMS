@@ -6,104 +6,133 @@ export async function createSubseccion() {
     // Crear subsección con los datos proporcionados
     const subseccion = await prisma.subseccion.create({
       data: {
-        ruta: "/modulos/1/origen-evolucion-ingenieria-software/importancia",
-        titulo: "Importancia de la Ingeniería de Software",
-        numeroOrden: 4,
+        ruta: "/modulos/3/herramientas-vyv-diseno-sistema/gestion-trazabilidad",
+        titulo: "Herramientas de Gestión de Requisitos y Trazabilidad",
+        numeroOrden: 2,
         paraLeer: `
-                Importancia de la Ingeniería de Software
-                
-                La ingeniería de software desempeña un papel crucial en garantizar la calidad y eficiencia en el desarrollo de aplicaciones. Esta disciplina no solo minimiza los errores y reduce los costos de producción, sino que también asegura la satisfacción del cliente al proporcionar productos confiables y adaptables. Un enfoque bien estructurado en la ingeniería de software permite a las empresas obtener una ventaja competitiva significativa al ofrecer soluciones que se mantienen actualizadas frente a las cambiantes demandas del mercado.
-                
-                Impacto en la Calidad y Eficiencia de los Proyectos
-                
-                La implementación de prácticas sólidas en ingeniería de software mejora significativamente la calidad de los proyectos, reduciendo defectos y aumentando la eficiencia en cada etapa del desarrollo. Además, asegura que los productos sean escalables y fáciles de mantener, permitiendo que las organizaciones respondan rápidamente a las nuevas necesidades de los usuarios.
-                
-                Análisis de las Ventajas Competitivas
-                
-                Una buena ingeniería de software proporciona a las empresas una ventaja estratégica al reducir el tiempo de desarrollo, optimizar recursos y mejorar la experiencia del usuario. Empresas líderes como Amazon han utilizado la ingeniería de software para optimizar sus operaciones y superar a la competencia, mientras que otras organizaciones han enfrentado graves consecuencias por no aplicar principios adecuados.
-                
-                Casos de Éxito y Fracaso en Ingeniería de Software
-                
-                Ejemplos como el sistema de gestión de operaciones de Amazon destacan cómo una ingeniería de software bien aplicada puede mejorar la productividad y garantizar la excelencia operativa. Por otro lado, casos como el fracaso del Mars Climate Orbiter, donde errores en la gestión del software llevaron a la pérdida de la misión, subrayan la importancia de un enfoque meticuloso en esta disciplina. Estas lecciones refuerzan la necesidad de priorizar la calidad en todos los aspectos del ciclo de vida del software.
-                `,
+              Herramientas de Gestión de Requisitos y Trazabilidad
+              La gestión de requisitos y su trazabilidad son aspectos críticos en el desarrollo de software, ya que garantizan que las necesidades del cliente estén claramente definidas, documentadas y validadas a lo largo del ciclo de vida del proyecto. Herramientas como IBM Rational DOORS, Jira y Confluence ofrecen funcionalidades avanzadas para gestionar requisitos y asegurar la coherencia en los diseños.
+              
+              IBM Rational DOORS: Gestión Avanzada de Requisitos
+              IBM Rational DOORS es una herramienta líder en la gestión de requisitos que facilita la trazabilidad y validación del diseño. Su capacidad de integrar requisitos con el diseño del sistema permite mantener consistencia y control sobre el proyecto.
+              
+              Con DOORS, los equipos pueden realizar análisis de impacto y garantizar que los requisitos estén alineados con los objetivos del proyecto.
+              Por ejemplo, en proyectos de sistemas críticos como la industria aeroespacial, DOORS ha sido utilizado para gestionar requisitos complejos y garantizar trazabilidad desde la concepción hasta la validación final del producto.
+              
+              Jira y Confluence: Trazabilidad y Seguimiento del Diseño
+              Jira y Confluence son herramientas ampliamente utilizadas para gestionar proyectos ágiles. Jira se centra en el seguimiento de tareas y la trazabilidad de los requisitos, mientras que Confluence permite documentar procesos y crear wikis colaborativos para el equipo.
+              
+              Una integración típica de Jira y Confluence incluye la vinculación de historias de usuario en Jira con documentos detallados en Confluence. Esta conexión mejora la trazabilidad y permite a los equipos mantener un historial centralizado de decisiones, cambios y validaciones.
+              
+              - Jira: Gestión de historias de usuario, tareas y defectos.
+              - Confluence: Documentación centralizada de requisitos y decisiones.
+              
+              Tutoriales y Casos Prácticos
+              Existen múltiples tutoriales para aprender a utilizar estas herramientas de manera integrada. Por ejemplo, los equipos pueden crear un flujo de trabajo en Jira que capture los requisitos iniciales y los enlace directamente a páginas en Confluence que contengan la documentación de respaldo.
+              
+              La combinación de Jira y Confluence proporciona una solución integral para gestionar requisitos, planificación y documentación.
+              En proyectos educativos, esta integración se ha utilizado para planificar currículos, mapear objetivos de aprendizaje y realizar seguimientos de revisiones por parte de los equipos docentes.
+              `,
         contenidoHtml: `<h2 className=" -sticky top-0 bg-white text-[1.75rem] font-semibold mb-2">
-                          Importancia de la Ingeniería de Software
-                      </h2>
-  
-                      <section className="mb-6">
-                          <p className="text-black mb-4 text-justify">
-                          La <strong>ingeniería de software</strong> desempeña un papel crucial
-                          en garantizar la calidad y eficiencia en el desarrollo de aplicaciones.
-                          Esta disciplina no solo minimiza los errores y reduce los costos de
-                          producción, sino que también asegura la satisfacción del cliente al
-                          proporcionar productos confiables y adaptables. Un enfoque bien
-                          estructurado en la ingeniería de software permite a las empresas obtener
-                          una ventaja competitiva significativa al ofrecer soluciones que se
-                          mantienen actualizadas frente a las cambiantes demandas del mercado.
-                          <img 
-                              src="/images/png/modulo1/seccion1/importancia_is.jpg"
-                              alt="Figura oriimportancia_is"
-                              className=" object-contain h-[20rem] w-full my-4"  />
-                          </p>
-                      </section>
-  
-                      <section className="mb-6">
-                          <h3 className="text-xl font-semibold mb-2">
-                          Impacto en la Calidad y Eficiencia de los Proyectos
-                          </h3>
-                          <p className="text-black mb-4 text-justify">
-                          La implementación de prácticas sólidas en ingeniería de software mejora
-                          significativamente la calidad de los proyectos, reduciendo defectos y
-                          aumentando la eficiencia en cada etapa del desarrollo. Además, asegura
-                          que los productos sean escalables y fáciles de mantener, permitiendo que
-                          las organizaciones respondan rápidamente a las nuevas necesidades de los
-                          usuarios.
-                          </p>
-                      </section>
-  
-                      <section className="mb-6">
-                          <h3 className="text-xl font-semibold mb-2">
-                          Análisis de las Ventajas Competitivas
-                          </h3>
-                          <p className="text-black mb-4 text-justify">
-                          Una buena ingeniería de software proporciona a las empresas una ventaja
-                          estratégica al reducir el tiempo de desarrollo, optimizar recursos y
-                          mejorar la experiencia del usuario. Empresas líderes como Amazon han
-                          utilizado la ingeniería de software para optimizar sus operaciones y
-                          superar a la competencia, mientras que otras organizaciones han
-                          enfrentado graves consecuencias por no aplicar principios adecuados.
-                          </p>
-                      </section>
-  
-                      <section className="mb-6">
-                          <blockquote className="border-l-4 border-gray-400 pl-4 text-gray-700 italic mb-4">
-  
-                              <h3 className="text-xl font-semibold mb-2">
-                              Casos de Éxito y Fracaso en Ingeniería de Software
-                              </h3>
-                              <p className="text-black mb-4 text-justify">
-                              Ejemplos como el sistema de gestión de operaciones de <strong>Amazon</strong>
-                              destacan cómo una ingeniería de software bien aplicada puede mejorar la
-                              productividad y garantizar la excelencia operativa. Por otro lado, casos
-                              como el fracaso del <strong>Mars Climate Orbiter</strong>, donde errores
-                              en la gestión del software llevaron a la pérdida de la misión, subrayan
-                              la importancia de un enfoque meticuloso en esta disciplina. Estas
-                              lecciones refuerzan la necesidad de priorizar la calidad en todos los
-                              aspectos del ciclo de vida del software.
-                              <img 
-                              src="/images/png/modulo1/seccion1/amazon-logo.png"
-                              alt="Figura oriamazon-logo"
-                              className=" object-contain h-[10rem] w-full my-4"  />
-                              </p>
-                          </blockquote>
-                      </section>`,
+              Herramientas de Gestión de Requisitos y Trazabilidad
+            </h2>
+
+            <section className="mb-6 text-justify">
+              <p className="text-black mb-4">
+                La gestión de requisitos y su trazabilidad son aspectos críticos
+                en el desarrollo de software, ya que garantizan que las
+                necesidades del cliente estén claramente definidas, documentadas
+                y validadas a lo largo del ciclo de vida del proyecto.
+                Herramientas como <strong>IBM Rational DOORS</strong>,{" "}
+                <strong>Jira</strong> y <strong>Confluence</strong> ofrecen
+                funcionalidades avanzadas para gestionar requisitos y asegurar
+                la coherencia en los diseños.
+              </p>
+            </section>
+
+            <section className="mb-6 text-justify">
+              <h3 className="text-xl font-semibold mb-2">
+                IBM Rational DOORS: Gestión Avanzada de Requisitos
+              </h3>
+              <p className="text-black mb-4">
+                IBM Rational DOORS es una herramienta líder en la gestión de
+                requisitos que facilita la trazabilidad y validación del diseño.
+                Su capacidad de integrar requisitos con el diseño del sistema
+                permite mantener consistencia y control sobre el proyecto.
+              </p>
+              <blockquote className="text-gray-700 italic border-l-4 pl-4 border-gray-300 mb-4">
+                Con DOORS, los equipos pueden realizar análisis de impacto y
+                garantizar que los requisitos estén alineados con los objetivos
+                del proyecto.
+              </blockquote>
+              <p className="text-black mb-4">
+                Por ejemplo, en proyectos de sistemas críticos como la industria
+                aeroespacial, DOORS ha sido utilizado para gestionar requisitos
+                complejos y garantizar trazabilidad desde la concepción hasta la
+                validación final del producto.
+              </p>
+            </section>
+
+            <section className="mb-6 text-justify">
+              <h3 className="text-xl font-semibold mb-2">
+                Jira y Confluence: Trazabilidad y Seguimiento del Diseño
+              </h3>
+              <p className="text-black mb-4">
+                Jira y Confluence son herramientas ampliamente utilizadas para
+                gestionar proyectos ágiles. Jira se centra en el seguimiento de
+                tareas y la trazabilidad de los requisitos, mientras que
+                Confluence permite documentar procesos y crear wikis
+                colaborativos para el equipo.
+              </p>
+              <p className="text-black mb-4">
+                Una integración típica de Jira y Confluence incluye la
+                vinculación de historias de usuario en Jira con documentos
+                detallados en Confluence. Esta conexión mejora la trazabilidad y
+                permite a los equipos mantener un historial centralizado de
+                decisiones, cambios y validaciones.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-black mb-4">
+                <li>
+                  <strong>Jira:</strong> Gestión de historias de usuario, tareas
+                  y defectos.
+                </li>
+                <li>
+                  <strong>Confluence:</strong> Documentación centralizada de
+                  requisitos y decisiones.
+                </li>
+              </ul>
+            </section>
+
+            <section className="mb-6 text-justify">
+              <h3 className="text-xl font-semibold mb-2">
+                Tutoriales y Casos Prácticos
+              </h3>
+              <p className="text-black mb-4">
+                Existen múltiples tutoriales para aprender a utilizar estas
+                herramientas de manera integrada. Por ejemplo, los equipos
+                pueden crear un flujo de trabajo en Jira que capture los
+                requisitos iniciales y los enlace directamente a páginas en
+                Confluence que contengan la documentación de respaldo.
+              </p>
+              <blockquote className="text-gray-700 italic border-l-4 pl-4 border-gray-300 mb-4">
+                La combinación de Jira y Confluence proporciona una solución
+                integral para gestionar requisitos, planificación y
+                documentación.
+              </blockquote>
+              <p className="text-black mb-4">
+                En proyectos educativos, esta integración se ha utilizado para
+                planificar currículos, mapear objetivos de aprendizaje y
+                realizar seguimientos de revisiones por parte de los equipos
+                docentes.
+              </p>
+            </section>`,
         recursosComplementarios: [
           {
-            url: "https://www.youtube.com/watch?v=IFhEQkvCJ9g",
-            tipo: "VideoYoutube",
+            url: "https://es.parasoft.com/blog/requirements-management-and-the-traceability-matrix/",
+            tipo: "PaginaExterna",
           },
         ],
-        seccionId: "675e5c3f9d1760487a490f88", // Cambiar por el ID de la sección existente
+        seccionId: "675f6bdb0353da208acc6087", // Cambiar por el ID de la sección existente
       },
     });
 
@@ -118,16 +147,16 @@ export async function createSubseccion() {
 export async function crearSeccion() {
   try {
     // Crear el primer módulo
-    const modulo1 = await prisma.seccion.create({
+    const seccion1 = await prisma.seccion.create({
       data: {
-        indice: "/modulos/1/calidad-software-conceptos-modelos-criterios",
-        titulo: "Calidad de Software: Conceptos, Modelos y Criterios",
-        moduloId: "675e5c3f9d1760487a490f87",
-        numeroOrden: 2,
+        indice: "/modulos/3/herramientas-vyv-diseno-sistema",
+        titulo: "Herramientas de V&V para Diseño de Sistema",
+        moduloId: "675e672f9d1760487a490fca",
+        numeroOrden: 5,
       },
     });
 
-    console.log("Contenido migrado exitosamente:", modulo1);
+    console.log("Contenido migrado exitosamente:", seccion1);
   } catch (error) {
     console.error("Error al migrar contenido:", error);
   } finally {

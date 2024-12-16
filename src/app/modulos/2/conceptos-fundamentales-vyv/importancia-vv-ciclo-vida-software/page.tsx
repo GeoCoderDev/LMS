@@ -6,7 +6,6 @@ const page = () => {
     "https://www.sqs.es/verificacion-y-validacion-de-software/";
   const externalResource2 =
     "https://www.mat.uson.mx/~mireles/gestionCalidad/GCcosto.html";
-
   return (
     <PageInformation
       contentToRead={

@@ -14,41 +14,46 @@ enum TipoRecurso {
 }
 
 type RecursosComplementarios {
-  url     String
-  tipo    TipoRecurso
-  titulo  String?
+  url    String
+  tipo   TipoRecurso
+  titulo String?
 }
 
 model Subseccion {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  ruta        String
-  titulo      String
-  numeroOrden Int      @unique
-  paraLeer    String
-  contenidoHtml String?  // Campo para contenido HTML
-  recursosComplementarios RecursosComplementarios[] // Campo para recursos
-  seccionId   String   @db.ObjectId
-  Seccion     Seccion  @relation(fields: [seccionId], references: [id])
+  id                      String                    @id @default(auto()) @map("_id") @db.ObjectId
+  ruta                    String
+  titulo                  String
+  numeroOrden             Int
+  paraLeer                String
+  contenidoHtml           String?
+  recursosComplementarios RecursosComplementarios[]
+  seccionId               String                    @db.ObjectId
+  Seccion                 Seccion                   @relation(fields: [seccionId], references: [id])
+
+  @@unique([seccionId, numeroOrden])
 }
 
 model Seccion {
   id           String       @id @default(auto()) @map("_id") @db.ObjectId
   indice       String
   titulo       String
-  numeroOrden  Int          @unique
+  numeroOrden  Int
   subsecciones Subseccion[]
   moduloId     String       @db.ObjectId
   Modulo       Modulo       @relation(fields: [moduloId], references: [id])
   Pregunta     Pregunta[]
+
+  @@unique([moduloId, numeroOrden])
 }
 
 model Modulo {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  indice      String    @unique
-  titulo      String
-  descripcion String
-  numeroOrden Int       @unique
-  secciones   Seccion[]
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  indice       String    @unique
+  titulo       String
+  descripcion  String
+  numeroOrden  Int       @unique
+  descripcion2 String
+  secciones    Seccion[]
 }
 
 model Pregunta {
@@ -66,8 +71,8 @@ type Respuesta {
 
 model Administrador {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  nombreUsuario String   @unique              // Nombre de usuario único
-  contraseña    String                       // Contraseña hasheada
-  creadoEn      DateTime @default(now())     // Fecha de creación
-  actualizadoEn DateTime @updatedAt          // Fecha de última actualización
+  nombreUsuario String   @unique // Nombre de usuario único
+  contraseña   String // Contraseña hasheada
+  creadoEn      DateTime @default(now()) // Fecha de creación
+  actualizadoEn DateTime @updatedAt // Fecha de última actualización
 }
