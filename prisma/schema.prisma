@@ -34,14 +34,15 @@ model Subseccion {
 }
 
 model Seccion {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  indice       String
-  titulo       String
-  numeroOrden  Int
-  subsecciones Subseccion[]
-  moduloId     String       @db.ObjectId
-  Modulo       Modulo       @relation(fields: [moduloId], references: [id])
-  Pregunta     Pregunta[]
+  id                    String                  @id @default(auto()) @map("_id") @db.ObjectId
+  indice                String
+  titulo                String
+  numeroOrden           Int
+  subsecciones          Subseccion[]
+  moduloId              String                  @db.ObjectId
+  Modulo                Modulo                  @relation(fields: [moduloId], references: [id])
+  Pregunta              Pregunta[]
+  ResultadoCuestionario ResultadoCuestionario[]
 
   @@unique([moduloId, numeroOrden])
 }
@@ -52,7 +53,6 @@ model Modulo {
   titulo       String
   descripcion  String
   numeroOrden  Int       @unique
-  descripcion2 String
   secciones    Seccion[]
 }
 
@@ -86,4 +86,22 @@ model Consultas {
   mensaje       String // Queja o consulta del usuario
   creadoEn      DateTime @default(now()) // Fecha de creación
   actualizadoEn DateTime @updatedAt // Fecha de última actualización
+}
+
+model ResultadoCuestionario {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  seccionId       String  @db.ObjectId
+  Seccion         Seccion @relation(fields: [seccionId], references: [id])
+  puntajeObtenido Int
+  puntajeTotal    Int
+
+  // Información opcional de identificación
+  direccionIp String?
+
+  // Metadatos de tiempo
+  fechaRealizacion DateTime @default(now())
+
+  // Información adicional opcional
+  navegador        String?
+  sistemaOperativo String?
 }

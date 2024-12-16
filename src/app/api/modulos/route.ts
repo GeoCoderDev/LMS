@@ -1,4 +1,7 @@
-import { crearSeccion, createSubseccion } from "@/lib/helpers/functions/temporalCreators";
+import {
+  crearSeccion,
+  createSubseccion,
+} from "@/lib/helpers/functions/temporalCreators";
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
@@ -6,7 +9,6 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
   try {
-
     crearSeccion();
     // createSubseccion();
 
@@ -51,7 +53,7 @@ export async function POST(req: NextRequest) {
     const { indice, titulo, descripcion, numeroOrden } = await req.json();
 
     const modulo = await prisma.modulo.create({
-      data: { indice, titulo, descripcion, numeroOrden },
+      data: { descripcion, indice, numeroOrden, titulo },
     });
 
     return NextResponse.json(modulo, { status: 201 });
