@@ -75,4 +75,5 @@ model Administrador {
   contraseña   String // Contraseña hasheada
   creadoEn      DateTime @default(now()) // Fecha de creación
   actualizadoEn DateTime @updatedAt // Fecha de última actualización
+
 }

@@ -1,8 +1,13 @@
+'use client'
 import React from 'react'
+import Header from '@/components/Header';
 
 const Contacto = () => {
   return (
-    <div>Contacto</div>
+    <>
+      <Header />
+
+    </>
   )
 }
 
