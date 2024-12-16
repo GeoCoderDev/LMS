@@ -48,12 +48,12 @@ model Seccion {
 }
 
 model Modulo {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  indice       String    @unique
-  titulo       String
-  descripcion  String
-  numeroOrden  Int       @unique
-  secciones    Seccion[]
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  indice      String    @unique
+  titulo      String
+  descripcion String
+  numeroOrden Int       @unique
+  secciones   Seccion[]
 }
 
 model Pregunta {
@@ -89,11 +89,12 @@ model Consultas {
 }
 
 model ResultadoCuestionario {
-  id              String  @id @default(auto()) @map("_id") @db.ObjectId
-  seccionId       String  @db.ObjectId
-  Seccion         Seccion @relation(fields: [seccionId], references: [id])
-  puntajeObtenido Int
-  puntajeTotal    Int
+  id                     String  @id @default(auto()) @map("_id") @db.ObjectId
+  seccionId              String  @db.ObjectId
+  Seccion                Seccion @relation(fields: [seccionId], references: [id])
+  puntajeObtenido        Int
+  puntajeTotal           Int
+  cantidadTotalPreguntas Int
 
   // Información opcional de identificación
   direccionIp String?
