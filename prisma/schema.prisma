@@ -29,6 +29,7 @@ model Subseccion {
   recursosComplementarios RecursosComplementarios[]
   seccionId               String                    @db.ObjectId
   Seccion                 Seccion                   @relation(fields: [seccionId], references: [id])
+
   @@unique([seccionId, numeroOrden])
 }
 
@@ -74,5 +75,4 @@ model Administrador {
   contraseña   String // Contraseña hasheada
   creadoEn      DateTime @default(now()) // Fecha de creación
   actualizadoEn DateTime @updatedAt // Fecha de última actualización
-
 }
