@@ -29,7 +29,6 @@ model Subseccion {
   recursosComplementarios RecursosComplementarios[]
   seccionId               String                    @db.ObjectId
   Seccion                 Seccion                   @relation(fields: [seccionId], references: [id])
-
   @@unique([seccionId, numeroOrden])
 }
 
