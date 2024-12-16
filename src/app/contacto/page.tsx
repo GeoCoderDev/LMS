@@ -8,28 +8,51 @@ const Contacto = () => {
     nombre: '',
     apellidos: '',
     correo: '',
-    numero: '', // Mantener como string
+    numero: '', // Mantener como string para validación
     mensaje: '',
   });
 
-  const [status, setStatus] = React.useState<null | 'success' | 'error'>(null);
+  const [status, setStatus] = React.useState<{
+    type: 'success' | 'error' | null;
+    message?: string;
+  }>({ type: null });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+
+    // Validar número de teléfono solo en el frontend (puedes ajustar la lógica)
+    if (name === 'numero' && value && !/^\d+$/.test(value)) {
+      setStatus({
+        type: 'error',
+        message: 'El número de teléfono debe contener solo dígitos.',
+      });
+      return;
+    }
+
     setFormData({ ...formData, [name]: value });
+    setStatus({ type: null }); // Limpiar mensajes de error
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Convertir el numero a número, si es necesario
+    // Validar campos obligatorios
+    if (!formData.nombre || !formData.apellidos || !formData.correo || !formData.mensaje || !formData.numero) {
+      setStatus({
+        type: 'error',
+        message: 'Todos los campos obligatorios deben completarse.',
+      });
+      return;
+    }
+
     const dataToSend = {
       ...formData,
-      numero: formData.numero ? parseInt(formData.numero, 10) : '', // Convierte a número si existe
+      // El número ya está como string, lo enviamos tal cual
+      numero: formData.numero || null, // Si no hay número, enviamos null
     };
 
     try {
-      const response = await fetch('/api/contacto', {
+      const response = await fetch('/api/consultas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,15 +60,23 @@ const Contacto = () => {
         body: JSON.stringify(dataToSend),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        setStatus('success');
+        setStatus({ type: 'success', message: 'Mensaje enviado correctamente.' });
         setFormData({ nombre: '', apellidos: '', correo: '', numero: '', mensaje: '' });
       } else {
-        setStatus('error');
+        setStatus({
+          type: 'error',
+          message: result.error || 'Hubo un error al enviar el mensaje.',
+        });
       }
     } catch (error) {
-      console.error("Error al enviar el formulario:", error);
-      setStatus('error');
+      console.error('Error al enviar el formulario:', error);
+      setStatus({
+        type: 'error',
+        message: 'Ocurrió un error al procesar el formulario. Inténtalo de nuevo más tarde.',
+      });
     }
   };
 
@@ -102,7 +133,7 @@ const Contacto = () => {
 
           <div>
             <label htmlFor="numero" className="block text-sm font-medium">
-              Número de Teléfono
+              Número de Teléfono (opcional)
             </label>
             <input
               type="text"
@@ -136,8 +167,12 @@ const Contacto = () => {
             Enviar
           </button>
 
-          {status === 'success' && <p className="text-green-500">Mensaje enviado correctamente.</p>}
-          {status === 'error' && <p className="text-red-500">Hubo un error al enviar el mensaje.</p>}
+          {status.type === 'success' && (
+            <p className="text-green-500 mt-2">{status.message}</p>
+          )}
+          {status.type === 'error' && (
+            <p className="text-red-500 mt-2">{status.message}</p>
+          )}
         </form>
       </div>
     </>

@@ -1,29 +1,57 @@
-import { PrismaClient } from "@prisma/client";
+import { NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export default async function handler(req, res) {
-    if (req.method === 'POST') {
-        const { nombre, apellidos, correo, numero, mensaje } = req.body;
+export async function POST(request: Request) {
+    try {
+        const { nombre, apellidos, correo, numero, mensaje } = await request.json();
 
-        try {
-            const nuevaConsulta = await prisma.consultas.create({
-                data: {
-                    nombre,
-                    apellidos,
-                    correo,
-                    numero,
-                    mensaje,
-                },
-            });
-
-            return res.status(200).json({ message: 'Consulta creada correctamente', nuevaConsulta });
-        } catch (error) {
-            console.error('Error al guardar la consulta:', error);
-            return res.status(500).json({ error: 'Error al guardar la consulta' });
+        // Validar que todos los campos están presentes
+        if (!nombre || !apellidos || !correo || !numero || !mensaje) {
+            return NextResponse.json(
+                { error: 'Todos los campos son obligatorios y deben completarse.' },
+                { status: 400 }
+            );
         }
-    }
 
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Método ${req.method} no permitido`);
+        // Crear una nueva consulta
+        const nuevaConsulta = await prisma.consultas.create({
+            data: {
+                nombre,
+                apellidos,
+                correo,
+                numero,
+                mensaje,
+            },
+        });
+
+        return NextResponse.json(
+            { message: 'Consulta creada correctamente.', consulta: nuevaConsulta },
+            { status: 201 }
+        );
+    } catch (error) {
+        console.error('Error al crear la consulta:', error);
+
+        return NextResponse.json(
+            { error: 'Ocurrió un error al procesar la consulta.' },
+            { status: 500 }
+        );
+    }
+}
+
+export async function GET() {
+    try {
+        const consultas = await prisma.consultas.findMany({
+            orderBy: { creadoEn: 'desc' }, // Ordenar por fecha de creación
+        });
+
+        return NextResponse.json(consultas, { status: 200 });
+    } catch (error) {
+        console.error('Error al obtener las consultas:', error);
+        return NextResponse.json(
+            { error: 'Ocurrió un error al obtener las consultas.' },
+            { status: 500 }
+        );
+    }
 }

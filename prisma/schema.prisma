@@ -81,8 +81,8 @@ model Consultas {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   nombre        String
   apellidos     String
-  correo        String   @unique // Dirección de correo única
-  numero        String? // Campo opcional para número de teléfono
+  correo        String
+  numero        String // Campo opcional para número de teléfono
   mensaje       String // Queja o consulta del usuario
   creadoEn      DateTime @default(now()) // Fecha de creación
   actualizadoEn DateTime @updatedAt // Fecha de última actualización
