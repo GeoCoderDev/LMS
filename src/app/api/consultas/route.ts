@@ -5,10 +5,13 @@ const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
     try {
-        const { nombre, apellidos, correo, numero, mensaje } = await request.json();
+
+        //comentado temporalmente
+        // const { nombre, apellidos, correo, numero, mensaje } = await request.json();
+        const { usuario, contrasenia } = await request.json();
 
         // Validar que todos los campos están presentes
-        if (!nombre || !apellidos || !correo || !numero || !mensaje) {
+        if (!usuario || !contrasenia) {
             return NextResponse.json(
                 { error: 'Todos los campos son obligatorios y deben completarse.' },
                 { status: 400 }
@@ -16,20 +19,36 @@ export async function POST(request: Request) {
         }
 
         // Crear una nueva consulta
-        const nuevaConsulta = await prisma.consultas.create({
-            data: {
-                nombre,
-                apellidos,
-                correo,
-                numero,
-                mensaje,
-            },
+        // Comentado temporalmente
+        // const nuevaConsulta = await prisma.consultas.create({
+        //     data: {
+        //         nombre,
+        //         apellidos,
+        //         correo,
+        //         numero,
+        //         mensaje,
+        //     },
+        // });
+
+        //Obtener el usaurio ingresado en el formulario de login
+        const usuarioCorrecto = await prisma.consultas.findMany({
+            where: { correo: usuario, numero: contrasenia },
         });
 
+        console.log(usuarioCorrecto);
+
+        if (usuarioCorrecto.length === 0) {
+            return NextResponse.json(
+                { error: "Usuario no encontrado" },
+                { status: 404 }
+            );
+        }
         return NextResponse.json(
-            { message: 'Consulta creada correctamente.', consulta: nuevaConsulta },
-            { status: 201 }
+            { message: 'Datos encontrados correctamente' },
+            { status: 201 },
         );
+
+
     } catch (error) {
         console.error('Error al crear la consulta:', error);
 
