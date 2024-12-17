@@ -33,6 +33,11 @@ const Header = ({ className }: { className?: string }) => {
           Contacto
         </span>
       </Link>
+      <Link href={"/herramientas/validador-requerimientos"}>
+        <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+          Herramientas
+        </span>
+      </Link>
     </header>
   );
 };
