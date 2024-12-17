@@ -21,7 +21,7 @@ type RecursosComplementarios {
 
 model Subseccion {
   id                      String                    @id @default(auto()) @map("_id") @db.ObjectId
-  ruta                    String
+  ruta                    String                    @unique
   titulo                  String
   numeroOrden             Int
   paraLeer                String
@@ -35,7 +35,7 @@ model Subseccion {
 
 model Seccion {
   id                    String                  @id @default(auto()) @map("_id") @db.ObjectId
-  indice                String
+  indice                String                  @unique
   titulo                String
   numeroOrden           Int
   subsecciones          Subseccion[]
