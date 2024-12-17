@@ -41,7 +41,7 @@ model Seccion {
   subsecciones          Subseccion[]
   moduloId              String                  @db.ObjectId
   Modulo                Modulo                  @relation(fields: [moduloId], references: [id])
-  Pregunta              Pregunta[]
+  preguntas             Pregunta[] // Relación con Pregunta
   ResultadoCuestionario ResultadoCuestionario[]
 
   @@unique([moduloId, numeroOrden])
@@ -106,4 +106,3 @@ model ResultadoCuestionario {
   navegador        String?
   sistemaOperativo String?
 }
-

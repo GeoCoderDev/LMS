@@ -8,7 +8,7 @@ import React from "react";
 
 const prisma = new PrismaClient();
 
-const page = async ({
+const Subseccion = async ({
   params: { numeroOrdenModulo, sectionRoute, subsectionRoute },
 }: {
   params: {
@@ -76,4 +76,4 @@ const page = async ({
   );
 };
 
-export default page;
+export default Subseccion;

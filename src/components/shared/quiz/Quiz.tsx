@@ -4,13 +4,20 @@ import QuizIcon from "./QuizIcon";
 import Equis from "@/components/icons/Equis";
 import { ArrowRight } from "lucide-react";
 import CloseQuizModal from "./CloseQuizModal";
-import { QuizData, Respuesta } from "@/lib/quiz/interfaces";
-import { usePathname } from "next/navigation";
-import { getRouteTitles } from "@/lib/assets/Contenido";
+import { QuizData } from "@/lib/quiz/interfaces";
+import { Modulo, Respuesta, Seccion } from "@prisma/client";
 
 const durationAndDelayMS = 1000;
 
-const Quiz = ({ quiz }: { quiz: QuizData }) => {
+const Quiz = ({
+  quiz,
+  modulo,
+  seccion,
+}: {
+  quiz: QuizData;
+  modulo: Modulo;
+  seccion: Seccion;
+}) => {
   const [viewCloseModal, setViewCloseModal] = useState(false);
   const [quizStart, setQuizStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -56,8 +63,6 @@ const Quiz = ({ quiz }: { quiz: QuizData }) => {
   };
 
   const getCurrentQuestion = () => preguntasAleatorias[currentQuestionIndex];
-
-  const path = usePathname();
 
   return (
     <div className="top-0 fixed w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] bg-[#2B223E] overflow-auto z-[108] flex items-center justify-center">
@@ -137,8 +142,8 @@ const Quiz = ({ quiz }: { quiz: QuizData }) => {
             </span>
           </div>
           <div className="text-[#cfcafe] max-w-[24rem] text-[1.2rem] text-center">
-            {getRouteTitles(path).moduleTitle} |{" "}
-            {getRouteTitles(path).sectionTitle}
+            {`Módulo ${modulo.numeroOrden}: ${modulo.titulo}`} |{" "}
+            {`Sección ${seccion.numeroOrden}: ${seccion.titulo}`}
           </div>
           <button
             onClick={() => {

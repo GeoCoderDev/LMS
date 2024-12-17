@@ -1,14 +1,4 @@
-
-
-export interface Respuesta {
-  texto: string;
-  esCorrecta: boolean;
-}
-
-export interface Pregunta {
-  pregunta: string;
-  respuestas: Respuesta[];
-}
+import { Pregunta } from "@prisma/client";
 
 export interface QuizData {
   preguntas: Pregunta[];
