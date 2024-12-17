@@ -1,7 +1,4 @@
-import {
-  crearSeccion,
-  createSubseccion,
-} from "@/lib/helpers/functions/temporalCreators";
+
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
@@ -9,9 +6,6 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
   try {
-    crearSeccion();
-    // createSubseccion();
-
     // Obtener el parámetro `id` de la URL si existe
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");

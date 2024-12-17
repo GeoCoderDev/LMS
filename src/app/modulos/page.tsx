@@ -1,69 +1,63 @@
-import LogoModulo1 from "@/components/icons/LogoModulo1";
-import LogoModulo2 from "@/components/icons/LogoModulo2";
-import LogoModulo3 from "@/components/icons/LogoModulo3";
-import LogoModulo4 from "@/components/icons/LogoModulo4";
 import ModuleCard from "@/components/ModuleCard";
-
+import { ModuleFeatures } from "@/lib/assets/ModuleFeatures";
+import { PrismaClient } from "@prisma/client";
 import React from "react";
 
-const Modulos = () => {
-  return (
-    <div className="flex items-center justify-center flex-col min-h-[100dvh] h-min -border-2 max-w-[100vw] -overflow-hidden gap-4">
-      <span
-        style={{ viewTransitionName: "titulo-modulos" }}
-        className="text-[2rem] lg:text-[2.2rem] mt-4 mb-3"
-      >
-        Modulos
-      </span>
-      <div className="-border-2 w-[70vw] min-h-min gap-8 grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] grid-rows-[1fr] auto-rows-[1fr] content-stretch items-center justify-center justify-items-center mb-12">
-        <ModuleCard
-          id={1}
-          titulo="Origen, Modelos, Normas y Herramientas para la Calidad del Software"
-          LogoTSX={({ className, color, title }) => (
-            <LogoModulo1 className={className} color={color} title={title} />
-          )}
-          texto="Descubre el origen de la ingeniería de software y cómo los modelos, normas y herramientas aseguran la calidad en cada etapa del desarrollo."
-          brokenBackgroundColor="#E6F3FF"
-          backgroundButtonGradient="linear-gradient(90deg, #1E40AF 0%, #03ACCD 100%)"
-        />
+const prisma = new PrismaClient();
 
-        <ModuleCard
-          id={2}
-          titulo="Verificación y Validación de la Documentación del Análisis de Requerimientos"
-          LogoTSX={({ className, color, title }) => (
-            <LogoModulo2 className={className} color={color} title={title} />
-          )}
-          texto="Descubre cómo la Verificación y Validación de la Documentación del Análisis de Requerimientos te ayuda a construir un software a prueba de fallos."
-          brokenBackgroundColor="#EAFFE8"
-          backgroundButtonGradient="linear-gradient(90deg, #2DAF33 0%, #A9D445 100%)"
-        />
-        <ModuleCard
-          id={3}
-          titulo="Verificación y Validación de la Documentación del Diseño del Sistema"
-          LogoTSX={({ className, color, title }) => (
-            <LogoModulo3 className={className} color={color} title={title} />
-          )}
-          texto={
-            "¡Descubre la importancia de un diseño sólido! Asegúrate de que cada elemento de tu sistema funcione como debe."
-          }
-          brokenBackgroundColor="#E9D1F3"
-          backgroundButtonGradient="linear-gradient(90deg, #7B1FA2 0%, #CC73CB 100%)"
-        />
-        <ModuleCard
-          id={4}
-          titulo="Factores Críticos de Éxito para el Desarrollo del Software"
-          LogoTSX={({ className, color, title }) => (
-            <LogoModulo4 className={className} color={color} title={title} />
-          )}
-          texto={
-            "Descubre los factores esenciales que aseguran el éxito en el desarrollo de software. Conoce las claves para evitar errores y maximizar resultados."
-          }
-          brokenBackgroundColor="#FFE5BE"
-          backgroundButtonGradient="linear-gradient(90deg, #D35400 0%, #F39C12 100%)"
-        />
+const Modulos = async () => {
+  try {
+    // Obtener todos los módulos desde la base de datos
+    const modulos = await prisma.modulo.findMany({
+      include: { secciones: false },
+    });
+
+    // Verificar si no hay módulos disponibles
+    if (modulos.length === 0) {
+      return (
+        <span className="text-gray-500 font-semibold text-xl">
+          Aún no hay módulos disponibles. Vuelve más tarde.
+        </span>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-center flex-col min-h-[100dvh] h-min -border-2 max-w-[100vw] -overflow-hidden gap-4">
+        <span
+          style={{ viewTransitionName: "titulo-modulos" }}
+          className="text-[2rem] lg:text-[2.2rem] mt-4 mb-3"
+        >
+          Modulos
+        </span>
+        <div className="-border-2 w-[70vw] min-h-min gap-8 grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] grid-rows-[1fr] auto-rows-[1fr] content-stretch items-center justify-center justify-items-center mb-12">
+          {modulos.map(({ descripcion, id, numeroOrden, titulo }) => (
+            <ModuleCard
+              key={id}
+              numeroOrden={numeroOrden}
+              backgroundButtonGradient={
+                ModuleFeatures[numeroOrden - 1].backgroundButtonGradient
+              }
+              LogoTSX={ModuleFeatures[numeroOrden - 1].LogoTSX}
+              brokenBackgroundColor={
+                ModuleFeatures[numeroOrden - 1].brokenBackgroundColor
+              }
+              texto={descripcion}
+              titulo={titulo}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Error al cargar los módulos:", error);
+
+    // Mostrar mensaje de error si ocurre un problema
+    return (
+      <span className="text-red-500 font-bold text-xl">
+        Ocurrió un error al cargar los módulos. Por favor, intenta más tarde.
+      </span>
+    );
+  }
 };
 
 export default Modulos;

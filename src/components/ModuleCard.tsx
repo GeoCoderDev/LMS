@@ -4,14 +4,14 @@ import FlechaDiagonal from "./icons/FlechaDiagonal";
 import { Link } from "next-view-transitions";
 
 const ModuleCard = ({
-  id,
+  numeroOrden,
   titulo,
   LogoTSX,
   texto,
   brokenBackgroundColor,
   backgroundButtonGradient,
 }: {
-  id: number;
+  numeroOrden: number;
   titulo: string;
   LogoTSX: ({}: IconProps) => React.ReactNode;
   texto: string;
@@ -20,7 +20,7 @@ const ModuleCard = ({
 }) => {
   return (
     <div
-      style={{ viewTransitionName: `modulo-splash-${id}` }}
+      style={{ viewTransitionName: `modulo-splash-${numeroOrden}` }}
       className="overflow-hidden -p-4 flex flex-col items-center justify-center  min-w-[10rem] max-w-full min-h-[10rem] -border-2 border-black rounded-[1rem] h-full shadow-[0px_0px_8px_2px_#00000080]"
     >
       <div
@@ -31,19 +31,19 @@ const ModuleCard = ({
       </div>
       <div className="p-4 w-full flex flex-col items-center justify-center gap-2 ">
         <span className="self-start text-[#4A5568] font-semibold text-[0.8rem]">
-          Modulo 0{id}
+          Modulo 0{numeroOrden}
         </span>
         <h3
           className="font-bold self-start"
-          style={{ viewTransitionName: `titulo-modulo-${id}`}}
+          style={{ viewTransitionName: `titulo-modulo-${numeroOrden}` }}
         >
           {titulo}
         </h3>
         <p className="text-[0.8rem]">{texto}</p>
-        <Link href={`modulos/${id}`} as={`modulos/${id}`}>
+        <Link href={`modulos/${numeroOrden}`} as={`modulos/${numeroOrden}`}>
           <button
             style={{ backgroundImage: backgroundButtonGradient }}
-            className="flex items-center justify-center gap-2 bg-black text-white p-1 px-2 rounded-[0.5rem] font-semibold text-[0.8rem] mt-2"
+            className="flex items-center justify-center gap-2 bg-black text-white p-2 px-2 rounded-[0.5rem] font-semibold text-[0.8rem] mt-2"
           >
             Ver Contenido
             <FlechaDiagonal color="white" className="w-[0.8rem]" />
