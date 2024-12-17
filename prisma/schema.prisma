@@ -106,3 +106,4 @@ model ResultadoCuestionario {
   navegador        String?
   sistemaOperativo String?
 }
+
