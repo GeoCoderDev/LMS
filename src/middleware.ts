@@ -1,11 +1,9 @@
 import { Subseccion } from "@prisma/client";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { encodePathname } from "./lib/helpers/functions/encoderPathname";
 
 export async function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
-
   // Divide el pathname en segmentos para verificar su estructura
   const pathSegments = pathname.split("/").filter(Boolean); // Filtra segmentos vacíos
 
@@ -13,10 +11,16 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/modulos") && pathSegments.length === 3) {
     try {
       // Construye la URL de la API y pasa el pathname como parámetro de consulta
-      const apiUrl = `${origin}/api/subsecciones?pathname=${encodePathname(pathname)}`;
+      const apiUrl = `${origin}/api/subsecciones`;
 
       // Realiza el fetch a la API
-      const response = await fetch(apiUrl, { method: "GET" });
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pathname }),
+      });
 
       if (response.ok) {
         const subsecciones: Subseccion[] = await response.json();
