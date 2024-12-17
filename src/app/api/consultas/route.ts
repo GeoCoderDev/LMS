@@ -7,45 +7,57 @@ export async function POST(request: Request) {
     try {
 
         //comentado temporalmente
-        // const { nombre, apellidos, correo, numero, mensaje } = await request.json();
-        const { usuario, contrasenia } = await request.json();
+        const { nombre, apellidos, correo, numero, mensaje } = await request.json();
+        // const { usuario, contrasenia } = await request.json();
 
         // Validar que todos los campos están presentes
-        if (!usuario || !contrasenia) {
+        // if (!usuario || !contrasenia) {
+        //     return NextResponse.json(
+        //         { error: 'Todos los campos son obligatorios y deben completarse.' },
+        //         { status: 400 }
+        //     );
+        // }
+        if (!nombre || !apellidos || !correo || !numero || !mensaje) {
             return NextResponse.json(
                 { error: 'Todos los campos son obligatorios y deben completarse.' },
                 { status: 400 }
             );
         }
 
+
         // Crear una nueva consulta
         // Comentado temporalmente
-        // const nuevaConsulta = await prisma.consultas.create({
-        //     data: {
-        //         nombre,
-        //         apellidos,
-        //         correo,
-        //         numero,
-        //         mensaje,
-        //     },
-        // });
-
-        //Obtener el usaurio ingresado en el formulario de login
-        const usuarioCorrecto = await prisma.consultas.findMany({
-            where: { correo: usuario, numero: contrasenia },
+        const nuevaConsulta = await prisma.consultas.create({
+            data: {
+                nombre,
+                apellidos,
+                correo,
+                numero,
+                mensaje,
+            },
         });
 
-        console.log(usuarioCorrecto);
+        //Obtener el usaurio ingresado en el formulario de login
+        // const usuarioCorrecto = await prisma.consultas.findMany({
+        //     where: { correo: usuario, numero: contrasenia },
+        // });
 
-        if (usuarioCorrecto.length === 0) {
-            return NextResponse.json(
-                { error: "Usuario no encontrado" },
-                { status: 404 }
-            );
-        }
+        // console.log(usuarioCorrecto);
+
+        // if (usuarioCorrecto.length === 0) {
+        //     return NextResponse.json(
+        //         { error: "Usuario no encontrado" },
+        //         { status: 404 }
+        //     );
+        // }
+        // return NextResponse.json(
+        //     { message: 'Datos encontrados correctamente' },
+        //     { status: 201 },
+        // );
+
         return NextResponse.json(
-            { message: 'Datos encontrados correctamente' },
-            { status: 201 },
+            { message: 'Consulta creada correctamente.', consulta: nuevaConsulta },
+            { status: 201 }
         );
 
 
