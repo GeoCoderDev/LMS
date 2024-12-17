@@ -1,5 +1,6 @@
-export default function transformClassNameToClass(htmlString) {
-  return htmlString
-    .replace(/className="/g, 'class="')
-    .replace(/className='/g, "class='");
+export default function transformClassNameToClass(
+  htmlString: string | null | undefined
+): string {
+  if (!htmlString) return "";
+  return htmlString.replace(/className=/g, "class=");
 }

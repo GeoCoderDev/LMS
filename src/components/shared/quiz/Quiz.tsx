@@ -32,6 +32,17 @@ const Quiz = ({
   const presentationBlock = useRef<HTMLDivElement>(null);
   const questionBlock = useRef<HTMLDivElement>(null);
 
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < totalQuestions - 1) {
+      questionBlock.current!.classList.add("animate__bounceOut");
+      setTimeout(() => {
+        setCurrentQuestionIndex((prev) => prev + 1);
+        questionBlock.current!.classList.remove("animate__bounceOut");
+        questionBlock.current!.classList.add("animate__bounceIn");
+      }, durationAndDelayMS);
+    }
+  };
+
   const handleAnswerSelection = (respuesta: Respuesta) => {
     if (respuesta.esCorrecta) {
       setRespuestasCorrectas((prev) => prev + 1);
@@ -45,20 +56,39 @@ const Quiz = ({
       questionBlock.current!.classList.add("animate__bounceOut");
       setTimeout(() => {
         setQuizCompleted(true);
+        enviarResultados();
         questionBlock.current!.classList.remove("animate__bounceOut");
         questionBlock.current!.classList.add("animate__bounceIn");
       }, durationAndDelayMS);
     }
   };
 
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < totalQuestions - 1) {
-      questionBlock.current!.classList.add("animate__bounceOut");
-      setTimeout(() => {
-        setCurrentQuestionIndex((prev) => prev + 1);
-        questionBlock.current!.classList.remove("animate__bounceOut");
-        questionBlock.current!.classList.add("animate__bounceIn");
-      }, durationAndDelayMS);
+  // Función para enviar los datos a la API
+  const enviarResultados = async () => {
+    const payload = {
+      seccionId: seccion.id,
+      puntajeObtenido: puntajeActual,
+      puntajeTotal: quiz.puntajeMaximo,
+      cantidadTotalPreguntas: totalQuestions,
+      direccionIp: "",
+      navegador: window.navigator.userAgent,
+      sistemaOperativo: window.navigator.platform,
+    };
+
+    try {
+      const response = await fetch("/api/resultados-cuestionarios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log("Resultados enviados correctamente");
+      } else {
+        console.error("Error al enviar los resultados:", await response.text());
+      }
+    } catch (error) {
+      console.error("Error en la solicitud de resultados:", error);
     }
   };
 
