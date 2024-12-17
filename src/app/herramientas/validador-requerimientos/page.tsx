@@ -78,7 +78,7 @@ const RequirementsValidatorInterface = () => {
   return (
     <>
       {/* Header con clase fija para que permanezca en la parte superior */}
-      <Header className="fixed top-0 w-full bg-white z-10 shadow-md" />
+      <Header />
 
       {/* Contenedor principal con fondo y alineación centrada */}
       <div className="min-h-[90vh] bg-gray-100 py-6 flex items-center justify-center">
@@ -120,9 +120,8 @@ const RequirementsValidatorInterface = () => {
               placeholder="El requerimiento debe tener al menos 10 caracteres."
               value={requirement}
               onChange={(e) => setRequirement(e.target.value)}
-              className={`w-full p-3 rounded-md border focus:outline-none transition duration-300 ${
-                error ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full p-3 rounded-md border focus:outline-none transition duration-300 ${error ? "border-red-500" : "border-gray-300"
+                }`}
               rows={4}
               maxLength={500}
             />
@@ -132,9 +131,8 @@ const RequirementsValidatorInterface = () => {
               <button
                 onClick={handleValidation}
                 disabled={isLoading || requirement.trim().length < 10}
-                className={`w-full sm:w-auto bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition duration-300 transform ${
-                  isLoading || requirement.trim().length < 10 ? "opacity-50 cursor-not-allowed" : "hover:scale-105"
-                }`}
+                className={`w-full sm:w-auto bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition duration-300 transform ${isLoading || requirement.trim().length < 10 ? "opacity-50 cursor-not-allowed" : "hover:scale-105"
+                  }`}
               >
                 {isLoading ? "Validando..." : "Validar"}
               </button>
@@ -151,9 +149,8 @@ const RequirementsValidatorInterface = () => {
             {validationResult && (
               <div className="mt-6 overflow-y-auto max-h-60">
                 <div
-                  className={`p-4 rounded-md ${
-                    validationResult.is_valid ? "bg-green-100" : "bg-red-100"
-                  } animate__animated animate__fadeIn`}
+                  className={`p-4 rounded-md ${validationResult.is_valid ? "bg-green-100" : "bg-red-100"
+                    } animate__animated animate__fadeIn`}
                 >
                   <h2 className="text-lg font-bold mb-2">
                     {validationResult.is_valid ? "✅ Válido" : "❌ Requiere Mejoras"}
