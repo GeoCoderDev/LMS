@@ -48,7 +48,10 @@ const Header = ({ className }: { className?: string }) => {
             <Link href={"/contacto"} onClick={() => setMenuOpen(false)}>
               <span className="text-[1rem] cursor-pointer">Contacto</span>
             </Link>
-            <Link href={"/herramientas/validador-requerimientos"} onClick={() => setMenuOpen(false)}>
+            <Link
+              href={"/herramientas/validador-requerimientos"}
+              onClick={() => setMenuOpen(false)}
+            >
               <span className="text-[1rem] cursor-pointer">Herramientas</span>
             </Link>
           </nav>
@@ -74,13 +77,19 @@ const Header = ({ className }: { className?: string }) => {
           </span>
         </Link>
         <Link href={"/acerca_de"}>
-          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">Acerca de</span>
+          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+            Acerca de
+          </span>
         </Link>
         <Link href={"/contacto"}>
-          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">Contacto</span>
+          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+            Contacto
+          </span>
         </Link>
         <Link href={"/herramientas/validador-requerimientos"}>
-          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">Herramientas</span>
+          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+            Herramientas
+          </span>
         </Link>
       </nav>
     </header>
