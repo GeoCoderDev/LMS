@@ -11,6 +11,8 @@ export async function GET(request: NextRequest) {
     url.searchParams.get("pathname") &&
     decodePathname(url.searchParams.get("pathname")!);
 
+ 
+
   try {
     // 1. Si no se envía ningún parámetro, devolver 10 registros aleatorios
     if (!sectionId && !pathname) {
