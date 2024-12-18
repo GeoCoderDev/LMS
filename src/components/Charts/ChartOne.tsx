@@ -1,14 +1,10 @@
-"use client";
-
 import { ApexOptions } from "apexcharts";
-import React from "react";
+
 import dynamic from "next/dynamic";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
-
-
 
 const options: ApexOptions = {
   legend: {
@@ -123,13 +119,6 @@ const options: ApexOptions = {
   },
 };
 
-interface ChartOneState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
-
 const ChartOne: React.FC = async () => {
   const series = [
     {
@@ -141,20 +130,13 @@ const ChartOne: React.FC = async () => {
       name: "Product Two",
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
     },
-
-  ]
+  ];
 
   try {
-
-    const [isMounted, setIsMounted] = useState(false);
-
-    const response3 = await fetch('/api/modulos');
+    const response3 = await fetch("/api/modulos");
     const result3 = await response3.json();
 
-
     console.log(result3);
-
-   
 
     return (
       <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
@@ -208,7 +190,7 @@ const ChartOne: React.FC = async () => {
       </div>
     );
   } catch (error) {
-
+    console.log(error);
   }
 };
 

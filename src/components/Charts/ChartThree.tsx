@@ -2,10 +2,6 @@ import { ApexOptions } from "apexcharts";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-interface ChartThreeState {
-  series: number[];
-}
-
 const options: ApexOptions = {
   chart: {
     fontFamily: "Satoshi, sans-serif",
@@ -49,15 +45,12 @@ const options: ApexOptions = {
   ],
 };
 
-const ChartThree: React.FC =  () => {
+const ChartThree: React.FC = () => {
   const series = [85, 34, 12, 56];
 
   try {
-
-
     // const response1 = await fetch('/api/seccion');
     // const result1 = await response1.json();
-
 
     // const response2 = await fetch('/api/resultados-cuestionario-2');
     // const result2 = await response2.json();
@@ -155,7 +148,7 @@ const ChartThree: React.FC =  () => {
       </div>
     );
   } catch (error) {
-
+    console.log(error);
   }
 };
 

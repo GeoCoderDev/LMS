@@ -1,16 +1,6 @@
-"use client";
-import dynamic from "next/dynamic";
 import React from "react";
 import ChartTwo from "../Charts/ChartTwo";
 import ChartTwoCopy from "../Charts/ChartTwoCopy";
-
-
-
-
-
-const ChartThree = dynamic(() => import("@/components/Charts/ChartThree"), {
-  ssr: false,
-});
 
 const ECommerce: React.FC = () => {
   return (
@@ -105,18 +95,15 @@ const ECommerce: React.FC = () => {
       <div className="mx-4">
         {/* <ChartOne /> */}
         <ChartTwoCopy />
-        <br/><br/>
+        <br />
+        <br />
         <ChartTwo />
         {/* <ChartThree /> */}
         {/* <MapOne /> */}
-        <div className="col-span-12 xl:col-span-8">
-          {/* <TableOne /> */}
-        </div>
+        <div className="col-span-12 xl:col-span-8">{/* <TableOne /> */}</div>
         {/* <ChatCard /> */}
       </div>
-      <div>
-        
-      </div>
+      <div></div>
     </>
   );
 };

@@ -1,20 +1,12 @@
-"use client";
 import { ApexOptions } from "apexcharts";
 import React from "react";
 import dynamic from "next/dynamic";
-import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-
-
-let options: ApexOptions = {
+const options: ApexOptions = {
   colors: ["#3C50E0", "#80CAEE"],
   chart: {
     fontFamily: "Satoshi, sans-serif",
@@ -65,21 +57,14 @@ let options: ApexOptions = {
     fontWeight: 500,
     fontSize: "14px",
 
-    markers: {
-      radius: 99,
-    },
+    // markers: {
+    //   radius: 99,
+    // },
   },
   fill: {
     opacity: 1,
   },
 };
-
-interface ChartTwoState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
 
 const ChartTwo: React.FC = async () => {
   let series = [
@@ -94,9 +79,6 @@ const ChartTwo: React.FC = async () => {
   ];
 
   try {
-
-
-
     // series = [];
 
     // series = [
@@ -106,38 +88,25 @@ const ChartTwo: React.FC = async () => {
     //   }
     // ]
 
-
     // options.xaxis.categories = [];
     // options.xaxis.categories = ['A', 'B', 'C'];
 
-
     try {
-
-      const response3 = await fetch('/api/modulo-seccion-cuestionario');
+      const response3 = await fetch("/api/modulo-seccion-cuestionario");
       const result3 = await response3.json();
 
       // console.log(result3);
 
-      let seccionId = [];
-      let sumSeccion = [];
-      let contSeccion: number = 0;
-      let cont: number = 0;
-      let sumPuntaje: number = 0;
-      let promedio: number = 0;
-
-      let sumaModulo = [0, 0, 0, 0];
-      let idx : number = 0;
+      const sumaModulo = [0, 0, 0, 0];
+      let idx: number = 0;
 
       // console.log(result3[7].Seccion.Modulo.numeroOrden)
       if (response3.ok) {
-       
         result3.forEach(function (item3) {
           // console.log(item3.Seccion.Modulo.numeroOrden);
           idx = item3.Seccion.Modulo.numeroOrden;
           sumaModulo[idx - 1] += item3.puntajeObtenido;
         });
-
-
       } else {
         alert(result3.error);
       }
@@ -146,26 +115,27 @@ const ChartTwo: React.FC = async () => {
       // console.log("array: ", seccionId);
       // console.log("sumas: ", sumSeccion);
 
-
-//================================================================================================
-      options.xaxis.categories = [];
-      options.xaxis.categories = ['Módulo 1', 'Módulo 2', 'Módulo 3', 'Módulo 4'];
+      //================================================================================================
+      options.xaxis!.categories = [];
+      options.xaxis!.categories = [
+        "Módulo 1",
+        "Módulo 2",
+        "Módulo 3",
+        "Módulo 4",
+      ];
 
       series = [
         {
           name: "Puntaje total",
           data: sumaModulo,
-        }
-      ]
-//================================================================================================
-
+        },
+      ];
+      //================================================================================================
     } catch (error) {
-      console.error('Error al enviar el formulario:', error);
+      console.error("Error al enviar el formulario:", error);
     }
 
-
     return (
-
       <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
         <div className="mb-4 justify-between gap-4 sm:flex">
           <div>
@@ -225,7 +195,7 @@ const ChartTwo: React.FC = async () => {
       </div>
     );
   } catch (error) {
-
+    console.log(error);
   }
 };
 
