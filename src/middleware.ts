@@ -1,19 +1,28 @@
-import { Subseccion } from "@prisma/client";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
-  // Divide el pathname en segmentos para verificar su estructura
-  const pathSegments = pathname.split("/").filter(Boolean); // Filtra segmentos vacíos
 
-  // Verificar que sea una ruta de módulo de nivel sección (exactamente 3 segmentos: modulos/:numeroOrdenModulo/:sectionRoute)
+  // Verificar si la ruta comienza con /dashboard
+  if (pathname.startsWith("/dashboard")) {
+    // Verificar la existencia de las cookies
+    const token = request.cookies.get("myToken");
+    const role = request.cookies.get("myRole");
+
+    // Si no existen las cookies, redirigir al login
+    if (!token || !role || role.value !== "admin") {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+  }
+
+  // Middleware de redirección de módulos (manteniendo la lógica anterior)
+  const pathSegments = pathname.split("/").filter(Boolean);
+
   if (pathname.startsWith("/modulos") && pathSegments.length === 3) {
     try {
-      // Construye la URL de la API y pasa el pathname como parámetro de consulta
       const apiUrl = `${origin}/api/subsecciones`;
 
-      // Realiza el fetch a la API
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -23,18 +32,15 @@ export async function middleware(request: NextRequest) {
       });
 
       if (response.ok) {
-        const subsecciones: Subseccion[] = await response.json();
+        const subsecciones = await response.json();
 
-        // Si el resultado contiene una subsección con numeroOrden = 1
         if (subsecciones && Array.isArray(subsecciones)) {
           const subseccionOrdenUno = subsecciones.find(
             (subseccion) => subseccion.numeroOrden === 1
           );
 
-          // Redirigir solo si existe una subsección con numeroOrden = 1
           if (subseccionOrdenUno && pathname !== subseccionOrdenUno.ruta) {
             const newUrl = `${subseccionOrdenUno.ruta}`;
-            console.log("Redirigiendo a:", newUrl);
             return NextResponse.redirect(new URL(newUrl, request.url));
           }
         }
@@ -44,11 +50,11 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Si no se cumple la condición, sigue con el flujo normal
+  // Si no se cumple ninguna condición, continúa con el flujo normal
   return NextResponse.next();
 }
 
-// Configuración de rutas en las que se ejecutará el middleware
+// Configuración de rutas para el middleware
 export const config = {
-  matcher: "/modulos/:path*", // Ajusta esta ruta según las rutas donde quieras que se ejecute el middleware
+  matcher: ["/dashboard/:path*", "/modulos/:path*"],
 };

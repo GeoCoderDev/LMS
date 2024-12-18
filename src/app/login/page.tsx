@@ -1,182 +1,81 @@
-// "use client";
+"use client";
 
-import React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 
-const LoginPageAdmin = () => {
-  return <div>LoginPageAdmin</div>;
-};
+export default function Login() {
+  const router = useRouter();
+  const [nombreUsuario, setNombreUsuario] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-export default LoginPageAdmin;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nombreUsuario, contraseña }),
+      });
 
-// import Header from "@/components/Header";
-// // import { PrismaClient } from "@prisma/client";
-// import { useState } from "react";
+      if (res.ok) {
+        return router.push("/dashboard"); // Redirigir al dashboard u otra página
+      }
+      throw new Error("No se realizo la peticion de manera correcta");
+    } catch (error) {
+      console.log(error);
+      setError("Error desconocido");
+    }
+  };
 
-// // const prisma = new PrismaClient();
-
-// const login = () => {
-
-//   const [formData, setFormData] = useState({
-//     usuario: "",
-//     contrasenia: "",
-//   });
-
-//   const [status, setStatus] = useState<{
-//     type: "success" | "error" | null;
-//     message?: string;
-//   }>({ type: null });
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-
-//     setFormData({ ...formData, [name]: value });
-//     setStatus({ type: null }); // Limpiar mensajes de error
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-
-//     const dataToSend = {
-//       ...formData,
-//     };
-
-//     try {
-//       const response = await fetch("/api/consultas", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(dataToSend),
-//       });
-
-//       const result = await response.json();
-
-//       if (response.ok) {
-//         alert("Bienvenido al sistema");
-//         // redirect("modulos");
-
-//         setStatus({
-//           type: "success",
-//           message: "Mensaje enviado correctamente.",
-//         });
-//         setFormData({ usuario: "", contrasenia: "" });
-//       } else {
-//         alert(result.error);
-//         setStatus({
-//           type: "error",
-//           message: result.error || "Hubo un error en el usuario o contraseña.",
-//         });
-//       }
-//     } catch (error) {
-//       // if (isRedirectError(error)) {
-//       //   throw error;
-//       // }
-//       console.error("Error al enviar el formulario:", error);
-//       setStatus({
-//         type: "error",
-//         message:
-//           "Ocurrió un error al procesar el formulario. Inténtalo de nuevo más tarde.",
-//       });
-//     }
-//   };
-
-//   //******************************************************************** */
-//   return (
-//     <>
-//       <Header />
-
-//       <div className="container mx-auto mt-8 py-12 border border-solid border-gray-500 w-4/12 rounded">
-//         <h1 className="text-3xl font-bold text-center mb-6">LOGIN</h1>
-//         <div className="flex flex-col items-center">
-//           <p>Por favor, inicia sesión para continuar</p>
-//         </div>
-
-//         {/* <p>Por favor, inicia sesión para continuar</p> */}
-//         <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
-//           <div className="py-5">
-//             <label htmlFor="usuario" className="block text-lg">
-//               Usuario
-//             </label>
-//             <input
-//               type="text"
-//               id="usuario"
-//               name="usuario"
-//               className="border rounded w-full px-2 py-1 h-10"
-//               value={formData.usuario}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-
-//           <div className="py-5">
-//             <label htmlFor="contrasenia" className="block text-lg">
-//               Contraseña
-//             </label>
-//             <input
-//               type="password"
-//               id="contrasenia"
-//               name="contrasenia"
-//               className="border rounded w-full px-2 py-1 h-10"
-//               value={formData.contrasenia}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           {/* <Link href={"/login/graficos"}> */}
-//           <div className="flex flex-col justify-center  items-center">
-//             <button
-//               id="five"
-//               style={{ transitionDuration: "100ms" }}
-//               type="submit"
-//               className="relative  text-black border-2 border-black transition-all p-4 rounded-[0.5rem] text-[1rem] md:text-[1.2rem] font-semibold w-4/12"
-//             >
-//               Iniciar sesión
-//             </button>
-//           </div>
-//           {/* </Link> */}
-//         </form>
-//       </div>
-//       <style
-//         dangerouslySetInnerHTML={{
-//           __html: `
-//         #five::after {
-//           content: '';
-//           position: absolute;
-//           width: 0%;
-//           height: 0%;
-//           background-color: black;
-//           top: 0;
-//           right: 0;
-//           transition: 0.4s;
-//           z-index: -1;
-//         }
-
-//         #five::before {
-//           content: '';
-//           position: absolute;
-//           width: 0%;
-//           height: 0%;
-//           background-color: black;
-//           bottom: 0;
-//           left: 0;
-//           transition: 0.4s;
-//           z-index: -1;
-//         }
-
-//         #five:hover {
-//           color: #fff;
-//         }
-
-//         #five:hover::after,
-//         #five:hover::before {
-//           width: 100%;
-//           height: 100%;
-//         }
-//       `,
-//         }}
-//       />
-//     </>
-//   );
-// };
-
-// export default login;
+  return (
+    <>
+      <Header />
+      <div className="flex items-center justify-center min-h-[90dvh] bg-gray-100">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">
+            Iniciar sesión
+          </h1>
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label htmlFor="nombreUsuario" className="block text-gray-600">
+                Nombre de usuario
+              </label>
+              <input
+                id="nombreUsuario"
+                type="text"
+                value={nombreUsuario}
+                onChange={(e) => setNombreUsuario(e.target.value)}
+                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label htmlFor="contraseña" className="block text-gray-600">
+                Contraseña
+              </label>
+              <input
+                id="contraseña"
+                type="password"
+                value={contraseña}
+                onChange={(e) => setContraseña(e.target.value)}
+                className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Iniciar sesión
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
