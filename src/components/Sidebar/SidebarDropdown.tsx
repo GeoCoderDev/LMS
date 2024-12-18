@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SidebarDropdown = ({ item }: any) => {
   const pathname = usePathname();
 
