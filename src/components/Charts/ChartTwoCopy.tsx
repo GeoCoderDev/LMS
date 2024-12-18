@@ -113,59 +113,48 @@ const ChartTwo: React.FC = async () => {
 
     try {
 
-      const response1 = await fetch('/api/seccion');
-      const result1 = await response1.json();
+      const response3 = await fetch('/api/modulo-seccion-cuestionario');
+      const result3 = await response3.json();
 
+      // console.log(result3);
 
-      const response2 = await fetch('/api/resultados-cuestionario-2');
-      const result2 = await response2.json();
-
-      let seccionId = ['S1-M1', 'S2-M1', 'S3-M1', 'S4-M1',
-        'S1-M2', 'S2-M2', 'S3-M2', 'S4-M2', 'S5-M2',
-        'S1-M3', 'S2-M3', 'S3-M3', 'S4-M3', 'S5-M3',
-        'S1-M4', 'S2-M4', 'S3-M4', 'S4-M4', 'S5-M5', 'S6-M6', 'S7-M4',
-      ];
+      let seccionId = [];
       let sumSeccion = [];
       let contSeccion: number = 0;
       let cont: number = 0;
       let sumPuntaje: number = 0;
       let promedio: number = 0;
 
-      if (response1.ok && response2.ok) {
-        // console.log(result1);
+      let sumaModulo = [0, 0, 0, 0];
+      let idx : number = 0;
 
-        result1.forEach(function (item) {
-          // contSeccion += 1;
-          // seccionId.push("Sección " + contSeccion);
-
-          cont = 0;
-          sumPuntaje = 0;
-          result2.forEach(function (item2) {
-            if (item2.seccionId == item.id) {
-              cont += 1;
-              sumPuntaje += item2.puntajeObtenido;
-            }
-            // promedio = sumPuntaje / cont;
-          });
-          sumSeccion.push(sumPuntaje);
+      // console.log(result3[7].Seccion.Modulo.numeroOrden)
+      if (response3.ok) {
+       
+        result3.forEach(function (item3) {
+          // console.log(item3.Seccion.Modulo.numeroOrden);
+          idx = item3.Seccion.Modulo.numeroOrden;
+          sumaModulo[idx - 1] += item3.puntajeObtenido;
         });
+
+
       } else {
-        alert(result1.error);
+        alert(result3.error);
       }
 
-
+      // console.log("Suma total mod: ", sumaModulo);
       // console.log("array: ", seccionId);
       // console.log("sumas: ", sumSeccion);
 
 
 //================================================================================================
       options.xaxis.categories = [];
-      options.xaxis.categories = seccionId;
+      options.xaxis.categories = ['Módulo 1', 'Módulo 2', 'Módulo 3', 'Módulo 4'];
 
       series = [
         {
           name: "Puntaje total",
-          data: sumSeccion,
+          data: sumaModulo,
         }
       ]
 //================================================================================================
@@ -181,7 +170,7 @@ const ChartTwo: React.FC = async () => {
         <div className="mb-4 justify-between gap-4 sm:flex">
           <div>
             <h4 className="text-xl font-semibold text-black dark:text-white">
-              PUNTAJE TOTAL OBTENIDO POR SECCIÓN
+              PUNTAJE TOTAL OBTENIDO POR MÓDULO
             </h4>
           </div>
           <div>
