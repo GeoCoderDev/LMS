@@ -1,7 +1,29 @@
-import React from "react";
+// import React from "react";
 
-const page = () => {
-  return <div>page</div>;
+// const page = () => {
+//   return <div>page</div>;
+// };
+
+// export default page;
+
+
+import ECommerce from "@/components/Dashboard/E-commerce";
+import { Metadata } from "next";
+import DefaultLayout from "@/components/Layouts/DefaultLayout";
+
+export const metadata: Metadata = {
+  title:
+    "Next.js E-commerce Dashboard | TailAdmin - Next.js Dashboard Template",
+  description: "This is Next.js Home for TailAdmin Dashboard Template",
 };
 
-export default page;
+export default function Home() {
+  return (
+    <>
+      {/* <DefaultLayout> */}
+        <ECommerce />
+      {/* </DefaultLayout> */}
+    </>
+  );
+}
+
