@@ -3,6 +3,7 @@ import { CommandMenu } from "../../CommandMenu";
 import {
   C_V_Anterior,
   C_V_Buscar,
+  C_V_Home,
   C_V_Leer,
   C_V_Modulo_1,
   C_V_Modulo_2,
@@ -26,6 +27,8 @@ import {
   C_V_Modulo_4_Seccion_6,
   C_V_Modulo_4_Seccion_7,
   C_V_Siguiente,
+  C_V_Usar_Validador,
+  C_V_Validador_Requerimientos,
   C_VModulo_1_Seccion_1,
   C_VModulo_1_Seccion_2,
   C_VModulo_1_Seccion_3,
@@ -33,17 +36,30 @@ import {
 } from "./AllCommands";
 
 export const C_M_Home = new CommandMenu(
-  "Bienvenido. En esta página principal, puedes navegar rápidamente utilizando comandos de voz. Para acceder directamente a los módulos disponibles, di: 'Módulo uno', 'Módulo dos', 'Módulo tres' o 'Módulo cuatro'.",
-  [C_V_Modulo_1, C_V_Modulo_2, C_V_Modulo_3, C_V_Modulo_4]
+  "Bienvenido. En esta página principal, puedes navegar rápidamente utilizando comandos de voz. Para acceder directamente a los módulos disponibles, di: 'Módulo uno', 'Módulo dos', 'Módulo tres' o 'Módulo cuatro'. Por otro lado para usar el validador de requerimientos puedes decir validador",
+  [
+    C_V_Modulo_1,
+    C_V_Modulo_2,
+    C_V_Modulo_3,
+    C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
+  ]
 );
 
 export const C_M_Menu_Modulos = new CommandMenu(
-  "Puedes decir: 'Buscar' para realizar una búsqueda, o puede decir 'Modulo 1', 'Modulo 2', 'Modulo 3' o 'Modulo 4' para acceder a los diferentes módulos. " +
+  "Puedes decir: 'Buscar' para realizar una búsqueda, para usar el validador de requerimientos puedes decir validador, tambien puedes decir 'Modulo 1', 'Modulo 2', 'Modulo 3' o 'Modulo 4' para acceder a los diferentes módulos. " +
     "El Módulo 1 trata sobre 'Origen, Modelos, Normas y Herramientas para la Calidad del Software'. " +
     "El Módulo 2 cubre 'Verificación y Validación de la Documentación del Análisis de Requerimientos'. " +
     "El Módulo 3 se enfoca en 'Verificación y Validación de la Documentación del Diseño del Sistema'. " +
     "Y el Módulo 4 aborda 'Factores Críticos de Éxito para el Desarrollo del Software'.",
-  [C_V_Buscar, C_V_Modulo_1, C_V_Modulo_2, C_V_Modulo_3, C_V_Modulo_4]
+  [
+    C_V_Buscar,
+    C_V_Modulo_1,
+    C_V_Modulo_2,
+    C_V_Modulo_3,
+    C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
+  ]
 );
 
 export const C_M_Modulo_1 = new CommandMenu(
@@ -58,8 +74,7 @@ export const C_M_Modulo_1 = new CommandMenu(
   - Dirigirte a otros módulos: 
     - Di 'Módulo 2' para acceder a *Verificación y Validación*.
     - Di 'Módulo 3' para explorar *Documentación del Diseño del Sistema*.
-    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*.
-
+    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*. Por otro lado para usar el validador de requerimientos puedes decir validador.
   ¿Qué deseas hacer?`,
   [
     C_VModulo_1_Seccion_1,
@@ -70,6 +85,7 @@ export const C_M_Modulo_1 = new CommandMenu(
     C_V_Modulo_2,
     C_V_Modulo_3,
     C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
   ]
 );
 
@@ -86,8 +102,7 @@ export const C_M_Modulo_2 = new CommandMenu(
   - Navegar a otros módulos:
     - Di 'Módulo 1' para explorar *Calidad de Software*.
     - Di 'Módulo 3' para acceder a *Documentación del Diseño del Sistema*.
-    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*.
-
+    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*. Por otro lado para usar el validador de requerimientos puedes decir validador.
   ¿Qué deseas hacer?`,
   [
     C_V_Modulo_2_Seccion_1,
@@ -99,6 +114,7 @@ export const C_M_Modulo_2 = new CommandMenu(
     C_V_Modulo_1,
     C_V_Modulo_3,
     C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
   ]
 );
 
@@ -115,7 +131,7 @@ export const C_M_Modulo_3 = new CommandMenu(
   - Navega a otros módulos:
     - Di 'Módulo 1' para explorar *Calidad de Software*.
     - Di 'Módulo 2' para acceder a *Verificación y Validación*.
-    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*.
+    - Di 'Módulo 4' para descubrir *Factores Críticos de Éxito para el Desarrollo del Software*. Por otro lado para usar el validador de requerimientos puedes decir validador.
 
   ¿Qué deseas hacer?`,
   [
@@ -128,6 +144,7 @@ export const C_M_Modulo_3 = new CommandMenu(
     C_V_Modulo_1,
     C_V_Modulo_2,
     C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
   ]
 );
 
@@ -147,7 +164,7 @@ export const C_M_Modulo_4 = new CommandMenu(
     - Di 'Módulo 1' para explorar *Calidad de Software*.
     - Di 'Módulo 2' para acceder a *Verificación y Validación*.
     - Di 'Módulo 3' para descubrir *Documentación del Diseño del Sistema*.
-
+    Por otro lado para usar el validador de requerimientos puedes decir validador.
   ¿Qué deseas hacer?`,
   [
     C_V_Modulo_4_Seccion_1,
@@ -161,6 +178,7 @@ export const C_M_Modulo_4 = new CommandMenu(
     C_V_Modulo_1,
     C_V_Modulo_2,
     C_V_Modulo_3,
+    C_V_Validador_Requerimientos,
   ]
 );
 
@@ -175,6 +193,7 @@ export const C_M_Subsecciones = new CommandMenu(
     C_V_Modulo_2,
     C_V_Modulo_3,
     C_V_Modulo_4,
+    C_V_Validador_Requerimientos,
   ],
   (currentPath: string) => {
     const subsectionTitle = getSubsectionTitle(currentPath);
@@ -187,7 +206,12 @@ export const C_M_Subsecciones = new CommandMenu(
 
     También puedes dirigirte directamente a cualquiera de los módulos diciendo: 
     "módulo uno", "módulo dos", "módulo tres" o "módulo cuatro".
-
+     Por otro lado para usar el validador de requerimientos puedes decir validador.
     ¿Qué deseas hacer?`;
   }
+);
+
+export const C_M_Validador_Requerimientos = new CommandMenu(
+  `Te encuentras en el validador de requerimientos, para volver al inicio puedes decir inicio, si deseas validar algun requerimiento di usar validador`,
+  [C_V_Home, C_V_Usar_Validador]
 );

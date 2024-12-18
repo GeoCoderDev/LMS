@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import { useState } from "react";
 
-interface ValidationResult {
+export interface ValidationResult {
   original_text: string;
   is_valid: boolean;
   errors: Array<{
@@ -21,8 +21,11 @@ interface ValidationResult {
 const RequirementsValidatorInterface = () => {
   // Estados para manejar el formulario y la validación
   const [requirement, setRequirement] = useState("");
-  const [requirementType, setRequirementType] = useState<"Funcional" | "No Funcional">("Funcional");
-  const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
+  const [requirementType, setRequirementType] = useState<
+    "Funcional" | "No Funcional"
+  >("Funcional");
+  const [validationResult, setValidationResult] =
+    useState<ValidationResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,17 +44,20 @@ const RequirementsValidatorInterface = () => {
 
     try {
       // Hacemos la solicitud al backend para validar el requerimiento
-      const response = await fetch("https://requirements-validator.onrender.com/validate-requirement", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08`,
-        },
-        body: JSON.stringify({
-          requirement,
-          is_functional: requirementType === "Funcional",
-        }),
-      });
+      const response = await fetch(
+        "https://requirements-validator.onrender.com/validate-requirement",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08`,
+          },
+          body: JSON.stringify({
+            requirement,
+            is_functional: requirementType === "Funcional",
+          }),
+        }
+      );
 
       // Si la respuesta no es exitosa, lanzamos un error
       if (!response.ok) {
@@ -81,7 +87,10 @@ const RequirementsValidatorInterface = () => {
       <Header />
 
       {/* Contenedor principal con fondo y alineación centrada */}
-      <div className="min-h-[90vh] bg-gray-100 py-6 flex items-center justify-center">
+      <form
+        id="form-validador-requerimientos"
+        className="min-h-[90vh] bg-gray-100 py-6 flex items-center justify-center"
+      >
         {/* Contenedor de la tarjeta de formulario */}
         <div className="relative mx-4 sm:mx-auto w-full sm:max-w-xl">
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg sm:skew-y-0 sm:-rotate-6 rounded-lg"></div>
@@ -100,19 +109,43 @@ const RequirementsValidatorInterface = () => {
 
             {/* Radio buttons para seleccionar el tipo de requerimiento */}
             <div className="flex flex-col sm:flex-row justify-center sm:space-x-4 mb-4">
-              {["Funcional", "No Funcional"].map((type) => (
-                <label key={type} className="flex items-center mb-2 sm:mb-0">
-                  <input
-                    type="radio"
-                    name="type"
-                    value={type}
-                    checked={requirementType === type}
-                    onChange={() => setRequirementType(type as "Funcional" | "No Funcional")}
-                    className="form-radio text-indigo-600 transition duration-200 transform hover:scale-105"
-                  />
-                  <span className="ml-2">{type}</span>
-                </label>
-              ))}
+              <label
+                key={"Funcional"}
+                className="flex items-center mb-2 sm:mb-0"
+              >
+                <input
+                  type="radio"
+                  name="type"
+                  value={"Funcional"}
+                  checked={requirementType === "Funcional"}
+                  onChange={() =>
+                    setRequirementType(
+                      "Funcional" as "Funcional" | "No Funcional"
+                    )
+                  }
+                  className="form-radio text-indigo-600 transition duration-200 transform hover:scale-105"
+                />
+                <span className="ml-2">{"Funcional"}</span>
+              </label>
+
+              <label
+                key={"No Funcional"}
+                className="flex items-center mb-2 sm:mb-0"
+              >
+                <input
+                  type="radio"
+                  name="type"
+                  value={"No Funcional"}
+                  checked={requirementType === "No Funcional"}
+                  onChange={() =>
+                    setRequirementType(
+                      "No Funcional" as "Funcional" | "No Funcional"
+                    )
+                  }
+                  className="form-radio text-indigo-600 transition duration-200 transform hover:scale-105"
+                />
+                <span className="ml-2">{"No Funcional"}</span>
+              </label>
             </div>
 
             {/* Campo de texto para ingresar el requerimiento */}
@@ -120,8 +153,9 @@ const RequirementsValidatorInterface = () => {
               placeholder="El requerimiento debe tener al menos 10 caracteres."
               value={requirement}
               onChange={(e) => setRequirement(e.target.value)}
-              className={`w-full p-3 rounded-md border focus:outline-none transition duration-300 ${error ? "border-red-500" : "border-gray-300"
-                }`}
+              className={`w-full p-3 rounded-md border focus:outline-none transition duration-300 ${
+                error ? "border-red-500" : "border-gray-300"
+              }`}
               rows={4}
               maxLength={500}
             />
@@ -129,10 +163,14 @@ const RequirementsValidatorInterface = () => {
             {/* Botones para validar y limpiar */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
               <button
+                type="submit"
                 onClick={handleValidation}
                 disabled={isLoading || requirement.trim().length < 10}
-                className={`w-full sm:w-auto bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition duration-300 transform ${isLoading || requirement.trim().length < 10 ? "opacity-50 cursor-not-allowed" : "hover:scale-105"
-                  }`}
+                className={`w-full sm:w-auto bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition duration-300 transform ${
+                  isLoading || requirement.trim().length < 10
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:scale-105"
+                }`}
               >
                 {isLoading ? "Validando..." : "Validar"}
               </button>
@@ -149,11 +187,14 @@ const RequirementsValidatorInterface = () => {
             {validationResult && (
               <div className="mt-6 overflow-y-auto max-h-60">
                 <div
-                  className={`p-4 rounded-md ${validationResult.is_valid ? "bg-green-100" : "bg-red-100"
-                    } animate__animated animate__fadeIn`}
+                  className={`p-4 rounded-md ${
+                    validationResult.is_valid ? "bg-green-100" : "bg-red-100"
+                  } animate__animated animate__fadeIn`}
                 >
                   <h2 className="text-lg font-bold mb-2">
-                    {validationResult.is_valid ? "✅ Válido" : "❌ Requiere Mejoras"}
+                    {validationResult.is_valid
+                      ? "✅ Válido"
+                      : "❌ Requiere Mejoras"}
                   </h2>
 
                   {/* Errores detectados */}
@@ -170,9 +211,13 @@ const RequirementsValidatorInterface = () => {
 
                   {/* Sugerencias de mejora */}
                   {validationResult.suggestions.map((suggestion, idx) => (
-                    <div key={idx} className="bg-yellow-100 p-2 rounded-md my-2">
+                    <div
+                      key={idx}
+                      className="bg-yellow-100 p-2 rounded-md my-2"
+                    >
                       <p>
-                        <strong>{suggestion.type}</strong>: {suggestion.description}
+                        <strong>{suggestion.type}</strong>:{" "}
+                        {suggestion.description}
                       </p>
                       <p>
                         <em>Recomendación: {suggestion.recommendation}</em>
@@ -184,7 +229,7 @@ const RequirementsValidatorInterface = () => {
             )}
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 };
