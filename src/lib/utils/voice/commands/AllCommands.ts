@@ -18,7 +18,7 @@ const speaker = Speaker.getInstance();
 //Comandos para otras paginas
 
 export const C_V_Contacto = new CommandVoice(
-  ["contacto", "modulo1", "módulo 1", "modulo 1", "módulo uno"],
+  ["modulo1", "módulo 1", "modulo 1", "módulo uno"],
   () => {
     return new Promise((resolve) => {
       speaker.start("Redirigiendo al Módulo 1.", () => resolve(null));
@@ -26,6 +26,13 @@ export const C_V_Contacto = new CommandVoice(
     });
   }
 );
+
+export const C_V_Home = new CommandVoice(["inicio"], () => {
+  return new Promise((resolve) => {
+    speaker.start("Redirigiendo a la pagina de inicio.", () => resolve(null));
+    window.location.href = "/";
+  });
+});
 
 //Comandos Modulo 1
 
@@ -416,6 +423,7 @@ function createResultCommands(
     );
   });
 }
+
 export const C_V_Buscar = new CommandVoice(["buscar"], () => {
   return new Promise((resolve) => {
     speaker.start("Por favor, di el término que deseas buscar.", () => {
@@ -563,5 +571,46 @@ export const C_V_Anterior = new CommandVoice(["anterior"], () => {
     }
 
     resolve(null);
+  });
+});
+
+export const C_V_Validador_Requerimientos = new CommandVoice(
+  ["validador"],
+  () => {
+    return new Promise((resolve) => {
+      speaker.start("Redirigiendo al validador de requerimientos", () =>
+        resolve(null)
+      );
+      window.location.href = "/herramientas/validador-requerimientos";
+    });
+  }
+);
+
+export const C_V_Usar_Validador = new CommandVoice(["usar validador"], () => {
+  return new Promise((resolve) => {
+    speaker.start(
+      "¿Tu requerimiento es funcional?, Si es así, dí si, de lo contrario di no para indicar que se trata de un requerimiento no funcional",
+      () => {
+        const listener = Listener.getInstance();
+
+        listener.start((transcript) => {
+          const radioButton = document.querySelector<HTMLInputElement>(
+            `input[name="type"][value="${
+              transcript === "si" || transcript === "sí"
+                ? "Funcional"
+                : "No Funcional"
+            }"]`
+          );
+          if (radioButton) {
+            radioButton.checked = true;
+            resolve(null);
+          }
+          
+          
+
+
+        });
+      }
+    );
   });
 });

@@ -11,6 +11,7 @@ import {
   C_M_Modulo_3,
   C_M_Modulo_4,
   C_M_Subsecciones,
+  C_M_Validador_Requerimientos,
 } from "../utils/voice/commands/CommandMenus";
 import { useDispatch, useSelector } from "react-redux";
 import { setCommandVoicesState } from "@/state/others/commandVoicesState";
@@ -84,6 +85,8 @@ const useCommandVoices = (currentPath: string) => {
       C_M_Modulo_3.start();
     } else if (currentPath === "/modulos/4") {
       C_M_Modulo_4.start();
+    } else if (currentPath === "/herramientas/validador-requerimientos") {
+      C_M_Validador_Requerimientos.start();
     } else if (
       currentPath.split("/").length === 5 &&
       currentPath.startsWith("/modulos/")
