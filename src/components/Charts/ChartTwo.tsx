@@ -4,6 +4,8 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { useSearchParams } from "next/navigation";
+
 
 const prisma = new PrismaClient();
 
@@ -15,14 +17,14 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 
 let options: ApexOptions = {
-  colors: ["#3C50E0", "#80CAEE"],
+  colors: ["#266713", "#266713"],
   chart: {
     fontFamily: "Satoshi, sans-serif",
     type: "bar",
     height: 335,
-    stacked: true,
+    stacked: false,
     toolbar: {
-      show: false,
+      show: true,
     },
     zoom: {
       enabled: false,
@@ -36,7 +38,7 @@ let options: ApexOptions = {
         plotOptions: {
           bar: {
             borderRadius: 0,
-            columnWidth: "25%",
+            columnWidth: "35%",
           },
         },
       },
@@ -45,8 +47,8 @@ let options: ApexOptions = {
   plotOptions: {
     bar: {
       horizontal: false,
-      borderRadius: 0,
-      columnWidth: "25%",
+      borderRadius: 2,
+      columnWidth: "39%",
       borderRadiusApplication: "end",
       borderRadiusWhenStacked: "last",
     },
@@ -62,7 +64,7 @@ let options: ApexOptions = {
     position: "top",
     horizontalAlign: "left",
     fontFamily: "Satoshi",
-    fontWeight: 500,
+    fontWeight: 700,
     fontSize: "14px",
 
     markers: {
@@ -113,62 +115,88 @@ const ChartTwo: React.FC = async () => {
 
     try {
 
-      const response1 = await fetch('/api/seccion');
-      const result1 = await response1.json();
+      // const response1 = await fetch('/api/seccion');
+      // const result1 = await response1.json();
 
 
-      const response2 = await fetch('/api/resultados-cuestionario-2');
-      const result2 = await response2.json();
+      // const response2 = await fetch('/api/resultados-cuestionario-2');
+      // const result2 = await response2.json();
 
       let seccionId = ['S1-M1', 'S2-M1', 'S3-M1', 'S4-M1',
         'S1-M2', 'S2-M2', 'S3-M2', 'S4-M2', 'S5-M2',
         'S1-M3', 'S2-M3', 'S3-M3', 'S4-M3', 'S5-M3',
         'S1-M4', 'S2-M4', 'S3-M4', 'S4-M4', 'S5-M5', 'S6-M6', 'S7-M4',
       ];
-      let sumSeccion = [];
-      let contSeccion: number = 0;
-      let cont: number = 0;
-      let sumPuntaje: number = 0;
-      let promedio: number = 0;
+      // let sumSeccion = [];
+      // let contSeccion: number = 0;
+      // let cont: number = 0;
+      // let sumPuntaje: number = 0;
+      // let promedio: number = 0;
 
-      if (response1.ok && response2.ok) {
-        // console.log(result1);
+      // if (response1.ok && response2.ok) {
+      //   // console.log(result1);
 
-        result1.forEach(function (item) {
-          // contSeccion += 1;
-          // seccionId.push("Sección " + contSeccion);
+      //   result1.forEach(function (item) {
+      //     // contSeccion += 1;
+      //     // seccionId.push("Sección " + contSeccion);
 
-          cont = 0;
-          sumPuntaje = 0;
-          result2.forEach(function (item2) {
-            if (item2.seccionId == item.id) {
-              cont += 1;
-              sumPuntaje += item2.puntajeObtenido;
-            }
-            // promedio = sumPuntaje / cont;
-          });
-          sumSeccion.push(sumPuntaje);
-        });
-      } else {
-        alert(result1.error);
-      }
+      //     cont = 0;
+      //     sumPuntaje = 0;
+      //     result2.forEach(function (item2) {
+      //       if (item2.seccionId == item.id) {
+      //         cont += 1;
+      //         sumPuntaje += item2.puntajeObtenido;
+      //       }
+      //       // promedio = sumPuntaje / cont;
+      //     });
+      //     sumSeccion.push(sumPuntaje);
+      //   });
+      // } else {
+      //   alert(result1.error);
+      // }
 
 
       // console.log("array: ", seccionId);
       // console.log("sumas: ", sumSeccion);
 
 
-//================================================================================================
+      //================================================================================================
       options.xaxis.categories = [];
       options.xaxis.categories = seccionId;
 
+      // series = [
+      //   {
+      //     name: "Puntaje total",
+      //     data: sumSeccion,
+      //   }
+      // ]
+      //================================================================================================
+
+      const searchParams = useSearchParams();
+      const datos2 = searchParams.get('data2');
+
+
+
+      console.log('=======================================================')
+      console.log(datos2);
+      console.log('=======================================================')
+
+
+
+      let aArray2 = datos2.split(',');
+      let aArrayEntero2 = aArray2.map(Number);
+      console.log(aArray2);
+      console.log(aArrayEntero2);
+
+
+      
       series = [
         {
           name: "Puntaje total",
-          data: sumSeccion,
+          data: aArrayEntero2,
         }
       ]
-//================================================================================================
+
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);

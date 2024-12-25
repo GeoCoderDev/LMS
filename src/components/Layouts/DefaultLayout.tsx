@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import Header from "@/components/Header/index";
 
 export default function DefaultLayout({
   children,
@@ -14,7 +14,7 @@ export default function DefaultLayout({
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex">
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}

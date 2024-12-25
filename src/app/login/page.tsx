@@ -22,10 +22,81 @@ export default function Login() {
       });
 
       if (res.ok) {
-        return router.push("/dashboard"); // Redirigir al dashboard u otra página
+
+        /***************************************************************************** */
+
+
+  
+
+        const response3 = await fetch('/api/modulo-seccion-cuestionario');
+        const result3 = await response3.json();
+        let sumaModulo = [0, 0, 0, 0];
+        let idx: number = 0;
+
+        if (response3.ok) {
+
+
+          result3.forEach(function (item3) {
+            idx = item3.Seccion.Modulo.numeroOrden;
+            sumaModulo[idx - 1] += item3.puntajeObtenido;
+          });
+
+          let aCadena = sumaModulo.toString();
+
+
+          //********************************************************************* */
+          const response1 = await fetch('/api/seccion');
+          const result1 = await response1.json();
+    
+    
+          const response2 = await fetch('/api/resultados-cuestionario-2');
+          const result2 = await response2.json();
+    
+          let sumSeccion = [];
+          let contSeccion: number = 0;
+          let cont: number = 0;
+          let sumPuntaje: number = 0;
+          let promedio: number = 0;
+    
+          if (response1.ok && response2.ok) {
+            // console.log(result1);
+    
+            result1.forEach(function (item) {
+              // contSeccion += 1;
+              // seccionId.push("Sección " + contSeccion);
+    
+              cont = 0;
+              sumPuntaje = 0;
+              result2.forEach(function (item2) {
+                if (item2.seccionId == item.id) {
+                  cont += 1;
+                  sumPuntaje += item2.puntajeObtenido;
+                }
+                // promedio = sumPuntaje / cont;
+              });
+              sumSeccion.push(sumPuntaje);
+            });
+          } else {
+            alert(result1.error);
+          }
+    
+
+          console.log('Suma de sección:', sumSeccion);
+
+          let aCadena2 = sumSeccion.toString();
+          // return router.push("/dashboard"); // Redirigir al dashboard u otra página
+
+          return router.push(`/dashboard?data1=${aCadena}`+`&data2=${aCadena2}`+`&user=${nombreUsuario}`);
+        }
+
+        /***************************************************************************** */
+
+
+        // return router.push("/dashboard"); // Redirigir al dashboard u otra página
       }
       throw new Error("No se realizo la peticion de manera correcta");
     } catch (error) {
+      alert("Error de usuario y/o contraseña")
       console.log(error);
       setError("Error desconocido");
     }

@@ -104,9 +104,9 @@ const ECommerce: React.FC = () => {
 
       <div className="mx-4">
         {/* <ChartOne /> */}
-        <ChartTwoCopy />
-        <br/><br/>
         <ChartTwo />
+        <br/><br/>
+        <ChartTwoCopy />
         {/* <ChartThree /> */}
         {/* <MapOne /> */}
         <div className="col-span-12 xl:col-span-8">

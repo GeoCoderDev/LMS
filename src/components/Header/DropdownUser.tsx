@@ -2,9 +2,17 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
+import { useSearchParams } from "next/navigation";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+
+  const searchParams = useSearchParams();
+  const user = searchParams.get('user');
+
+
+
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -15,9 +23,9 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {user}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">Administrador</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">

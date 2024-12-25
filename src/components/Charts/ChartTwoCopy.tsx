@@ -1,11 +1,16 @@
-"use client";
+'use client';
 import { ApexOptions } from "apexcharts";
 import React from "react";
 import dynamic from "next/dynamic";
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { useSearchParams } from "next/navigation";
+
 
 const prisma = new PrismaClient();
+let termino = false;
+
+
 
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
@@ -14,8 +19,14 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 
 
+
+
+
+
+
+
 let options: ApexOptions = {
-  colors: ["#3C50E0", "#80CAEE"],
+  colors: ["#a21802", "#266713"],
   chart: {
     fontFamily: "Satoshi, sans-serif",
     type: "bar",
@@ -45,8 +56,8 @@ let options: ApexOptions = {
   plotOptions: {
     bar: {
       horizontal: false,
-      borderRadius: 0,
-      columnWidth: "25%",
+      borderRadius: 4,
+      columnWidth: "35%",
       borderRadiusApplication: "end",
       borderRadiusWhenStacked: "last",
     },
@@ -56,7 +67,7 @@ let options: ApexOptions = {
   },
 
   xaxis: {
-    categories: ["M", "T", "W", "T", "F", "S", "S"],
+    categories: ["Módulo 1", "Módulo 2", "Módulo 3", "Módulo 4" ],
   },
   legend: {
     position: "top",
@@ -81,7 +92,7 @@ interface ChartTwoState {
   }[];
 }
 
-const ChartTwo: React.FC = async () => {
+const ChartTwo: React.FC = () => {
   let series = [
     {
       name: "Sales",
@@ -93,30 +104,17 @@ const ChartTwo: React.FC = async () => {
     },
   ];
 
-  try {
 
 
 
-    // series = [];
-
-    // series = [
-    //   {
-    //   name: "Alf",
-    //   data: [4444444, 55, 41, 67, 22, 43, 65],
-    //   }
-    // ]
 
 
-    // options.xaxis.categories = [];
-    // options.xaxis.categories = ['A', 'B', 'C'];
-
+  const recuperarDatos = async () => {
 
     try {
 
       const response3 = await fetch('/api/modulo-seccion-cuestionario');
       const result3 = await response3.json();
-
-      // console.log(result3);
 
       let seccionId = [];
       let sumSeccion = [];
@@ -126,42 +124,75 @@ const ChartTwo: React.FC = async () => {
       let promedio: number = 0;
 
       let sumaModulo = [0, 0, 0, 0];
-      let idx : number = 0;
+      let idx: number = 0;
 
+      series = [];
       // console.log(result3[7].Seccion.Modulo.numeroOrden)
       if (response3.ok) {
-       
-        result3.forEach(function (item3) {
-          // console.log(item3.Seccion.Modulo.numeroOrden);
-          idx = item3.Seccion.Modulo.numeroOrden;
-          sumaModulo[idx - 1] += item3.puntajeObtenido;
-        });
+
+        termino = true;
+        console.log(result3);
+        result3.forEach(function (item3) { idx = item3.Seccion.Modulo.numeroOrden; sumaModulo[idx - 1] += item3.puntajeObtenido; });
 
 
-      } else {
-        alert(result3.error);
-      }
+        series = [
+          {
+            name: "Puntaje total",
+            data: [4444444, 55, 41, 67, 22, 43, 65],
+          }
+        ]
 
-      // console.log("Suma total mod: ", sumaModulo);
-      // console.log("array: ", seccionId);
-      // console.log("sumas: ", sumSeccion);
 
-
-//================================================================================================
-      options.xaxis.categories = [];
-      options.xaxis.categories = ['Módulo 1', 'Módulo 2', 'Módulo 3', 'Módulo 4'];
-
-      series = [
-        {
-          name: "Puntaje total",
-          data: sumaModulo,
-        }
-      ]
-//================================================================================================
+        return sumaModulo;
+      } else { alert(result3.error); }
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
     }
+
+
+  }; //fin recuperar datos
+
+
+  const verificar = () => {
+    if (termino) {
+      console.log("Se recuperaron todos los datos");
+      return termino;
+    } else {
+      console.log("Falta recuperar datos");
+      return termino;;
+
+    }
+  }
+
+
+  // const router = useRouter();
+
+  try {
+
+
+    // const [searchParams] = useSearchParams();
+    // const id2 = searchParams.get('dato1');
+
+    const searchParams = useSearchParams();
+    const datos1 = searchParams.get('data1');
+
+    console.log('=======================================================')
+    console.log(datos1);
+    console.log('=======================================================')
+
+    let aArray = datos1.split(',');
+    let aArrayEntero = aArray.map(Number);
+    console.log(aArray);
+    console.log(aArrayEntero);
+
+
+    series = [
+      {
+        name: "Puntaje total",
+        data: aArrayEntero,
+      }
+    ]
 
 
     return (
@@ -228,5 +259,6 @@ const ChartTwo: React.FC = async () => {
 
   }
 };
+
 
 export default ChartTwo;
