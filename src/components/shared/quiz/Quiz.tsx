@@ -32,6 +32,18 @@ const Quiz = ({
   const presentationBlock = useRef<HTMLDivElement>(null);
   const questionBlock = useRef<HTMLDivElement>(null);
 
+  // Validate quiz data
+  if (!quiz?.preguntas?.length) {
+    return (
+      <div className="top-0 fixed w-screen h-[100dvh] bg-[#2B223E] flex items-center justify-center">
+        <div className="text-white text-center">
+          <h3 className="text-xl mb-2">Error</h3>
+          <p>No hay preguntas disponibles para este quiz.</p>
+        </div>
+      </div>
+    );
+  }
+
   const handleNextQuestion = () => {
     if (currentQuestionIndex < totalQuestions - 1) {
       questionBlock.current!.classList.add("animate__bounceOut");
@@ -52,7 +64,6 @@ const Quiz = ({
     if (currentQuestionIndex < totalQuestions - 1) {
       handleNextQuestion();
     } else {
-      // Si es la última pregunta, marcar el quiz como completado
       questionBlock.current!.classList.add("animate__bounceOut");
       setTimeout(() => {
         setQuizCompleted(true);
@@ -63,7 +74,6 @@ const Quiz = ({
     }
   };
 
-  // Función para enviar los datos a la API
   const enviarResultados = async () => {
     const payload = {
       seccionId: seccion.id,
@@ -82,9 +92,7 @@ const Quiz = ({
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        console.log("Resultados enviados correctamente");
-      } else {
+      if (!response.ok) {
         console.error("Error al enviar los resultados:", await response.text());
       }
     } catch (error) {
@@ -122,7 +130,7 @@ const Quiz = ({
         )}
       </div>
 
-      {quizStart && !quizCompleted && (
+      {quizStart && !quizCompleted && getCurrentQuestion() && (
         <div
           ref={questionBlock}
           className="flex flex-col items-center justify-center animate__animated animate__bounceIn"
@@ -162,12 +170,8 @@ const Quiz = ({
           className="flex flex-col items-center justify-center gap-4 p-6"
         >
           <div className="flex items-center justify-center gap-6 flex-wrap">
-            <QuizIcon
-              className={
-                "w-[min(8rem,30vw)] -border-2 animate__animated animate__bounce "
-              }
-            />
-            <span className="text-[#7A68FF] text-[min(5rem,12vw)] text-center w-max -border-2">
+            <QuizIcon className="w-[min(8rem,30vw)] animate__animated animate__bounce" />
+            <span className="text-[#7A68FF] text-[min(5rem,12vw)] text-center w-max">
               IngSoft <span className="w-min text-white text-center">Quiz</span>
             </span>
           </div>
@@ -177,10 +181,12 @@ const Quiz = ({
           </div>
           <button
             onClick={() => {
-              presentationBlock.current!.classList.add("animate__bounceOut");
+              presentationBlock.current?.classList.add("animate__bounceOut");
               setTimeout(() => {
                 setQuizStarted(true);
-                presentationBlock.current!.style.display = "none";
+                if (presentationBlock.current) {
+                  presentationBlock.current.style.display = "none";
+                }
               }, durationAndDelayMS);
             }}
             className="text-white border-2 border-white px-3 py-2 rounded flex items-center gap-2"

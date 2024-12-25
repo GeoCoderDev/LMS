@@ -98,7 +98,7 @@ export default function Login() {
     } catch (error) {
       alert("Error de usuario y/o contraseña")
       console.log(error);
-      setError("Error desconocido");
+      setError("Error de usuario y/o contraseña");
     }
   };
 

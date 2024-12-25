@@ -15,7 +15,9 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   const [options, setOptions] = useState<Option[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [show, setShow] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dropdownRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const trigger = useRef<any>(null);
 
   useEffect(() => {

@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 
 // GET: Obtener todos los resultados
 export async function GET() {
@@ -10,24 +9,23 @@ export async function GET() {
     const resultados = await prisma.resultadoCuestionario.findMany({
       select: {
         id: true,
-        puntajeObtenido: true, 
+        puntajeObtenido: true,
         Seccion: {
           select: {
             id: true,
             numeroOrden: true,
-            Modulo:{
-              select:{
+            Modulo: {
+              select: {
                 id: true,
                 indice: true,
                 // titulo: true,
-                numeroOrden: true
-              }
-            }
-          }
-        } },
+                numeroOrden: true,
+              },
+            },
+          },
+        },
+      },
     });
-
-
 
     return NextResponse.json(resultados, { status: 200 });
   } catch (error) {
@@ -38,4 +36,3 @@ export async function GET() {
     );
   }
 }
-
