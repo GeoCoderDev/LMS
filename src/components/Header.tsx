@@ -54,6 +54,10 @@ const Header = ({ className }: { className?: string }) => {
             >
               <span className="text-[1rem] cursor-pointer">Herramientas</span>
             </Link>
+            
+            <Link href={"/estimador-costos"} onClick={() => setMenuOpen(false)}>
+              <span className="text-[1rem] cursor-pointer">Estimador de costos</span>
+            </Link>
           </nav>
         </div>
       )}
@@ -89,6 +93,11 @@ const Header = ({ className }: { className?: string }) => {
         <Link href={"/herramientas/validador-requerimientos"}>
           <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
             Herramientas
+          </span>
+        </Link>
+        <Link href={"/estimador-costos"}>
+          <span className="text-[1rem] lg:text-[1.1rem] cursor-pointer">
+            Estimador de costos
           </span>
         </Link>
       </nav>
